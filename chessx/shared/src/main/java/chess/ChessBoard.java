@@ -9,7 +9,8 @@ package chess;
 public class ChessBoard {
 
     public ChessBoard() {
-        
+
+        ChessPiece[][] pieces = new ChessPiece[8][8]
     }
 
     /**
@@ -19,7 +20,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        throw new RuntimeException("Not implemented");
+        pieces[position.getRow][position.getColum] = piece;
     }
 
     /**
@@ -30,7 +31,8 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+
+        return pieces[position.getRow][position.getColum];
     }
 
     /**
@@ -38,6 +40,33 @@ public class ChessBoard {
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+
+        for(int i = 0, i < 8, i++){
+            pieces[1][i] = ChessPiece(PAWN,WHITE)
+        }
+        for(int i = 0, i < 8, i++){
+            pieces[6][i] = ChessPiece(PAWN,BLACK)
+        }
+        pieces[0][0]=ChessPiece(ROOK,WHITE)
+        pieces[0][1]=ChessPiece(KNIGHT,WHITE)
+        pieces[0][2]=ChessPiece(BISHOP,WHITE)
+        pieces[0][3]=ChessPiece(QUEEN,WHITE)
+        pieces[0][4]=ChessPiece(KING,WHITE)
+        pieces[0][5]=ChessPiece(BISHOP,WHITE)
+        pieces[0][6]=ChessPiece(KNIGHT,WHITE)
+        pieces[0][7]=ChessPiece(ROOK,WHITE)
+        pieces[7][0]=ChessPiece(ROOK,BLACK)
+        pieces[7][1]=ChessPiece(KNIGHT,BLACK)
+        pieces[7][2]=ChessPiece(BISHOP,BLACK)
+        pieces[7][3]=ChessPiece(QUEEN,BLACK)
+        pieces[7][4]=ChessPiece(KING,BLACK)
+        pieces[7][5]=ChessPiece(BISHOP,BLACK)
+        pieces[7][6]=ChessPiece(KNIGHT,BLACK)
+        pieces[7][7]=ChessPiece(ROOK,BLACK)
+
+
+
+
+
     }
 }
