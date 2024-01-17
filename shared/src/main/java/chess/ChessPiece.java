@@ -54,6 +54,25 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        if board.getPiece(myPosition) ==
+                switch(board.getPiece(myPosition)) {
+                    case KING:
+                        King().pieceMoves(board,myPosition)
+                        break;
+                    case QUEEN:
+                        Queen().pieceMoves(board,myPosition)
+                        break;
+                    case BISHOP:
+                        Bishop().pieceMoves(board,myPosition)
+                        break;
+                    case KNIGHT:
+                        Knight().pieceMoves(board,myPosition)
+                        break;
+                    case ROOK:
+                        Rook.pieceMoves(board,myPosition)
+                        break;
+                    case PAWN:
+                        Pawn.pieceMoves(board,myPosition)
+                        break;
+                }
     }
 }
