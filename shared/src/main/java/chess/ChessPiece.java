@@ -1,6 +1,10 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
+
+import static chess.ChessPiece.PieceType.*;
 
 /**
  * Represents a single chess piece
@@ -10,7 +14,7 @@ import java.util.Collection;
  */
 public class ChessPiece {
     private PieceType type;
-    private TeamColor pieceColor;
+    private ChessGame.TeamColor pieceColor;
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         this.type = type;
         this.pieceColor = pieceColor;
@@ -46,6 +50,19 @@ public class ChessPiece {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessPiece that=(ChessPiece) o;
+        return type == that.type && pieceColor == that.pieceColor;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, pieceColor);
+    }
+
     /**
      * Calculates all the positions a chess piece can move to
      * Does not take into account moves that are illegal due to leaving the king in
@@ -54,25 +71,15 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-                switch(board.getPiece(myPosition)) {
-                    case KING:
-                        King().pieceMoves(board,myPosition)
-                        break;
-                    case QUEEN:
-                        Queen().pieceMoves(board,myPosition)
-                        break;
-                    case BISHOP:
-                        Bishop().pieceMoves(board,myPosition)
-                        break;
-                    case KNIGHT:
-                        Knight().pieceMoves(board,myPosition)
-                        break;
-                    case ROOK:
-                        Rook.pieceMoves(board,myPosition)
-                        break;
-                    case PAWN:
-                        Pawn.pieceMoves(board,myPosition)
-                        break;
-                }
+
+      return new ArrayList<>();
+//              switch (board.getPiece(myPosition).getPieceType()) {
+//        case KING -> new King(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//        case QUEEN -> new Queen(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//        case BISHOP -> new Bishop(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//        case KNIGHT -> new Knight(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//        case ROOK -> new Rook(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//        case PAWN -> new Pawn(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
+//      };
     }
 }

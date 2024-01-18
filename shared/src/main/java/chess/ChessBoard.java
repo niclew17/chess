@@ -1,5 +1,11 @@
 package chess;
 
+import java.util.Arrays;
+
+import static chess.ChessGame.TeamColor.BLACK;
+import static chess.ChessGame.TeamColor.WHITE;
+import static chess.ChessPiece.PieceType.*;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -10,7 +16,7 @@ public class ChessBoard {
     ChessPiece[][] pieces;
     public ChessBoard() {
 
-        pieces = new ChessPiece[8][8]
+        pieces = new ChessPiece[8][8];
     }
 
     /**
@@ -20,7 +26,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        pieces[position.getRow][position.getColum] = piece;
+        pieces[position.getRow()-1][position.getColumn()-1] = piece;
     }
 
     /**
@@ -32,7 +38,28 @@ public class ChessBoard {
      */
     public ChessPiece getPiece(ChessPosition position) {
 
-        return pieces[position.getRow][position.getColum];
+        return pieces[position.getRow()-1][position.getColumn()-1];
+    }
+
+    @Override
+    public String toString() {
+        return "ChessBoard{" +
+                "pieces=" + Arrays.toString(pieces) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+               if((this.getPiece(new ChessPosition(i,j))).equals(o.))
+            }
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(pieces);
     }
 
     /**
@@ -41,28 +68,28 @@ public class ChessBoard {
      */
     public void resetBoard() {
 
-        for(int i = 0, i < 8, i++){
-            pieces[1][i] = ChessPiece(PAWN,WHITE)
+        for(int i = 0; i < 8; i++){
+            pieces[1][i] = new ChessPiece(WHITE,PAWN);
         }
-        for(int i = 0, i < 8, i++){
-            pieces[6][i] = ChessPiece(PAWN,BLACK)
+        for(int i = 0; i < 8; i++){
+            pieces[6][i] = new ChessPiece(BLACK,PAWN);
         }
-        pieces[0][0]=ChessPiece(ROOK,WHITE)
-        pieces[0][1]=ChessPiece(KNIGHT,WHITE)
-        pieces[0][2]=ChessPiece(BISHOP,WHITE)
-        pieces[0][3]=ChessPiece(QUEEN,WHITE)
-        pieces[0][4]=ChessPiece(KING,WHITE)
-        pieces[0][5]=ChessPiece(BISHOP,WHITE)
-        pieces[0][6]=ChessPiece(KNIGHT,WHITE)
-        pieces[0][7]=ChessPiece(ROOK,WHITE)
-        pieces[7][0]=ChessPiece(ROOK,BLACK)
-        pieces[7][1]=ChessPiece(KNIGHT,BLACK)
-        pieces[7][2]=ChessPiece(BISHOP,BLACK)
-        pieces[7][3]=ChessPiece(QUEEN,BLACK)
-        pieces[7][4]=ChessPiece(KING,BLACK)
-        pieces[7][5]=ChessPiece(BISHOP,BLACK)
-        pieces[7][6]=ChessPiece(KNIGHT,BLACK)
-        pieces[7][7]=ChessPiece(ROOK,BLACK)
+        pieces[0][0]= new ChessPiece(WHITE, ROOK);
+        pieces[0][1]= new ChessPiece(WHITE, KNIGHT);
+        pieces[0][2]= new ChessPiece(WHITE, BISHOP);
+        pieces[0][3]= new ChessPiece(WHITE, KING);
+        pieces[0][4]= new ChessPiece(WHITE, QUEEN);
+        pieces[0][5]= new ChessPiece(WHITE, BISHOP);
+        pieces[0][6]= new ChessPiece(WHITE, KNIGHT);
+        pieces[0][7]= new ChessPiece(WHITE, ROOK);
+        pieces[7][0]= new ChessPiece(BLACK, ROOK);
+        pieces[7][1]= new ChessPiece(BLACK, KNIGHT);
+        pieces[7][2]= new ChessPiece(BLACK, BISHOP);
+        pieces[7][3]= new ChessPiece(BLACK, KING);
+        pieces[7][4]= new ChessPiece(BLACK, QUEEN);
+        pieces[7][5]= new ChessPiece(BLACK, BISHOP);
+        pieces[7][6]= new ChessPiece(BLACK, KNIGHT);
+        pieces[7][7]= new ChessPiece(BLACK, ROOK);
 
 
 
