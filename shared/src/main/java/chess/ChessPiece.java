@@ -77,15 +77,15 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
+     return switch (board.getPiece(myPosition).getPieceType()) {
+       case KING -> new King(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
+       case QUEEN -> new Queen(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
+       case BISHOP -> new Bishop(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
+       case KNIGHT -> new Knight(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
+       case ROOK -> new Rook(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
+       case PAWN -> new Pawn(board.getPiece(myPosition).getTeamColor(), board, myPosition).pieceMoves(board, myPosition, board.getPiece(myPosition).getTeamColor());
 
-      return new ArrayList<>();
-//              switch (board.getPiece(myPosition).getPieceType()) {
-//        case KING -> new King(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//        case QUEEN -> new Queen(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//        case BISHOP -> new Bishop(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//        case KNIGHT -> new Knight(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//        case ROOK -> new Rook(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//        case PAWN -> new Pawn(board.getPiece(myPosition).getTeamColor(),board.getPiece(myPosition).getPieceType(), board, myPosition).pieceMoves(board, myPosition);
-//      };
+     };
+
     }
 }

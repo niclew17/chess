@@ -68,27 +68,27 @@ public class ChessBoard {
     public void resetBoard() {
 
         for(int i = 0; i < 8; i++){
-            pieces[6][i] = new ChessPiece(WHITE,PAWN);
+            pieces[1][i] = new ChessPiece(WHITE,PAWN);
         }
         for(int i = 0; i < 8; i++){
-            pieces[1][i] = new ChessPiece(BLACK,PAWN);
+            pieces[6][i] = new ChessPiece(BLACK,PAWN);
         }
-        pieces[7][0]= new ChessPiece(WHITE, ROOK);
-        pieces[7][1]= new ChessPiece(WHITE, KNIGHT);
-        pieces[7][2]= new ChessPiece(WHITE, BISHOP);
-        pieces[7][3]= new ChessPiece(WHITE, QUEEN);
-        pieces[7][4]= new ChessPiece(WHITE, KING);
-        pieces[7][5]= new ChessPiece(WHITE, BISHOP);
-        pieces[7][6]= new ChessPiece(WHITE, KNIGHT);
-        pieces[7][7]= new ChessPiece(WHITE, ROOK);
-        pieces[0][0]= new ChessPiece(BLACK, ROOK);
-        pieces[0][1]= new ChessPiece(BLACK, KNIGHT);
-        pieces[0][2]= new ChessPiece(BLACK, BISHOP);
-        pieces[0][3]= new ChessPiece(BLACK, QUEEN);
-        pieces[0][4]= new ChessPiece(BLACK, KING);
-        pieces[0][5]= new ChessPiece(BLACK, BISHOP);
-        pieces[0][6]= new ChessPiece(BLACK, KNIGHT);
-        pieces[0][7]= new ChessPiece(BLACK, ROOK);
+        pieces[7][0]= new ChessPiece(BLACK, ROOK);
+        pieces[7][1]= new ChessPiece(BLACK, KNIGHT);
+        pieces[7][2]= new ChessPiece(BLACK, BISHOP);
+        pieces[7][3]= new ChessPiece(BLACK, QUEEN);
+        pieces[7][4]= new ChessPiece(BLACK, KING);
+        pieces[7][5]= new ChessPiece(BLACK, BISHOP);
+        pieces[7][6]= new ChessPiece(BLACK, KNIGHT);
+        pieces[7][7]= new ChessPiece(BLACK, ROOK);
+        pieces[0][0]= new ChessPiece(WHITE, ROOK);
+        pieces[0][1]= new ChessPiece(WHITE, KNIGHT);
+        pieces[0][2]= new ChessPiece(WHITE, BISHOP);
+        pieces[0][3]= new ChessPiece(WHITE, QUEEN);
+        pieces[0][4]= new ChessPiece(WHITE, KING);
+        pieces[0][5]= new ChessPiece(WHITE, BISHOP);
+        pieces[0][6]= new ChessPiece(WHITE, KNIGHT);
+        pieces[0][7]= new ChessPiece(WHITE, ROOK);
 
 
 

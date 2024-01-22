@@ -12,6 +12,14 @@ public class ChessPosition {
     private int row;
     private int col;
 
+    @Override
+    public String toString() {
+        return "ChessPosition{" +
+                 row + " " +
+                 col +
+                '}';
+    }
+
     public ChessPosition(int row, int col) {
         this.row = row;
         this.col = col;
