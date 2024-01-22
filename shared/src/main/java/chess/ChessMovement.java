@@ -64,7 +64,7 @@ public abstract class ChessMovement {
         }
       }
     }
-  public static void goFirstMove(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, int x) {
+  public static void goFirstMovePawn(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, int x) {
     ChessPosition newposition=new ChessPosition(myposition.getRow() + x, myposition.getColumn());
     if (x == 2 || x==-2) {
       ChessPosition checkposition=new ChessPosition(myposition.getRow() + (x/2), myposition.getColumn());
@@ -245,12 +245,12 @@ class Pawn extends ChessMovement{
       goOneMovePawn(myPosition,alist,board,pieceColor, forwardmove);
     }
     else if(pieceColor.equals(ChessGame.TeamColor.BLACK) && myPosition.getRow()==7) {
-      goFirstMove(myPosition, alist, board, pieceColor, -1);
-      goFirstMove(myPosition, alist, board, pieceColor, -2);
+      goFirstMovePawn(myPosition, alist, board, pieceColor, -1);
+      goFirstMovePawn(myPosition, alist, board, pieceColor, -2);
     }
     else if(pieceColor.equals(ChessGame.TeamColor.WHITE) && myPosition.getRow()==2) {
-      goFirstMove(myPosition, alist, board, pieceColor, 1);
-      goFirstMove(myPosition, alist, board, pieceColor, 2);
+      goFirstMovePawn(myPosition, alist, board, pieceColor, 1);
+      goFirstMovePawn(myPosition, alist, board, pieceColor, 2);
 
     }
     return alist;
