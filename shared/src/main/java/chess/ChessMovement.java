@@ -66,6 +66,8 @@ public abstract class ChessMovement {
     }
   public static void goFirstMovePawn(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, int x) {
     ChessPosition newposition=new ChessPosition(myposition.getRow() + x, myposition.getColumn());
+    ChessPosition attackleft = new ChessPosition(myposition.getRow() + x, myposition.getColumn() + x );
+    ChessPosition attackright = new ChessPosition(myposition.getRow() + x, myposition.getColumn() - x );
     if (x == 2 || x==-2) {
       ChessPosition checkposition=new ChessPosition(myposition.getRow() + (x/2), myposition.getColumn());
       if (!outOfBounds(newposition)) {
@@ -78,6 +80,20 @@ public abstract class ChessMovement {
       if (!outOfBounds(newposition)) {
         if (board.getPiece(newposition) == null) {
           moveslist.add(new ChessMove(myposition, newposition, null));
+        }
+      }
+      if(!outOfBounds(attackleft)) {
+        if (board.getPiece(attackleft) != null && !board.getPiece(attackleft).getTeamColor().equals(color)) {
+          if (notPromotingPiece(myposition, attackleft, color, moveslist)) {
+            moveslist.add(new ChessMove(myposition, attackleft, null));
+          }
+        }
+      }
+      if(!outOfBounds(attackright)) {
+        if (board.getPiece(attackright) != null && !board.getPiece(attackright).getTeamColor().equals(color)) {
+          if (notPromotingPiece(myposition, attackright, color, moveslist)) {
+            moveslist.add(new ChessMove(myposition, attackright, null));
+          }
         }
       }
     }
