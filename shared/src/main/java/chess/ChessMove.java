@@ -54,8 +54,7 @@ public class ChessMove {
     /**
      * @return ChessPosition of ending location
      */
-    public ChessPosition getendPosition() {
-
+    public ChessPosition getEndPosition() {
         return endPosition;
     }
 

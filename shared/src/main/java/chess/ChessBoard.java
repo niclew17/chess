@@ -1,6 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import static chess.ChessGame.TeamColor.BLACK;
 import static chess.ChessGame.TeamColor.WHITE;
@@ -14,9 +16,33 @@ import static chess.ChessPiece.PieceType.*;
  */
 public class ChessBoard {
     private ChessPiece[][] pieces;
-    public ChessBoard() {
+    private ChessPiece lastpiecetaken;
 
+
+    public ChessBoard() {
         pieces = new ChessPiece[8][8];
+        lastpiecetaken = null;
+    }
+
+    public ChessPiece getLastpiecetaken() {
+        return lastpiecetaken;
+    }
+
+    public void setLastpiecetaken(ChessPiece lastpiecetaken) {
+        this.lastpiecetaken=lastpiecetaken;
+    }
+    public Collection<ChessPosition> allColoredPieces(ChessGame.TeamColor color) {
+       Collection<ChessPosition> mypieces = new ArrayList<ChessPosition>();
+        for (int i=0; i < 8; i++) {
+            for (int j=0; j < 8; j++) {
+                if(pieces[i][j] != null) {
+                    if (pieces[i][j].getTeamColor().equals(color)) {
+                        mypieces.add(new ChessPosition(i + 1, j + 1));
+                    }
+                }
+            }
+        }
+        return mypieces;
     }
 
     /**
