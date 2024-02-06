@@ -92,7 +92,7 @@ public class ChessGame {
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
         Collection<ChessMove> allMoves;
         Collection<ChessMove> validMoves = new ArrayList<ChessMove>();
-        if(getBoard().getPiece(startPosition) == null){
+        if(getBoard().getPiece(startPosition).equals(null)){
             return null;
         }
         allMoves = cboard.getPiece(startPosition).pieceMoves(getBoard(), startPosition);
