@@ -137,6 +137,13 @@ public abstract class ChessMovement {
         }
       }
     }
+    if(!outOfBounds(attackright)) {
+      if (board.getPiece(attackright) != null && !board.getPiece(attackright).getTeamColor().equals(color)) {
+        if (notPromotingPiece(myposition, attackright, color, moveslist)) {
+          moveslist.add(new ChessMove(myposition, attackright, null));
+        }
+      }
+    }
   }
 }
 
