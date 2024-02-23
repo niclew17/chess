@@ -1,7 +1,14 @@
 package dataAccess;
 
-import java.util.HashMap;
+import model.AuthData;
+import model.UserData;
 
-public class AuthDAO{
+public interface AuthDAO {
 
+  AuthData create(AuthData auth);
+
+  AuthData getAuth(String auth);
+
+  void deleteAuth(String auth);
+  void deleteAll();
 }

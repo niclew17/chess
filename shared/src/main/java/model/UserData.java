@@ -1,13 +1,12 @@
 package model;
 
 public class UserData {
-  private int id;
   private String username;
   private String password;
   private String email;
 
-  public UserData(int id, String username, String password, String email) {
-    this.id = id;
+  public UserData(String username, String password, String email) {
+
     this.username=username;
     this.password=password;
     this.email=email;
@@ -15,14 +14,6 @@ public class UserData {
 
   public String getUsername() {
     return username;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id=id;
   }
 
   public void setUsername(String username) {
