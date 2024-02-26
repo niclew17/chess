@@ -15,12 +15,12 @@ public class MemoryUserDAO implements UserDAO {
   }
 
   @Override
-  public UserData getUser(String username) {
-    return users.get(username);
+  public UserData getUser(String authtoken) {
+    return users.get(authtoken);
   }
 
-  public void delete(String username) {
-    users.remove(username);
+  public void delete(String authtoken) {
+    users.remove(authtoken);
   }
 
   public void deleteAll() {

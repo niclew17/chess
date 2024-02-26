@@ -17,6 +17,6 @@ public class ClearAppHandler {
   public Object clear(Request req, Response res){
     service.clear();
     res.status(200);
-    return "";
+    return res.status();
   }
 }
