@@ -1,19 +1,23 @@
 package dataAccess;
 
+import chess.ChessGame;
 import model.GameData;
+import request.CreateGameRequest;
+import request.JoinGameRequest;
+import response.CreateGameResponse;
 
 import java.util.Collection;
 import java.util.HashMap;
 
 public class MemoryGameDAO implements GameDAO {
   private int nextId=1;
-  final private HashMap<Integer, GameData> games=new HashMap<>();
+  final private static HashMap<Integer, GameData> games=new HashMap<>();
 
-  public GameData createGame(GameData game) {
-    game=new GameData(nextId++, game.getWhiteUsername(), game.getBlackUsername(), game.getGameName(), game.getGame());
+  public CreateGameResponse createGame(CreateGameRequest game) {
+    GameData newgame=new GameData(nextId++, null, null, game.gamename(), new ChessGame());
 
-    games.put(game.getGameID(), game);
-    return game;
+    games.put(newgame.getGameID(), newgame);
+    return new CreateGameResponse(newgame.getGameID());
   }
 
   public Collection<GameData> listGames() {
@@ -24,8 +28,11 @@ public class MemoryGameDAO implements GameDAO {
     return games.get(id);
   }
 
-  public void updateGame(int id, String name) {
-    games.get(id).setGameName(name);
+  public void updateBlackGame(JoinGameRequest game, String username) {
+    games.get(game.gameID()).setBlackUsername(username);
+  }
+  public void updateWhiteGame(JoinGameRequest game, String username) {
+    games.get(game.gameID()).setWhiteUsername(username);
   }
 
   public void deleteAll() {

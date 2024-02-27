@@ -1,8 +1,6 @@
 package server;
 
-import dataAccess.AuthDAO;
-import dataAccess.GameDAO;
-import dataAccess.UserDAO;
+import dataAccess.*;
 import spark.*;
 
 import static org.slf4j.MDC.clear;
@@ -13,15 +11,17 @@ public class Server {
         Spark.port(desiredPort);
 
         Spark.staticFiles.location("web");
-
+        MemoryUserDAO userDAO = new MemoryUserDAO();
+        MemoryAuthDAO authDAO = new MemoryAuthDAO();
+        MemoryGameDAO gameDAO = new MemoryGameDAO();
         // Register your endpoints and handle exceptions here.
-        Spark.delete("/db", (req,res) -> new ClearAppHandler().clear(req,res));
-        Spark.post("/user", (req,res) -> new RegisterHandler().register(req,res));
-        Spark.post("/session", (req,res) -> new LoginHandler().login(req,res));
-        Spark.delete("/session", (req,res) -> new LogoutHandler().logout(req,res));
-        Spark.get("/game", (req,res) -> new ListGamesHandler().listgames(req,res));
-        Spark.post("/game", (req,res) -> new CreateGameHandler().creategame(req,res));
-        Spark.put("/game", (req,res) -> new JoinGameHandler().joingame(req,res));
+        Spark.delete("/db", (req,res) -> new ClearAppHandler(userDAO, authDAO, gameDAO).clear(req,res));
+        Spark.post("/user", (req,res) -> new RegisterHandler(userDAO, authDAO).register(req,res));
+        Spark.post("/session", (req,res) -> new LoginHandler(userDAO, authDAO).login(req,res));
+        Spark.delete("/session", (req,res) -> new LogoutHandler(userDAO, authDAO).logout(req,res));
+        Spark.get("/game", (req,res) -> new ListGamesHandler(gameDAO, authDAO).listgames(req,res));
+        Spark.post("/game", (req,res) -> new CreateGameHandler(gameDAO, authDAO).creategame(req,res));
+        Spark.put("/game", (req,res) -> new JoinGameHandler(gameDAO, authDAO).joingame(req,res));
         Spark.init();
 
 

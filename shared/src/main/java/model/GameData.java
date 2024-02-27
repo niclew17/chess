@@ -16,7 +16,6 @@ public class GameData {
     this.gameName=gameName;
     this.game=game;
   }
-
   public int getGameID() {
     return gameID;
   }
