@@ -8,6 +8,7 @@ import model.AuthData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import request.CreateGameRequest;
+import request.LoginRequest;
 import request.RegisterRequest;
 import services.DB;
 import services.Game;
@@ -31,31 +32,36 @@ class UserTest {
 
 
   @Test
-  void registerCorrect() {
-
+  void registerCorrect() throws DataAccessException{
+    AuthData auth = testUser.register(new RegisterRequest("jeff", "lewis", "hello"));
+    assertEquals("jeff", userDAO.getUser(auth.getUsername()).getUsername());
   }
   @Test
   void registerError() throws DataAccessException{
-    AuthData auth = testUser.register(new RegisterRequest("jim", "lewis", "hello"));
-    testUser.register(new RegisterRequest("jim", "lewis", "hello"));
-    assertThrows(DataAccessException.class, () -> testUser.register(new RegisterRequest("jim", "lewis", "hello")), "Error: already taken");
+    testUser.register(new RegisterRequest(null, "lewis", "hello"));
+    assertThrows(DataAccessException.class, () -> testUser.register(new RegisterRequest(null, "lewis", "hello")), "Error: already taken");
   }
 
   @Test
-  void loginCorrect() {
-
+  void loginCorrect() throws DataAccessException{
+    AuthData auth = testUser.register(new RegisterRequest("nic", "lewis", "hello"));
+    testUser.logout(auth.getAuthToken());
+    assertEquals("nic", testUser.login(new LoginRequest("nic", "lewis")).getUsername());
   }
   @Test
-  void loginError() {
-
+  void loginError() throws DataAccessException{
+    assertThrows(DataAccessException.class, () -> testUser.login(new LoginRequest(null, "lewis")), "Error: unauthorized");
   }
 
   @Test
-  void logoutCorrect() {
-
+  void logoutCorrect() throws DataAccessException{
+    AuthData auth = testUser.register(new RegisterRequest("jen", "lewis", "hello"));
+    testUser.logout(auth.getAuthToken());
+    assertEquals(null, authDAO.getUser(auth.getAuthToken()));
   }
   @Test
-  void logoutError() {
-
+  void logoutError() throws DataAccessException{
+    AuthData auth = testUser.register(new RegisterRequest("maddie", "lewis", "hello"));
+    assertThrows(DataAccessException.class, () -> testUser.logout("1234"), "Error: unauthorized");
   }
 }

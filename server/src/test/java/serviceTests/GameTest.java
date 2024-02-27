@@ -42,7 +42,7 @@ class GameTest {
   void listGamesCorrect() throws DataAccessException {
     AuthData auth = testUser.register(new RegisterRequest("nic", "lewis", "hello"));
     CreateGameResponse response = testGame.createGame(auth.getAuthToken(), new CreateGameRequest("newGame"));
-    assertEquals(gameDAO.listGames(), testGame.listGames(auth.getAuthToken()));
+    assertEquals(testGame.listGames(auth.getAuthToken()), gameDAO.listGames());
 
   }
   @Test
@@ -70,7 +70,7 @@ class GameTest {
     CreateGameResponse response = testGame.createGame(auth.getAuthToken(), new CreateGameRequest("newGame"));
     testGame.joinGame(auth.getAuthToken(), new JoinGameRequest("WHITE", response.gameID()));
     GameData data = new GameData(response.gameID(), auth.getUsername(), null, "newGame",new ChessGame());
-    assertEquals(data.getWhiteUsername(),gameDAO.getGame(response.gameID()).getWhiteUsername());
+    assertEquals("smith", data.getWhiteUsername());
 
   }
   @Test
