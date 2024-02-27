@@ -1,16 +1,12 @@
 package services;
 
 import dataAccess.*;
-import model.AuthData;
-import model.GameData;
 import request.CreateGameRequest;
 import request.JoinGameRequest;
 import response.CreateGameResponse;
 import response.ListGamesResponse;
 
-import java.util.Collection;
-
-public class Game extends Authorized{
+public class Game {
   private final MemoryGameDAO gameDAO;
   private final MemoryAuthDAO authDAO;
   public Game(MemoryGameDAO gameDAO, MemoryAuthDAO authDAO) {
