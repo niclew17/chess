@@ -32,7 +32,7 @@ class DBTest {
 
   @Test
   public void testClearAll() throws DataAccessException {
-    AuthData auth = testUser.register(new RegisterRequest("nic", "lewis", "hello"));
+    AuthData auth = testUser.register(new RegisterRequest("will", "lewis", "hello"));
     testDB.clear();
     assertEquals(null, authDAO.getUser(auth.getAuthToken()));
 

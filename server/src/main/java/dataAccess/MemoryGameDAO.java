@@ -29,9 +29,6 @@ public class MemoryGameDAO implements GameDAO {
   public GameData getGame(int id) {
     return games.get(id);
   }
-  public String GetName(int id){
-    return games.get(id).getGameName();
-  }
 
   public void updateBlackGame(JoinGameRequest game, String username) {
     games.get(game.gameID()).setBlackUsername(username);

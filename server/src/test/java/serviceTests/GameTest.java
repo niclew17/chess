@@ -40,7 +40,7 @@ class GameTest {
 
   @Test
   void listGamesCorrect() throws DataAccessException {
-    AuthData auth = testUser.register(new RegisterRequest("nic", "lewis", "hello"));
+    AuthData auth = testUser.register(new RegisterRequest("don", "lewis", "hello"));
     CreateGameResponse response = testGame.createGame(auth.getAuthToken(), new CreateGameRequest("newGame"));
     assertEquals(testGame.listGames(auth.getAuthToken()), gameDAO.listGames());
 
