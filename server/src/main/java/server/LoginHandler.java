@@ -25,17 +25,18 @@ public class LoginHandler {
       return new Gson().toJson(data);
     }
     catch (DataAccessException e) {
-      if (e.getMessage() == "Error: Unauthorized") {
+      if (e.getMessage().equals("Error: unauthorized")) {
         res.status(401);
         Message message = new Message(e.getMessage());
         res.body(new Gson().toJson(message));
+        return res.body();
       }
       else {
         res.status(500);
         Message message = new Message(e.getMessage());
         res.body(new Gson().toJson(message));
+        return res.body();
       }
     }
-    return "";
   }
 }

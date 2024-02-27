@@ -22,10 +22,11 @@ public class RegisterHandler {
 
   public Object register(Request req, Response res) {
     var user=new Gson().fromJson(req.body(), RegisterRequest.class);
-    if (user.username().isEmpty() || user.password().isEmpty() || user.email().isEmpty()) {
+    if (user.username()==null || user.password()==null || user.email()==null) {
       res.status(400);
       Message message=new Message("Error: bad request");
       res.body(new Gson().toJson(message));
+      return res.body();
     }
     else {
       try {
@@ -33,21 +34,17 @@ public class RegisterHandler {
         res.status(200);
         return new Gson().toJson(auth);
       } catch (DataAccessException e) {
-        if (e.getMessage() == "Error: already taken") {
+        if (e.getMessage().equals("Error: already taken")) {
           res.status(403);
-          Message message=new Message(e.getMessage());
-          res.body(new Gson().toJson(message));
-        } else if (e.getMessage() == "Error: bad request") {
+        } else if (e.getMessage().equals("Error: bad request")) {
           res.status(401);
-          Message message=new Message(e.getMessage());
-          res.body(new Gson().toJson(message));
         } else {
           res.status(500);
-          Message message=new Message(e.getMessage());
-          res.body(new Gson().toJson(message));
         }
+        Message message=new Message(e.getMessage());
+        res.body(new Gson().toJson(message));
+        return res.body();
       }
     }
-      return "";
-    }
+  }
 }

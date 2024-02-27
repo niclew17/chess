@@ -29,13 +29,14 @@ public class Game extends Authorized{
   }
   public CreateGameResponse createGame(String auth, CreateGameRequest game) throws DataAccessException{
     isAuthorized(auth);
-    for(GameData x: GameDAO.listGames())
     return gameDAO.createGame(game);
   }
   public void joinGame(String auth, JoinGameRequest game) throws DataAccessException{
     isAuthorized(auth);
     if(gameDAO.getGame(game.gameID()) == null){
       throw new DataAccessException("Error: bad request",400);
+    }
+    else if(game.playerColor()==null){
     }
     else if(gameDAO.getGame(game.gameID()).getBlackUsername() == null && game.playerColor().equals("BLACK")){
       String username = authDAO.getUser(auth).getUsername();

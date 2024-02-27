@@ -28,10 +28,11 @@ public class CreateGameHandler {
   public Object creategame(Request req, Response res){
     var user= new Gson().fromJson(req.body(), CreateGameRequest.class);
     var newauth =req.headers("authorization");
-    if (user.gameName().isEmpty()) {
+    if (user.gameName()==null) {
       res.status(400);
       Message message=new Message("Error: bad request");
       res.body(new Gson().toJson(message));
+      return res.body();
     }
     else {
       try {
@@ -40,17 +41,15 @@ public class CreateGameHandler {
         return new Gson().toJson(game);
       }
       catch (DataAccessException e) {
-       if (e.getMessage() == "Error: bad request") {
+       if (e.getMessage().equals("Error: unauthorized")) {
           res.status(401);
-          Message message=new Message(e.getMessage());
-          res.body(new Gson().toJson(message));
         } else {
           res.status(500);
-          Message message=new Message(e.getMessage());
-          res.body(new Gson().toJson(message));
         }
+        Message message=new Message(e.getMessage());
+        res.body(new Gson().toJson(message));
+        return res.body();
       }
     }
-    return "";
   }
 }

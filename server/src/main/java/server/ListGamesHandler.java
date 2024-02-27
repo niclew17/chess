@@ -30,16 +30,15 @@ public class ListGamesHandler {
       res.status(200);
       return new Gson().toJson(gamedata);
     } catch (DataAccessException e) {
-      if (e.getMessage().equals("Error: Unauthorized")) {
+      if (e.getMessage().equals("Error: unauthorized")) {
         res.status(401);
-        Message message=new Message(e.getMessage());
-        res.body(new Gson().toJson(message));
-      } else {
-        res.status(500);
-        Message message=new Message(e.getMessage());
-        res.body(new Gson().toJson(message));
       }
+      else {
+        res.status(500);
+      }
+      Message message=new Message(e.getMessage());
+      res.body(new Gson().toJson(message));
+      return res.body();
     }
-    return "";
   }
 }

@@ -10,14 +10,14 @@ import response.ListGamesResponse;
 import java.util.HashMap;
 
 public class MemoryGameDAO implements GameDAO {
-  private int nextId=1;
-  final private static HashMap<Integer, GameData> games=new HashMap<>();
-  final private static HashMap<Integer, GameData> showgames=new HashMap<>();
+  private int nextId=0;
+  final private HashMap<Integer, GameData> games=new HashMap<>();
+  final private HashMap<Integer, GameData> showgames=new HashMap<>();
 
   public CreateGameResponse createGame(CreateGameRequest game) {
-    GameData newgame=new GameData(nextId++, "", "", game.gameName(), new ChessGame());
+    GameData newgame=new GameData(++nextId, null, null, game.gameName(), new ChessGame());
     games.put(newgame.getGameID(), newgame);
-    GameData showgame=new GameData(nextId, "", "", game.gameName(), null);
+    GameData showgame=new GameData(nextId, null, null, game.gameName(), null);
     showgames.put(showgame.getGameID(), showgame);
     return new CreateGameResponse(newgame.getGameID());
   }
@@ -44,5 +44,6 @@ public class MemoryGameDAO implements GameDAO {
 
   public void deleteAll() {
     games.clear();
+    showgames.clear();
   }
 }

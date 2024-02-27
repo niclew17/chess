@@ -18,13 +18,13 @@ public class ClearAppHandler {
     if(req.body() != null){
     service.clear();
     res.status(200);
-    return "";
+    return "{}";
   }
     else{
       res.status(500);
       Message message = new Message("Error: description");
       res.body(new Gson().toJson(message));
-      return "";
+      return res.body();
     }
   }
 }
