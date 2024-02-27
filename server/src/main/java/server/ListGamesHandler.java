@@ -8,6 +8,8 @@ import model.AuthData;
 import model.GameData;
 import model.Message;
 import model.UserData;
+import request.CreateGameRequest;
+import response.ListGamesResponse;
 import services.Game;
 import services.User;
 import spark.Request;
@@ -24,9 +26,9 @@ public class ListGamesHandler {
   public Object listgames(Request req, Response res) {
     var user=req.headers("authorization");
     try {
-      Collection<GameData> gamedata=service.listGames(user);
+      ListGamesResponse gamedata=service.listGames(user);
       res.status(200);
-      res.body(new Gson().toJson(gamedata));
+      return new Gson().toJson(gamedata);
     } catch (DataAccessException e) {
       if (e.getMessage().equals("Error: Unauthorized")) {
         res.status(401);

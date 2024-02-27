@@ -26,9 +26,9 @@ public class CreateGameHandler {
 
   }
   public Object creategame(Request req, Response res){
-    var user=new Gson().fromJson(req.body(), CreateGameRequest.class);
-    var newauth=req.headers("authorization");
-    if (user.gamename().isEmpty()) {
+    var user= new Gson().fromJson(req.body(), CreateGameRequest.class);
+    var newauth =req.headers("authorization");
+    if (user.gameName().isEmpty()) {
       res.status(400);
       Message message=new Message("Error: bad request");
       res.body(new Gson().toJson(message));

@@ -1,14 +1,12 @@
 package services;
 
-import dataAccess.DataAccessException;
-import dataAccess.MemoryAuthDAO;
-import dataAccess.MemoryGameDAO;
-import dataAccess.MemoryUserDAO;
+import dataAccess.*;
 import model.AuthData;
 import model.GameData;
 import request.CreateGameRequest;
 import request.JoinGameRequest;
 import response.CreateGameResponse;
+import response.ListGamesResponse;
 
 import java.util.Collection;
 
@@ -25,12 +23,13 @@ public class Game extends Authorized{
       throw new DataAccessException("Error: unauthorized", 401);
     }
   }
-  public Collection<GameData> listGames(String auth) throws DataAccessException{
+  public ListGamesResponse listGames(String auth) throws DataAccessException{
     isAuthorized(auth);
     return gameDAO.listGames();
   }
   public CreateGameResponse createGame(String auth, CreateGameRequest game) throws DataAccessException{
     isAuthorized(auth);
+    for(GameData x: GameDAO.listGames())
     return gameDAO.createGame(game);
   }
   public void joinGame(String auth, JoinGameRequest game) throws DataAccessException{
