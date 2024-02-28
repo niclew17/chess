@@ -29,7 +29,8 @@ public class ListGamesHandler {
       ListGamesResponse gamedata=service.listGames(user);
       res.status(200);
       return new Gson().toJson(gamedata);
-    } catch (DataAccessException e) {
+    }
+    catch (DataAccessException e) {
       if (e.getMessage().equals("Error: unauthorized")) {
         res.status(401);
       }
