@@ -20,7 +20,7 @@ public class User {
 
   public AuthData register(RegisterRequest user) throws DataAccessException{
     if(userDAO.getUser(user.username()) != null){
-      throw new DataAccessException("Error: already taken", 403);
+      throw new DataAccessException("Error: already taken");
     }
     else{
       UserData data = userDAO.createUser(user);
@@ -33,14 +33,14 @@ public class User {
       data = authDAO.createAuth(user.username());
     }
     else{
-      throw new DataAccessException("Error: unauthorized",401);
+      throw new DataAccessException("Error: unauthorized");
     }
     return data;
   }
 
   public void isAuthorized(String authtoken) throws DataAccessException {
     if(authDAO.getUser(authtoken) == null){
-      throw new DataAccessException("Error: unauthorized", 401);
+      throw new DataAccessException("Error: unauthorized");
     }
   }
   public void logout(String authtoken) throws DataAccessException{

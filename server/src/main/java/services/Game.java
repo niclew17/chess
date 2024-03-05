@@ -16,7 +16,7 @@ public class Game {
   }
   public void isAuthorized(String authtoken) throws DataAccessException {
     if(authDAO.getUser(authtoken) == null){
-      throw new DataAccessException("Error: unauthorized", 401);
+      throw new DataAccessException("Error: unauthorized");
     }
   }
   public ListGamesResponse listGames(String auth) throws DataAccessException{
@@ -30,7 +30,7 @@ public class Game {
   public void joinGame(String auth, JoinGameRequest game) throws DataAccessException{
     isAuthorized(auth);
     if(gameDAO.getGame(game.gameID()) == null){
-      throw new DataAccessException("Error: bad request",400);
+      throw new DataAccessException("Error: bad request");
     }
     else if(game.playerColor()==null){
     }
@@ -43,7 +43,7 @@ public class Game {
       gameDAO.updateWhiteGame(game, username);
     }
     else{
-      throw new DataAccessException("Error: already taken",403);
+      throw new DataAccessException("Error: already taken");
     }
     }
   }
