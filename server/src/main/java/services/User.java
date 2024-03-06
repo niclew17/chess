@@ -2,17 +2,17 @@ package services;
 
 import dataAccess.AuthDAO;
 import dataAccess.DataAccessException;
-import dataAccess.MemoryAuthDAO;
-import dataAccess.MemoryUserDAO;
+import dataAccess.AuthDAO;
+import dataAccess.UserDAO;
 import model.AuthData;
 import model.UserData;
 import request.LoginRequest;
 import request.RegisterRequest;
 
 public class User {
-  private final MemoryUserDAO userDAO;
-  private final MemoryAuthDAO authDAO;
-  public User(MemoryUserDAO userDAO, MemoryAuthDAO authDAO) {
+  private final UserDAO userDAO;
+  private final AuthDAO authDAO;
+  public User(UserDAO userDAO, AuthDAO authDAO) {
     this.userDAO = userDAO;
     this.authDAO = authDAO;
 
@@ -29,6 +29,7 @@ public class User {
   }
   public AuthData login(LoginRequest user) throws DataAccessException{
     AuthData data;
+    
     if(userDAO.getUser(user.username()) != null && userDAO.getUser(user.username()).getPassword().equals(user.password())){
       data = authDAO.createAuth(user.username());
     }
