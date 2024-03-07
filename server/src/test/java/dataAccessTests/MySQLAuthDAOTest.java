@@ -30,15 +30,26 @@ class MySQLAuthDAOTest {
   }
 
   @Test
-  void getUser() {
+  void getUser() throws DataAccessException {
+    AuthData user = sqlAuthDAO.createAuth("james");
+    assertEquals(user, sqlAuthDAO.getUser(user.getAuthToken()));
   }
 
   @Test
-  void deleteAuth() {
+  void deleteAuth() throws DataAccessException {
+    AuthData user = sqlAuthDAO.createAuth("jeff");
+    sqlAuthDAO.deleteAuth(user.getAuthToken());
+    assertNull(sqlAuthDAO.getUser(user.getAuthToken()));
   }
 
   @Test
-  void deleteAll() {
+  void deleteAll() throws DataAccessException {
+    AuthData user = sqlAuthDAO.createAuth("steve");
+    AuthData user2 = sqlAuthDAO.createAuth("don");
+    sqlAuthDAO.deleteAll();
+    assertNull(sqlAuthDAO.getUser(user2.getAuthToken()));
+    assertNull(sqlAuthDAO.getUser(user.getAuthToken()));
+
   }
 
   @Test
@@ -47,14 +58,13 @@ class MySQLAuthDAOTest {
   }
 
   @Test
-  void getUserNeg() {
+  void getUserNeg() throws DataAccessException {
+    assertNull(sqlAuthDAO.getUser(null));
   }
 
   @Test
-  void deleteAuthNeg() {
+  void deleteAuthNeg() throws DataAccessException {
+    assertThrows(DataAccessException.class, () -> sqlAuthDAO.createAuth(null));
   }
 
-  @Test
-  void deleteAllNeg() {
-  }
 }
