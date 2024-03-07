@@ -50,7 +50,7 @@ class MySQLUserDAOTest {
 
   @Test
   void getUserNeg() throws DataAccessException {
-
+    assertNull(sqlUserDAO.getUser(null));
   }
 
 }
