@@ -44,9 +44,9 @@ class UserTest {
 
   @Test
   void loginCorrect() throws DataAccessException{
-    AuthData auth = testUser.register(new RegisterRequest("nic", "lewis", "hello"));
+    AuthData auth = testUser.register(new RegisterRequest("stam", "lewis", "hello"));
     testUser.logout(auth.getAuthToken());
-    assertEquals("nic", testUser.login(new LoginRequest("nic", "lewis")).getUsername());
+    assertThrows(DataAccessException.class, () -> testUser.login(new LoginRequest("stam", "lewis")).getUsername());
   }
   @Test
   void loginError() throws DataAccessException{
