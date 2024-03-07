@@ -29,4 +29,28 @@ class MySQLGameDAOTest {
   @Test
   void deleteAll() {
   }
+
+  @Test
+  void createGameNeg() {
+  }
+
+  @Test
+  void listGamesNeg() {
+  }
+
+  @Test
+  void getGameNeg() {
+  }
+
+  @Test
+  void updateBlackGameNeg() {
+  }
+
+  @Test
+  void updateWhiteGameNeg() {
+  }
+
+  @Test
+  void deleteAllNeg() {
+  }
 }
