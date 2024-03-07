@@ -74,7 +74,7 @@ public class MySQLGameDAO implements GameDAO {
     }
     return new ListGamesResponse(result);
   }
-  public GameData readGame(ResultSet rs) throws SQLException{
+  private GameData readGame(ResultSet rs) throws SQLException{
     var gameID= rs.getInt("gameID");
     var wUsername = rs.getString("whiteUsername");
     var bUsername = rs.getString("blackUsername");
@@ -133,7 +133,7 @@ public class MySQLGameDAO implements GameDAO {
     executeUpdate(statement);
   }
 
-  public int executeUpdate(String statement, Object... params) throws DataAccessException {
+  private int executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
       try (var ps = conn.prepareStatement(statement, RETURN_GENERATED_KEYS)) {
         for (var i = 0; i < params.length; i++) {

@@ -27,7 +27,7 @@ public class MySQLUserDAO implements UserDAO {
             );
             """
   };
-  public void configureDatabase() throws DataAccessException {
+  private void configureDatabase() throws DataAccessException {
     DatabaseManager.createDatabase();
     try (var conn = DatabaseManager.getConnection()) {
       for (var statement : createStatements) {
@@ -66,7 +66,7 @@ public class MySQLUserDAO implements UserDAO {
     return null;
   }
 
-  public UserData readUser(ResultSet rs) throws SQLException {
+  private UserData readUser(ResultSet rs) throws SQLException {
     var username = rs.getString("username");
     var password= rs.getString("password");
     var email = rs.getString("email");
@@ -78,7 +78,7 @@ public class MySQLUserDAO implements UserDAO {
     var statement = "TRUNCATE user";
     executeUpdate(statement);
   }
-  public void executeUpdate(String statement, Object... params) throws DataAccessException {
+  private void executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
       try (var ps = conn.prepareStatement(statement)) {
         for (var i = 0; i < params.length; i++) {
