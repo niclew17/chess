@@ -24,15 +24,15 @@ public class User {
       throw new DataAccessException("Error: already taken");
     }
     else{
-      UserData data = userDAO.createUser(user);
+      userDAO.createUser(user);
       return authDAO.createAuth(user.username());
     }
   }
   public AuthData login(LoginRequest user) throws DataAccessException{
     AuthData data;
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    String hashedPassword = encoder.encode(user.password());
-    if(userDAO.getUser(user.username()) != null && userDAO.getUser(user.username()).getPassword().equals(hashedPassword)){
+
+    if(userDAO.getUser(user.username()) != null && encoder.matches(user.password(), userDAO.getUser(user.username()).getPassword())){
       data = authDAO.createAuth(user.username());
     }
     else{

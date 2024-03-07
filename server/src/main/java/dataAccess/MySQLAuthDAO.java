@@ -37,12 +37,11 @@ public class MySQLAuthDAO implements AuthDAO{
       throw new DataAccessException(String.format("Unable to configure database: %s", ex.getMessage()));
     }
   }
-  final private static HashMap<String, AuthData> auths =new HashMap<>();
 
   public AuthData createAuth(String username) throws DataAccessException {
     String authtoken = UUID.randomUUID().toString();
     var statement = "INSERT INTO auth (authtoken, username) VALUES (?, ?)";
-    var id = executeUpdate(statement, authtoken, username);
+    executeUpdate(statement, authtoken, username);
     return new AuthData(authtoken,username);
   }
 
@@ -79,9 +78,9 @@ public class MySQLAuthDAO implements AuthDAO{
     var statement = "TRUNCATE auth";
     executeUpdate(statement);
   }
-  public int executeUpdate(String statement, Object... params) throws DataAccessException {
+  public void executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
-      try (var ps = conn.prepareStatement(statement, RETURN_GENERATED_KEYS)) {
+      try (var ps = conn.prepareStatement(statement)) {
         for (var i = 0; i < params.length; i++) {
           var param = params[i];
           if (param instanceof String p) ps.setString(i + 1, p);
@@ -89,12 +88,6 @@ public class MySQLAuthDAO implements AuthDAO{
         }
         ps.executeUpdate();
 
-        var rs = ps.getGeneratedKeys();
-        if (rs.next()) {
-          return rs.getInt(1);
-        }
-
-        return 0;
       }
     } catch (SQLException e) {
       throw new DataAccessException(String.format("unable to update database: %s, %s", statement, e.getMessage()));

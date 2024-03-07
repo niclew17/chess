@@ -21,7 +21,7 @@ public class MySQLUserDAO implements UserDAO {
           """
             CREATE TABLE IF NOT EXISTS  user (
               `username` varchar(256) NOT NULL,
-              `password` blob NOT NULL,
+              `password` varchar(256) NOT NULL,
               `email` varchar(256) NOT NULL,
               PRIMARY KEY (`username`)
             );
@@ -45,13 +45,13 @@ public class MySQLUserDAO implements UserDAO {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     String hashedPassword = encoder.encode(user.password());
     var statement = "INSERT INTO user (username, password, email) VALUES (?, ?,?)";
-    var id = executeUpdate(statement, user.username(), hashedPassword, user.email());
+    executeUpdate(statement, user.username(), hashedPassword, user.email());
     return new UserData(user.username(), hashedPassword, user.email());
   }
 
   public UserData getUser(String username) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
-      var statement = "SELECT username, password, email FROM auth WHERE username=?";
+      var statement = "SELECT username, password, email FROM user WHERE username=?";
       try (var ps = conn.prepareStatement(statement)) {
         ps.setString(1, username);
         try (var rs = ps.executeQuery()) {
@@ -68,9 +68,9 @@ public class MySQLUserDAO implements UserDAO {
 
   public UserData readUser(ResultSet rs) throws SQLException {
     var username = rs.getString("username");
-    var password= rs.getBlob("password");
+    var password= rs.getString("password");
     var email = rs.getString("email");
-    return new UserData(username, password.toString(), email);
+    return new UserData(username, password, email);
   }
 
 
@@ -78,9 +78,9 @@ public class MySQLUserDAO implements UserDAO {
     var statement = "TRUNCATE user";
     executeUpdate(statement);
   }
-  public int executeUpdate(String statement, Object... params) throws DataAccessException {
+  public void executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
-      try (var ps = conn.prepareStatement(statement, RETURN_GENERATED_KEYS)) {
+      try (var ps = conn.prepareStatement(statement)) {
         for (var i = 0; i < params.length; i++) {
           var param = params[i];
           if (param instanceof String p) ps.setString(i + 1, p);
@@ -88,12 +88,6 @@ public class MySQLUserDAO implements UserDAO {
         }
         ps.executeUpdate();
 
-        var rs = ps.getGeneratedKeys();
-        if (rs.next()) {
-          return rs.getInt(1);
-        }
-
-        return 0;
       }
     } catch (SQLException e) {
       throw new DataAccessException(String.format("unable to update database: %s, %s", statement, e.getMessage()));

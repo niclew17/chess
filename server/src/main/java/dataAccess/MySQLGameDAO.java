@@ -19,7 +19,7 @@ import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static java.sql.Types.NULL;
 
 public class MySQLGameDAO implements GameDAO {
-  private int nextId=0;
+
 
   public MySQLGameDAO() throws DataAccessException {
     configureDatabase();
@@ -27,7 +27,7 @@ public class MySQLGameDAO implements GameDAO {
   private final String[] createStatements = {
           """
             CREATE TABLE IF NOT EXISTS  games (
-              `gameID` int NOT NULL,
+              `gameID` int NOT NULL AUTO_INCREMENT,
               `whiteUsername` varchar(256),
               `blackUsername` varchar(256),
               `gameName` varchar(256) NOT NULL,
@@ -52,10 +52,10 @@ public class MySQLGameDAO implements GameDAO {
   }
 
   public CreateGameResponse createGame(CreateGameRequest game) throws DataAccessException {
-    var statement = "INSERT INTO games (gameID, whiteUsername, blackUsername, game) VALUES (?, ?, ?, ?, ?)";
+    var statement = "INSERT INTO games (whiteUsername, blackUsername, gameName, game) VALUES (?, ?, ?, ?)";
     var json = new Gson().toJson(new ChessGame());
-    var id = executeUpdate(statement,++nextId, null, null, game.gameName(), json);
-    return new CreateGameResponse(nextId);
+    var gameID = executeUpdate(statement, null, null, game.gameName(), json);
+    return new CreateGameResponse(gameID);
   }
 
   public ListGamesResponse listGames() throws DataAccessException{
@@ -107,8 +107,8 @@ public class MySQLGameDAO implements GameDAO {
       try (var ps=conn.prepareStatement(statement)) {
         ps.setString(1, username);
         ps.setInt(2, game.gameID());
-        try (var rs=ps.executeQuery()) {
-        }
+        ps.executeUpdate();
+
       }
     } catch (Exception e) {
       throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
@@ -120,8 +120,7 @@ public class MySQLGameDAO implements GameDAO {
       try (var ps=conn.prepareStatement(statement)) {
         ps.setString(1, username);
         ps.setInt(2, game.gameID());
-        try (var rs=ps.executeQuery()) {
-        }
+        ps.executeUpdate();
       }
     } catch (Exception e) {
       throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
