@@ -7,9 +7,9 @@ import response.CreateGameResponse;
 import response.ListGamesResponse;
 
 public class Game {
-  private final MemoryGameDAO gameDAO;
-  private final MemoryAuthDAO authDAO;
-  public Game(MemoryGameDAO gameDAO, MemoryAuthDAO authDAO) {
+  private final GameDAO gameDAO;
+  private final AuthDAO authDAO;
+  public Game(GameDAO gameDAO, AuthDAO authDAO) {
     this.gameDAO = gameDAO;
     this.authDAO = authDAO;
 

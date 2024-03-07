@@ -2,8 +2,8 @@ package server;
 
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
-import dataAccess.MemoryAuthDAO;
-import dataAccess.MemoryUserDAO;
+import dataAccess.AuthDAO;
+import dataAccess.UserDAO;
 import model.AuthData;
 import model.Message;
 import model.UserData;
@@ -14,7 +14,7 @@ import spark.Response;
 
 public class LoginHandler {
   private final User service;
-  public LoginHandler(MemoryUserDAO userDAO, MemoryAuthDAO authDAO) {
+  public LoginHandler(UserDAO userDAO, AuthDAO authDAO) {
     service= new User(userDAO, authDAO);
   }
   public Object login(Request req, Response res){

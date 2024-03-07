@@ -25,7 +25,7 @@ public class MySQLAuthDAO implements AuthDAO{
   };
 
 
-  private void configureDatabase() throws DataAccessException {
+  public void configureDatabase() throws DataAccessException {
     DatabaseManager.createDatabase();
     try (var conn = DatabaseManager.getConnection()) {
       for (var statement : createStatements) {
@@ -62,7 +62,7 @@ public class MySQLAuthDAO implements AuthDAO{
     }
     return null;
   }
-  private AuthData readAuth(ResultSet rs) throws SQLException {
+  public AuthData readAuth(ResultSet rs) throws SQLException {
     var authtoken= rs.getString("authtoken");
     var username = rs.getString("username");
     return new AuthData(authtoken,username);
@@ -79,7 +79,7 @@ public class MySQLAuthDAO implements AuthDAO{
     var statement = "TRUNCATE auth";
     executeUpdate(statement);
   }
-  private int executeUpdate(String statement, Object... params) throws DataAccessException {
+  public int executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
       try (var ps = conn.prepareStatement(statement, RETURN_GENERATED_KEYS)) {
         for (var i = 0; i < params.length; i++) {

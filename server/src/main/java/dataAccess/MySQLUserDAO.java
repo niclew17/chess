@@ -21,13 +21,13 @@ public class MySQLUserDAO implements UserDAO {
           """
             CREATE TABLE IF NOT EXISTS  user (
               `username` varchar(256) NOT NULL,
-              `password` blob() NOT NULL,
-              'email' varchar(256) NOT NULL
+              `password` blob NOT NULL,
+              `email` varchar(256) NOT NULL,
               PRIMARY KEY (`username`)
             );
             """
   };
-  private void configureDatabase() throws DataAccessException {
+  public void configureDatabase() throws DataAccessException {
     DatabaseManager.createDatabase();
     try (var conn = DatabaseManager.getConnection()) {
       for (var statement : createStatements) {
@@ -49,7 +49,6 @@ public class MySQLUserDAO implements UserDAO {
     return new UserData(user.username(), hashedPassword, user.email());
   }
 
-  @Override
   public UserData getUser(String username) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
       var statement = "SELECT username, password, email FROM auth WHERE username=?";
@@ -67,11 +66,11 @@ public class MySQLUserDAO implements UserDAO {
     return null;
   }
 
-  private UserData readUser(ResultSet rs) throws SQLException {
+  public UserData readUser(ResultSet rs) throws SQLException {
     var username = rs.getString("username");
-    var password= rs.getString("password");
+    var password= rs.getBlob("password");
     var email = rs.getString("email");
-    return new UserData(username, password, email);
+    return new UserData(username, password.toString(), email);
   }
 
 
@@ -79,7 +78,7 @@ public class MySQLUserDAO implements UserDAO {
     var statement = "TRUNCATE user";
     executeUpdate(statement);
   }
-  private int executeUpdate(String statement, Object... params) throws DataAccessException {
+  public int executeUpdate(String statement, Object... params) throws DataAccessException {
     try (var conn = DatabaseManager.getConnection()) {
       try (var ps = conn.prepareStatement(statement, RETURN_GENERATED_KEYS)) {
         for (var i = 0; i < params.length; i++) {

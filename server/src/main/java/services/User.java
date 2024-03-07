@@ -6,6 +6,7 @@ import dataAccess.AuthDAO;
 import dataAccess.UserDAO;
 import model.AuthData;
 import model.UserData;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import request.LoginRequest;
 import request.RegisterRequest;
 
@@ -29,8 +30,9 @@ public class User {
   }
   public AuthData login(LoginRequest user) throws DataAccessException{
     AuthData data;
-    
-    if(userDAO.getUser(user.username()) != null && userDAO.getUser(user.username()).getPassword().equals(user.password())){
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    String hashedPassword = encoder.encode(user.password());
+    if(userDAO.getUser(user.username()) != null && userDAO.getUser(user.username()).getPassword().equals(hashedPassword)){
       data = authDAO.createAuth(user.username());
     }
     else{

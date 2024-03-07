@@ -2,8 +2,8 @@ package server;
 
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
-import dataAccess.MemoryAuthDAO;
-import dataAccess.MemoryGameDAO;
+import dataAccess.AuthDAO;
+import dataAccess.GameDAO;
 import model.AuthData;
 import model.GameData;
 import model.Message;
@@ -20,7 +20,7 @@ import java.util.Collection;
 public class ListGamesHandler {
   private final Game service;
 
-  public ListGamesHandler(MemoryGameDAO gameDAO, MemoryAuthDAO authDAO) {
+  public ListGamesHandler(GameDAO gameDAO, AuthDAO authDAO) {
     service= new Game(gameDAO, authDAO);
   }
   public Object listgames(Request req, Response res) {

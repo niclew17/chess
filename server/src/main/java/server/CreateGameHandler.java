@@ -2,8 +2,8 @@ package server;
 
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
-import dataAccess.MemoryAuthDAO;
-import dataAccess.MemoryGameDAO;
+import dataAccess.AuthDAO;
+import dataAccess.GameDAO;
 import model.AuthData;
 import model.GameData;
 import model.Message;
@@ -21,9 +21,8 @@ import java.util.Collection;
 public class CreateGameHandler {
   private final Game service;
 
-  public CreateGameHandler(MemoryGameDAO gameDAO, MemoryAuthDAO authDAO) {
+  public CreateGameHandler(GameDAO gameDAO, AuthDAO authDAO) {
     service= new Game(gameDAO, authDAO);
-
   }
   public Object creategame(Request req, Response res){
     var user= new Gson().fromJson(req.body(), CreateGameRequest.class);
