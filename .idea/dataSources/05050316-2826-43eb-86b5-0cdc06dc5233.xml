@@ -1009,8 +1009,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="chess">
-      <IntrospectionTimestamp>2024-03-21.05:27:13</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-03-21.17:27:13</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2024-03-21.07:53:41</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2024-03-21.19:53:41</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="293" parent="1" name="mysql.infoschema">
