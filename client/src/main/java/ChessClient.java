@@ -44,7 +44,7 @@ public class ChessClient {
     } catch (DataAccessException ex) {
       return ex.getMessage();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      return e.getMessage();
     }
   }
 
