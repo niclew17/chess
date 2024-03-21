@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
 import model.AuthData;
+import model.Message;
 import request.CreateGameRequest;
 import request.JoinGameRequest;
 import request.LoginRequest;
@@ -14,82 +15,92 @@ import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class ServerFacade {
 
   private final String serverUrl;
+  private String authtoken;
 
   public ServerFacade(String url) {
     serverUrl = url;
   }
 
 
-  public void logout() throws DataAccessException {
-    var path = "/session";
-    this.makeRequest("DELETE", path, null, null);
+  public void logout(String authtoken) throws Exception {
+    this.makeRequestWithHeaders(authtoken, null,"/session", "DELETE", null);
   }
-  public AuthData login(LoginRequest login) throws DataAccessException {
-    var path = "/session";
-    return this.makeRequest("POST", path, login, AuthData.class);
+  public AuthData login(LoginRequest login) throws Exception {
+    return this.makeRequestNoHeaders(login, "/session","POST", AuthData.class);
   }
-  public AuthData register(RegisterRequest register) throws DataAccessException {
-    var path = "/user";
-    return this.makeRequest("POST", path, register, AuthData.class);
+  public AuthData register(RegisterRequest register) throws Exception {
+    return this.makeRequestNoHeaders(register, "/user", "POST", AuthData.class);
   }
-  public CreateGameResponse createGame(CreateGameRequest gameRequest) throws DataAccessException {
-    var path = "/game";
-    return this.makeRequest("POST", path, gameRequest, CreateGameResponse.class);
+  public CreateGameResponse createGame(CreateGameRequest gameRequest, String authtoken) throws Exception {
+    return this.makeRequestWithHeaders(authtoken, gameRequest, "/game", "POST", CreateGameResponse.class);
   }
 
-  public ListGamesResponse listGames() throws DataAccessException {
-    var path = "/game";
-    return this.makeRequest("GET", path, null, ListGamesResponse.class);
+  public ListGamesResponse listGames(String authtoken) throws Exception {
+    return this.makeRequestWithHeaders(authtoken,null,"/game","GET", ListGamesResponse.class);
   }
 
-  public void joinGame(JoinGameRequest request) throws DataAccessException {
-    var path = "/game";
-    this.makeRequest("PUT", path, request, null);
+  public void joinGame(JoinGameRequest request, String authtoken) throws Exception {
+    this.makeRequestWithHeaders(authtoken,request, "/game","PUT", null);
   }
-
-  private <T> T makeRequest(String method, String path, Object request, Class<T> responseClass) throws DataAccessException {
-    try {
-      URL url = (new URI(serverUrl + path)).toURL();
-      HttpURLConnection http = (HttpURLConnection) url.openConnection();
-      http.setRequestMethod(method);
-      http.setDoOutput(true);
-
-      writeBody(request, http);
-      http.connect();
-      throwIfNotSuccessful(http);
-      return readBody(http, responseClass);
-    } catch (Exception ex) {
-      throw new DataAccessException(ex.getMessage());
+  private <T> T makeRequestNoHeaders(Object request, String path, String method, Class<T> rclass) throws Exception {
+    URL url = (new URI(serverUrl + path)).toURL();
+    HttpURLConnection http = (HttpURLConnection) url.openConnection();
+    http.setRequestMethod(method);
+    http.setDoOutput(true);
+    var body = request;
+    try (var outputStream = http.getOutputStream()) {
+      var jsonBody = new Gson().toJson(body);
+      outputStream.write(jsonBody.getBytes());
+    }
+    http.connect();
+    throwIfNotSuccessful(http);
+    try (InputStream respBody = http.getInputStream()) {
+      InputStreamReader inputStreamReader = new InputStreamReader(respBody);
+      return new Gson().fromJson(inputStreamReader, rclass);
     }
   }
 
-
-  private static void writeBody(Object request, HttpURLConnection http) throws IOException {
-    if (request != null) {
-      http.addRequestProperty("Content-Type", "application/json");
-      String reqData = new Gson().toJson(request);
-      try (OutputStream reqBody = http.getOutputStream()) {
-        reqBody.write(reqData.getBytes());
+  private <T> T makeRequestWithHeaders(String token, Object request, String path, String method, Class<T> rclass) throws Exception {
+    URL url = (new URI(serverUrl + path)).toURL();
+    HttpURLConnection http = (HttpURLConnection) url.openConnection();
+    http.setRequestMethod(method);
+    http.setDoOutput(true);
+    http.addRequestProperty("Authorization", token);
+    var body = request;
+    try (var outputStream = http.getOutputStream()) {
+      var jsonBody = new Gson().toJson(body);
+      outputStream.write(jsonBody.getBytes());
+    }
+    http.connect();
+    throwIfNotSuccessful(http);
+    if(rclass != null) {
+      try (InputStream respBody=http.getInputStream()) {
+        InputStreamReader inputStreamReader=new InputStreamReader(respBody);
+        return new Gson().fromJson(inputStreamReader, rclass);
+      }
+    }
+    else{
+      return null;
+    }
+  }
+  private void throwIfNotSuccessful(HttpURLConnection http) throws IOException {
+    var status = http.getResponseCode();
+    if (!isSuccessful(status)) {
+      try (InputStream respBody = http.getErrorStream()) {
+        InputStreamReader inputStreamReader = new InputStreamReader(respBody);
+        throw new RuntimeException(new Gson().fromJson(inputStreamReader, Message.class).message());
       }
     }
   }
-
-  private void throwIfNotSuccessful(HttpURLConnection http) throws IOException, DataAccessException {
-    var status = http.getResponseCode();
-    if (!isSuccessful(status)) {
-      throw new DataAccessException("failure: " + status);
-    }
-  }
-
-
-
-
   private boolean isSuccessful(int status) {
     return status / 100 == 2;
   }
+
+
 }
