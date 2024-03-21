@@ -20,6 +20,11 @@ public class GameData {
   }
 
   @Override
+  public String toString() {
+    return "Game = '" + gameName + '\'' + " White Username='" + whiteUsername + '\'' + ", Black Username='" + blackUsername + '\'';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

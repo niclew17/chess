@@ -21,7 +21,6 @@ import java.net.URL;
 public class ServerFacade {
 
   private final String serverUrl;
-  private String authtoken;
 
   public ServerFacade(String url) {
     serverUrl = url;
@@ -46,7 +45,7 @@ public class ServerFacade {
   }
 
   public void joinGame(JoinGameRequest request, String authtoken) throws Exception {
-    this.makeRequestWithHeaders(authtoken,request, "/game","PUT", null);
+    this.makeRequestWithHeaders(authtoken, request, "/game","PUT", null);
   }
   private <T> T makeRequestNoHeaders(Object request, String path, String method, Class<T> rclass) throws Exception {
     URL url = (new URI(serverUrl + path)).toURL();
@@ -71,11 +70,13 @@ public class ServerFacade {
     HttpURLConnection http = (HttpURLConnection) url.openConnection();
     http.setRequestMethod(method);
     http.setDoOutput(true);
-    http.addRequestProperty("Authorization", token);
+    http.addRequestProperty("authorization", token);
     var body = request;
-    try (var outputStream = http.getOutputStream()) {
-      var jsonBody = new Gson().toJson(body);
-      outputStream.write(jsonBody.getBytes());
+    if(request!= null) {
+      try (var outputStream=http.getOutputStream()) {
+        var jsonBody=new Gson().toJson(body);
+        outputStream.write(jsonBody.getBytes());
+      }
     }
     http.connect();
     throwIfNotSuccessful(http);

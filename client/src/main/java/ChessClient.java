@@ -1,8 +1,10 @@
 import java.util.Arrays;
+import java.util.Collection;
 
 
 import dataAccess.DataAccessException;
 import model.AuthData;
+import model.GameData;
 import request.CreateGameRequest;
 import request.JoinGameRequest;
 import request.LoginRequest;
@@ -75,8 +77,8 @@ public class ChessClient {
   public String signOut() throws Exception {
     assertSignedIn();
     state = State.SIGNEDOUT;
-    authtoken = null;
     server.logout(authtoken);
+    authtoken = null;
     return String.format("%s left the chess portal", visitorName);
   }
   public String createGame(String... params) throws Exception {
@@ -93,8 +95,12 @@ public class ChessClient {
   public String listGames() throws Exception {
       assertSignedIn();
       ListGamesResponse response = server.listGames(authtoken);
-      response.games();
-      return String.format("Listing games...");
+      Collection<GameData> games = response.games();
+      System.out.println("Listing games...");
+      for(GameData x: games){
+        System.out.println(x.toString());
+      }
+      return String.format("All games listed");
     }
   public String joinGame(String... params) throws Exception {
     assertSignedIn();
@@ -109,11 +115,11 @@ public class ChessClient {
   public String joinGameObserver(String... params) throws Exception {
     assertSignedIn();
     if (params.length >= 1) {
-      var gameID = Integer.parseInt(params[1]);
+      var gameID = Integer.parseInt(params[0]);
       server.joinGame(new JoinGameRequest(null, gameID), authtoken);
       return String.format("Joined game %d as an observer", gameID);
     }
-    throw new DataAccessException("Expected: <player color WHITE|BLACK> <game ID>");
+    throw new DataAccessException("Expected: <game ID>");
   }
 
   public String help() {
@@ -122,6 +128,7 @@ public class ChessClient {
                     - login <username>
                     - register <username> <password> <email>
                     - quit
+                    - help
                     """;
     }
     return """
@@ -131,6 +138,7 @@ public class ChessClient {
                 - joingame <player color WHITE|BLACK> <game ID>
                 - joinobserver <game ID>
                 - quit
+                - help
                 """;
   }
   private void assertSignedIn() throws DataAccessException {
