@@ -7,6 +7,7 @@ import dataAccess.MySQLUserDAO;
 import model.AuthData;
 import org.junit.jupiter.api.*;
 import request.CreateGameRequest;
+import request.JoinGameRequest;
 import request.LoginRequest;
 import request.RegisterRequest;
 import server.Server;
@@ -85,6 +86,28 @@ public class ServerFacadeTests {
     void createGameFalse() throws Exception{
         assertThrows(Exception.class, () ->  facade.createGame(new CreateGameRequest("newgame"), "123"));
     }
+    @Test
+    void listGames() throws Exception{
+        AuthData auth = facade.register(new RegisterRequest("james", "lewis", "123"));
+        Assertions.assertDoesNotThrow(() -> facade.listGames(auth.getAuthToken()));
+    }
+    @Test
+    void listGamesFalse() throws Exception{
+        assertThrows(Exception.class, () -> facade.listGames("123"));
+    }
+    @Test
+    void joinGame() throws Exception{
+        AuthData auth = facade.register(new RegisterRequest("james", "lewis", "123"));
+        facade.createGame(new CreateGameRequest("newgame"), auth.getAuthToken());
+        Assertions.assertDoesNotThrow(() -> facade.joinGame(new JoinGameRequest("WHITE", 1), auth.getAuthToken()));
+    }
+    @Test
+    void joinGameFalse() throws Exception{
+        AuthData auth = facade.register(new RegisterRequest("james", "lewis", "123"));
+        facade.createGame(new CreateGameRequest("newgame"), auth.getAuthToken());
+        assertThrows(Exception.class, () -> facade.joinGame(new JoinGameRequest("WHITE", 3), auth.getAuthToken()));
+    }
+
 
 
 
