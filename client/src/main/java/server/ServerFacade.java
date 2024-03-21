@@ -1,5 +1,6 @@
+package server;
+
 import com.google.gson.Gson;
-import dataAccess.DataAccessException;
 import model.AuthData;
 import model.Message;
 import request.CreateGameRequest;
@@ -11,11 +12,9 @@ import response.ListGamesResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 public class ServerFacade {

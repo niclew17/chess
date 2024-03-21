@@ -3,11 +3,8 @@ package dataAccessTests;
 import dataAccess.DataAccessException;
 import dataAccess.MySQLAuthDAO;
 import model.AuthData;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import passoffTests.obfuscatedTestClasses.TestServerFacade;
-import server.Server;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,7 +1,3 @@
-import java.util.Arrays;
-import java.util.Collection;
-
-
 import dataAccess.DataAccessException;
 import model.AuthData;
 import model.GameData;
@@ -9,9 +5,12 @@ import request.CreateGameRequest;
 import request.JoinGameRequest;
 import request.LoginRequest;
 import request.RegisterRequest;
-import response.CreateGameResponse;
 import response.ListGamesResponse;
+import server.ServerFacade;
 import ui.MakeBoard;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 
 public class ChessClient {
