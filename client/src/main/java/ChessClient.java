@@ -85,8 +85,6 @@ public class ChessClient {
     if (params.length >= 1) {
       var name=params[0];
       server.createGame(new CreateGameRequest(name), authtoken);
-      MakeBoard board = new MakeBoard();
-      board.printBoard();
       return String.format("New game: %s. Created", name);
     }
     throw new DataAccessException("Expected: <gamename>");
@@ -96,8 +94,11 @@ public class ChessClient {
       ListGamesResponse response = server.listGames(authtoken);
       Collection<GameData> games = response.games();
       System.out.println("Listing games...");
+      int i = 1;
       for(GameData x: games){
+        System.out.print(i);
         System.out.println(x.toString());
+        i++;
       }
       return String.format("All games listed");
     }
@@ -107,6 +108,8 @@ public class ChessClient {
       var color= params[0].toUpperCase();
       var gameID = Integer.parseInt(params[1]);
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
+      MakeBoard board = new MakeBoard();
+      board.printBoard();
       return String.format("Joined game %d as: %s. ", gameID, color);
     }
     throw new DataAccessException("Expected: <player color WHITE|BLACK> <game ID>");

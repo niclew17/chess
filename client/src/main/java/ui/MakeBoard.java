@@ -40,7 +40,7 @@ public class MakeBoard {
 
   private static void drawHeaders(PrintStream out) {
     setGrey(out);
-    String[] headers = { "    H", "G", "F", "E", "D", "C", "B", "A    "};
+    String[] headers = { "    A", "B", "C", "D", "E", "F", "G", "H    "};
     for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
       drawHeader(out, headers[boardCol]);
 
@@ -53,7 +53,7 @@ public class MakeBoard {
   }
   private static void drawHeadersBottom(PrintStream out) {
     setGrey(out);
-    String[] headers = { "    A", "B", "C", "D", "E", "F", "G", "H    "};
+    String[] headers = { "    H", "G", "F", "E", "D", "C", "B", "A    "};
     for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
       drawHeader(out, headers[boardCol]);
 
@@ -83,7 +83,7 @@ public class MakeBoard {
   }
 
   private static void drawTicTacToeBoard(PrintStream out) {
-    String[] sideheaders = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
+    String[] sideheaders = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
     for (int boardRow = 0; boardRow < BOARD_SIZE_IN_SQUARES; boardRow++) {
       setGrey(out);
       out.print(sideheaders[boardRow]);
@@ -94,7 +94,7 @@ public class MakeBoard {
     }
   }
   private static void drawTicTacToeBoardBottom(PrintStream out) {
-    String[] sideheaders2 = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
+    String[] sideheaders2 = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
     for (int boardRow = 0; boardRow < BOARD_SIZE_IN_SQUARES; boardRow++) {
       setGrey(out);
       out.print(sideheaders2[boardRow]);
@@ -131,8 +131,8 @@ public class MakeBoard {
     }
     else {
       return switch (piece.getTeamColor()) {
-        case WHITE -> "Red";
-        case BLACK -> "Blue";
+        case WHITE -> "Blue";
+        case BLACK -> "Red";
         case null -> "   ";
 
       };
@@ -141,7 +141,7 @@ public class MakeBoard {
 
 
   private static void drawRowOfSquares(PrintStream out, int row) {
-    String[] sideheaders = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
+    String[] sideheaders = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
     ChessBoard cleanboard=new ChessBoard();
     cleanboard.resetBoard();
     for (int boardCol=0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
@@ -165,7 +165,7 @@ public class MakeBoard {
       out.println();
     }
   private static void drawRowOfSquaresBottom(PrintStream out, int row) {
-    String[] sideheaders2 = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
+    String[] sideheaders2 = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
     ChessBoard cleanboard=new ChessBoard();
     cleanboard.resetBoard();
     for (int boardCol=0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {

@@ -21,7 +21,7 @@ public class GameData {
 
   @Override
   public String toString() {
-    return "Game = '" + gameName + '\'' + " White Username='" + whiteUsername + '\'' + ", Black Username='" + blackUsername + '\'';
+    return ". " + gameName + '\'';
   }
 
   @Override
