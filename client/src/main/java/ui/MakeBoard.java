@@ -4,6 +4,7 @@ import chess.*;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.Random;
 
 import static ui.EscapeSequences.*;
@@ -24,17 +25,35 @@ public class MakeBoard {
 //  public static void main(String[] args){
 //    printBoard();
 //  }
-  public static void printBoard() {
+  public static void printBoard(ChessBoard myboard) {
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     out.print(ERASE_SCREEN);
     drawHeaders(out);
-    drawTicTacToeBoard(out);
+    drawTicTacToeBoard(out, myboard);
     drawHeaders(out);
     out.print(SET_BG_COLOR_BLACK);
     out.print(SET_TEXT_COLOR_WHITE);
     out.println();
     drawHeadersBottom(out);
-    drawTicTacToeBoardBottom(out);
+    drawTicTacToeBoardBottom(out, myboard);
+    drawHeadersBottom(out);
+  }
+
+  public static void printMovesBoard(ChessBoard myboard, Collection<ChessMove> moves, String color) {
+    Collection<ChessPosition> endpositions = null;
+    for(ChessMove move: moves){
+      endpositions.add(move.getEndPosition());
+    }
+    var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
+    out.print(ERASE_SCREEN);
+    drawHeaders(out);
+    drawTicTacToeBoard(out, myboard);
+    drawHeaders(out);
+    out.print(SET_BG_COLOR_BLACK);
+    out.print(SET_TEXT_COLOR_WHITE);
+    out.println();
+    drawHeadersBottom(out);
+    drawTicTacToeBoardBottom(out, myboard);
     drawHeadersBottom(out);
   }
 
@@ -82,28 +101,28 @@ public class MakeBoard {
     setGrey(out);
   }
 
-  private static void drawTicTacToeBoard(PrintStream out) {
+  private static void drawTicTacToeBoard(PrintStream out, ChessBoard board) {
     String[] sideheaders = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
+    drawAllPieces(out, board, sideheaders);
+  }
+  
+  private static void drawTicTacToeBoardBottom(PrintStream out, ChessBoard board) {
+    String[] sideheaders2 = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
+    drawAllPieces(out, board, sideheaders2);
+  }
+ 
+  private static void drawAllPieces(PrintStream out, ChessBoard board, String[] sideheaders) {
     for (int boardRow = 0; boardRow < BOARD_SIZE_IN_SQUARES; boardRow++) {
       setGrey(out);
       out.print(sideheaders[boardRow]);
-      drawRowOfSquares(out, boardRow);
+      drawRowOfSquares(out, boardRow, board);
       if (boardRow < BOARD_SIZE_IN_SQUARES - 1) {
         setGrey(out);
       }
     }
   }
-  private static void drawTicTacToeBoardBottom(PrintStream out) {
-    String[] sideheaders2 = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
-    for (int boardRow = 0; boardRow < BOARD_SIZE_IN_SQUARES; boardRow++) {
-      setGrey(out);
-      out.print(sideheaders2[boardRow]);
-      drawRowOfSquaresBottom(out, boardRow);
-      if (boardRow < BOARD_SIZE_IN_SQUARES - 1) {
-        setGrey(out);
-      }
-    }
-  }
+
+  
   private static String getPiece(ChessBoard board, int row, int col){
 
     ChessPiece piece = board.getPiece(new ChessPosition(row, col));
@@ -140,19 +159,17 @@ public class MakeBoard {
   }
 
 
-  private static void drawRowOfSquares(PrintStream out, int row) {
+  private static void drawRowOfSquares(PrintStream out, int row, ChessBoard board) {
     String[] sideheaders = { " 8 ", " 7 ", " 6 ", " 5 ", " 4 ", " 3 ", " 2 ", " 1 "};
-    ChessBoard cleanboard=new ChessBoard();
-    cleanboard.resetBoard();
     for (int boardCol=0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
       setWhite(out);
         if((row % 2 == 0 && boardCol % 2 == 0) || (row % 2 == 1 && boardCol % 2 == 1)) {
-          String color = getPieceColor(cleanboard, row +1, boardCol+1);
-          printPlayerWhite(out, getPiece(cleanboard, row +1, boardCol+1), color);
+          String color = getPieceColor(board, (row +1), (boardCol+1));
+          printPlayerWhite(out, getPiece(board, (row +1), (boardCol+1)), color);
         }
         else if((row % 2 == 1 && boardCol % 2 == 0) || (row % 2 == 0 && boardCol % 2 == 1)){
-          String color = getPieceColor(cleanboard, row+1, boardCol+1);
-          printPlayerBlack(out, getPiece(cleanboard, row+1, boardCol+1), color);
+          String color = getPieceColor(board, row+1, boardCol+1);
+          printPlayerBlack(out, getPiece(board,row+1, boardCol+1), color);
         }
         else{
           out.println();
@@ -164,19 +181,17 @@ public class MakeBoard {
       setBlack(out);
       out.println();
     }
-  private static void drawRowOfSquaresBottom(PrintStream out, int row) {
+  private static void drawRowOfSquaresBottom(PrintStream out, int row, ChessBoard board) {
     String[] sideheaders2 = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 "};
-    ChessBoard cleanboard=new ChessBoard();
-    cleanboard.resetBoard();
     for (int boardCol=0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
       setWhite(out);
       if((row % 2 == 0 && boardCol % 2 == 0) || (row % 2 == 1 && boardCol % 2 == 1)) {
-        String color = getPieceColor(cleanboard, 9-(row +1), 9-(boardCol+1));
-        printPlayerWhite(out, getPiece(cleanboard, 9-(row +1), 9-(boardCol+1)), color);
+        String color = getPieceColor(board,9-(row +1), 9-(boardCol+1));
+        printPlayerWhite(out, getPiece(board, 9-(row +1), 9-(boardCol+1)), color);
       }
       else if((row % 2 == 1 && boardCol % 2 == 0) || (row % 2 == 0 && boardCol % 2 == 1)){
-        String color = getPieceColor(cleanboard, 9-(row+1), 9-(boardCol+1));
-        printPlayerBlack(out, getPiece(cleanboard, 9-(row+1), 9-(boardCol+1)), color);
+        String color = getPieceColor(board,9-(row+1), 9-(boardCol+1));
+        printPlayerBlack(out, getPiece(board, 9-(row+1), 9-(boardCol+1)), color);
       }
       else{
         out.println();

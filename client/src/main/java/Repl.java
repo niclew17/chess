@@ -1,4 +1,3 @@
-import ui.EscapeSequences;
 import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
@@ -15,17 +14,28 @@ public class Repl {
     Scanner scanner = new Scanner(System.in);
     var result = "";
     while (!result.equals("quit")) {
-      printPrompt();
-      String line = scanner.nextLine();
-      try {
-        result = client.eval(line);
-        System.out.print(SET_TEXT_COLOR_BLUE + result);
+        printPrompt();
+        String line=scanner.nextLine();
+        if(!client.isInGame()) {
+          try {
+            result=client.eval(line);
+            System.out.print(SET_TEXT_COLOR_BLUE + result);
+          } catch (Throwable e) {
+            var msg=e.toString();
+            System.out.print(msg);
+          }
+        }
+        else{
+          try {
+            result=client.evalgame(line);
+            System.out.print(SET_TEXT_COLOR_BLUE + result);
+          } catch (Throwable e) {
+            var msg=e.toString();
+            System.out.print(msg);
+          }
+        }
       }
-      catch (Throwable e) {
-        var msg = e.toString();
-        System.out.print(msg);
-      }
-    }
+
     System.out.println();
   }
   private void printPrompt() {

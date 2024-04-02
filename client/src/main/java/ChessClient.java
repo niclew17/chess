@@ -1,3 +1,4 @@
+import chess.ChessBoard;
 import dataAccess.DataAccessException;
 import model.AuthData;
 import model.GameData;
@@ -18,10 +19,14 @@ public class ChessClient {
   private final ServerFacade server;
   private final String serverUrl;
   private State state = State.SIGNEDOUT;
+
+  private MakeBoard makeboard;
+  private boolean inGame;
   private String authtoken;
   public ChessClient(String serverUrl, Repl repl) {
     server = new ServerFacade(serverUrl);
     this.serverUrl = serverUrl;
+    inGame = false;
   }
 
   public String eval(String input) {
@@ -46,6 +51,39 @@ public class ChessClient {
     } catch (Exception e) {
       return e.getMessage();
     }
+  }
+
+  public String evalgame(String input) {
+    try {
+      var tokens = input.toLowerCase().split(" ");
+      var cmd = (tokens.length > 0) ? tokens[0] : "help";
+      var params = Arrays.copyOfRange(tokens, 1, tokens.length);
+      return switch (cmd) {
+        case "redrawboard" -> redrawBoard();
+        case "leave" -> leave();
+        case "makemove" -> createGame(params);
+        case "resign" -> listGames();
+        case "highlighlegalmoves" -> joinGame(params);
+        case "help" -> helpgame();
+        default -> helpgame();
+      };
+    } catch (DataAccessException ex) {
+      return ex.getMessage();
+    } catch (Exception e) {
+      return e.getMessage();
+    }
+  }
+  public String redrawBoard() throws Exception {
+    assertSignedIn();
+    ChessBoard myboard = new ChessBoard();
+    makeboard.printBoard(myboard);
+    return String.format("Redraw of Board");
+  }
+
+  public String leave() throws Exception {
+    assertSignedIn();
+    inGame = false;
+    return String.format("%s left the chess game", visitorName);
   }
 
   public String signIn(String... params) throws Exception {
@@ -108,8 +146,9 @@ public class ChessClient {
       var color= params[0].toUpperCase();
       var gameID = Integer.parseInt(params[1]);
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
-      MakeBoard board = new MakeBoard();
-      board.printBoard();
+      ChessBoard myboard = new ChessBoard();
+      makeboard.printBoard(myboard);
+      inGame = true;
       return String.format("Joined game %d as: %s. ", gameID, color);
     }
     throw new DataAccessException("Expected: <player color WHITE|BLACK> <game ID>");
@@ -143,12 +182,23 @@ public class ChessClient {
                 - help
                 """;
   }
+  public String helpgame() {
+    return """
+                - redrawboard
+                - leave
+                - makemove <letter number> <letter number>
+                - resign <YES or NO>
+                - higlightlegalmoves <letter number>
+                - help
+                """;
+  }
   private void assertSignedIn() throws DataAccessException {
     if (state == State.SIGNEDOUT) {
       throw new DataAccessException("You must sign in");
     }
   }
 
-
-
+  public boolean isInGame() {
+    return inGame;
+  }
 }
