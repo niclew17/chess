@@ -6,7 +6,6 @@ import java.util.Collection;
 import static chess.ChessGame.TeamColor.BLACK;
 import static chess.ChessGame.TeamColor.WHITE;
 import static chess.ChessPiece.PieceType.KING;
-import static chess.ChessPiece.PieceType.PAWN;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -22,6 +21,7 @@ public class ChessGame {
     public ChessGame() {
         this.teamturn = WHITE;
         cboard = new ChessBoard();
+        cboard.resetBoard();
     }
     /**
      * @return Which team's turn it is
