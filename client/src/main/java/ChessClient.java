@@ -1,3 +1,4 @@
+import Websocket.NotificationHandler;
 import chess.ChessBoard;
 import chess.ChessGame;
 import chess.ChessMove;
@@ -21,6 +22,7 @@ public class ChessClient {
   private String visitorName = null;
   private final ServerFacade server;
   private final String serverUrl;
+  private final NotificationHandler notificationHandler;
   private State state = State.SIGNEDOUT;
 
   private MakeBoard makeboard;
@@ -30,9 +32,10 @@ public class ChessClient {
   private String joinGameColor;
   private boolean inGame;
   private String authtoken;
-  public ChessClient(String serverUrl, Repl repl) {
+  public ChessClient(String serverUrl, NotificationHandler notificationHandler) {
     server = new ServerFacade(serverUrl);
     this.serverUrl = serverUrl;
+    this.notificationHandler = notificationHandler;
     inGame = false;
     newgame = new ChessGame();
     makeboard = new MakeBoard();

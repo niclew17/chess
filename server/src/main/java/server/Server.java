@@ -1,11 +1,15 @@
 package server;
 
+import Websocket.WebsocketHandler;
 import dataAccess.*;
-import spark.*;
-
-import static org.slf4j.MDC.clear;
+import spark.Spark;
 
 public class Server {
+    private final WebsocketHandler websocketHandler;
+
+    public Server(WebsocketHandler websocketHandler) {
+        websocketHandler= new websocketHandler();
+    }
 
     public int run(int desiredPort) {
         Spark.port(desiredPort);

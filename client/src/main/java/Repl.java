@@ -1,12 +1,16 @@
+import Websocket.NotificationHandler;
+import webSocketMessages.serverMessages.Notification;
+
 import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
-public class Repl {
+public class Repl implements NotificationHandler {
   private final ChessClient client;
 
   public Repl(String serverUrl) {
     client=new ChessClient(serverUrl, this);
   }
+
   public void run() {
     System.out.println("\uD83D\uDC36 Welcome to Chess. Sign in to start.");
     System.out.print(client.help());
@@ -42,4 +46,9 @@ public class Repl {
     System.out.print("\n" + RESET_BG_COLOR + ">>> " + SET_TEXT_COLOR_GREEN);
   }
 
+  @Override
+  public void notify(Notification notification) {
+    System.out.println(SET_TEXT_COLOR_RED + notification.getMessage());
+    printPrompt();
+  }
 }
