@@ -1,38 +1,36 @@
 
-	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8ı“ûê1J$c93f9b94-2408-426d-85ed-0980d477efa5
-	java:S112`"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8ı“ûê1J$2b229210-cc01-4393-b18b-eeb6ad8156d9
-	java:S112e"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8ı“ûê1J$19f1f3bf-af05-4969-8b5d-12e13d4df0c3
-ˆ	java:S112w"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8ı“ûê1J$85b441c6-ffad-4f8b-8655-e9726b0ccc03
+	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8® Ä‚ì1J$7589df9b-36b3-41c4-b261-71d1a87814b4
+	java:S112b"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8® Ä‚ì1J$b6937b87-6cd7-4c5a-8972-6f0c46cfd584
+	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8® Ä‚ì1J$b6611649-fd2d-4756-aed0-f583755f7f65
+ˆ	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8® Ä‚ì1J$2ee24c56-119b-463a-9663-065151376ff6
 ˜
-java:S1192t"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8‘ı“ûê1J$322e70b9-9a81-4b97-b15f-0b8b523cd3cf
+java:S1192v"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8¯ Ä‚ì1J$fb990a8c-5fe6-483e-b2ef-68c2f7d38359
 
-java:S1192j"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ºÇú¤şÿÿÿÿ8‘ı“ûê1J$bcc06358-9f66-4dcf-b051-b25812e58d82
+java:S1192l"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ºÇú¤şÿÿÿÿ8¯ Ä‚ì1J$1b5d45da-b973-4fae-82c7-1f6a0dd7f3f9
 ]
-java:S1220""Move this file to a named package.8’ı“ûê1J$f88a37cc-c349-4936-8759-9fafdcfaf6b1
+java:S1220""Move this file to a named package.8± Ä‚ì1J$0a3e793d-f692-4482-99de-0a2dddf19437
+™
+java:S1450"QRemove the "ws" field and declare it as a local variable in the relevant methods.(™ËñÚüÿÿÿÿ8Î Ä‚ì1J$2fad8ab3-aac7-4ae0-bd60-2af96c5625d8
 l
-java:S2440)")Remove this instantiation of "MakeBoard".(Œ±½™8»ı“ûê1J$00893995-77a3-4b5c-8719-fd48a31b6acd
+java:S2440+")Remove this instantiation of "MakeBoard".(Œ±½™8Ğ Ä‚ì1J$8f1ad270-f846-423a-a8f3-bd62e153460b
 x
-java:S2209\"5Change this instance-reference to a static reference.(’´íœ8Áı“ûê1J$15d6a077-d547-4732-ad63-79ddc5cbe8f0
+java:S2209^"5Change this instance-reference to a static reference.(’´íœ8Ó Ä‚ì1J$fc50ddc2-da85-44bc-a8fe-1dab58c2c48b
 g
-java:S3457]"%String contains no format specifiers.(ÎâŒ 8Áı“ûê1J$520810e1-7734-4956-acd6-c96c1e83ba0a
+java:S3457_"%String contains no format specifiers.(ÎâŒ 8Ó Ä‚ì1J$48405e97-96f6-4cf6-915b-4ed46ebd6349
 x
-java:S2209q"5Change this instance-reference to a static reference.(Ô‘º¿8Ãı“ûê1J$0bd52cbe-6ba7-490d-b921-b84a8ff46a3f
+java:S2209s"5Change this instance-reference to a static reference.(Ô‘º¿8Ô Ä‚ì1J$bcfcdeca-2449-4328-b90c-03532880c63f
 h
-java:S3457r"%String contains no format specifiers.(ŸîØí8Ãı“ûê1J$24d9e886-e611-448f-89a3-9a33947c476f
+java:S3457t"%String contains no format specifiers.(ŸîØí8Õ Ä‚ì1J$90f25b6c-7f2c-4da7-a837-43dbb259e80e
 ~
-java:S2209ˆ"5Change this instance-reference to a static reference.( ³È®úÿÿÿÿ8Åı“ûê1J$c5477ded-8d4e-44b4-afa4-8ab201cac8a2
-n	java:S106»"+Replace this use of System.out by a logger.(©Ÿœ8Èı“ûê1J$77ef8238-d005-4c06-90a6-a5f713bc0f5f
-s	java:S106¾"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8Éı“ûê1J$a7b3d1f3-3de5-42e8-855c-6e416c4489b7
-n	java:S106¿"+Replace this use of System.out by a logger.(÷¹§µ8Éı“ûê1J$3e1c7ef1-bd0d-41d1-bcbe-47e9ca61cc2f
+java:S2209Š"5Change this instance-reference to a static reference.( ³È®úÿÿÿÿ8Ö Ä‚ì1J$99584765-4b0a-4617-b267-a5fbf494d432
+n	java:S106½"+Replace this use of System.out by a logger.(©Ÿœ8Ù Ä‚ì1J$9c8f3905-b49f-4ad7-bc07-6a1214959c3b
+s	java:S106À"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8Ù Ä‚ì1J$f6b51dce-180e-4903-b4ae-1840555b07ba
+n	java:S106Á"+Replace this use of System.out by a logger.(÷¹§µ8Ù Ä‚ì1J$d22957ee-23c2-4169-8fd2-48774c053eba
 n
-java:S3457Â"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8Éı“ûê1J$8f3ab2e5-c066-4551-8d42-cc7f04883cee
+java:S3457Ä"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8Ù Ä‚ì1J$63c9d653-3131-47f9-aef5-4b3d1c7c7f8f
 y
-java:S2209Ë"5Change this instance-reference to a static reference.(†…Ñû8Êı“ûê1J$d3c88f34-7ab5-4b34-8617-d5a9eba86cf9
+java:S2209Ï"5Change this instance-reference to a static reference.(†…Ñû8Ú Ä‚ì1J$09c00917-19d8-4703-afaf-edbfafde0033
 ~
-java:S2209Ö"5Change this instance-reference to a static reference.(ë¥œûÿÿÿÿ8Ëı“ûê1J$ccfb89ed-5a94-4c76-a519-53fb958df65f
+java:S2209Ú"5Change this instance-reference to a static reference.(ë¥œûÿÿÿÿ8Û Ä‚ì1J$8b19474f-a556-4f1e-8f51-1aa77f97a3db
 y
-java:S2209×"5Change this instance-reference to a static reference.(œÓªÌ8Ëı“ûê1J$0f368288-837a-4d44-92f2-ec1575f57d3f
-p
-java:S1068"-Remove this unused "serverUrl" private field.(ú¯³†8Îı“ûê1J$6af3b865-2071-4565-b42e-abcf51d4979e
-y
-java:S1068"7Remove this unused "notificationHandler" private field.(Ö×¿=8Îı“ûê1J$d32bcf87-68bc-4a88-acdb-4eae291b054d
+java:S2209Û"5Change this instance-reference to a static reference.(œÓªÌ8Û Ä‚ì1J$2c4b3652-1119-43ba-bd90-ce349417c310

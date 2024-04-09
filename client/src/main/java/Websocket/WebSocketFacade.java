@@ -3,6 +3,8 @@ package Websocket;
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
 import webSocketMessages.serverMessages.Notification;
+import webSocketMessages.userCommands.JoinPlayer;
+import webSocketMessages.userCommands.UserGameCommand;
 
 import javax.websocket.*;
 import java.io.IOException;
@@ -37,6 +39,15 @@ public class WebSocketFacade extends Endpoint {
 
   @Override
   public void onOpen(Session session, EndpointConfig endpointConfig) {
+  }
+
+  public void joinPlayer(String authToken, int gameID, String color) throws IOException {
+    try {
+      var joinPlayer = new JoinPlayer(authToken, UserGameCommand.CommandType.JOIN_PLAYER, gameID, color);
+      this.session.getBasicRemote().sendText(new Gson().toJson(joinPlayer));
+    } catch (IOException ex) {
+      throw new IOException(ex.getMessage());
+    }
   }
 
 

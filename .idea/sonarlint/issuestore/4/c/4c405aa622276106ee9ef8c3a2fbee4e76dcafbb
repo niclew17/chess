@@ -1,8 +1,8 @@
 
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8øáÈúê1J$12bceb1e-8b00-42d6-849d-6e6cd30ab548
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8øáÈúê1J$6577cddd-2ba6-4c66-ac9a-ca6c576eba83
-	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ùáÈúê1J$d6c42cb8-850d-4d97-b79e-fb204917a486
+†	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$f1e8b792-c0b8-487d-b0fc-0d75608fc632
+†	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$f335c86c-da53-4de5-aa84-2ce4baa13463
+†	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(Ò‚ÒéüÿÿÿÿJ$fc7dce61-bc13-4424-8ea1-9a22be6fe79c
+‚
+java:S1192,"FDefine a constant instead of duplicating this literal "/game" 3 times.(“†¾ÒJ$9fd4797d-bcae-4a9e-a9c4-2065dd27f495
 ‰
-java:S1192,"FDefine a constant instead of duplicating this literal "/game" 3 times.(“†¾Ò8úáÈúê1J$c9490629-d89a-4111-b8fa-b330b813f701
-
-java:S1226"MIntroduce a new variable instead of reusing the parameter "websocketHandler".(ã­ì„8üóËúê1J$7f81fe7a-63d5-4378-a71f-64f39726659d
+java:S1226"MIntroduce a new variable instead of reusing the parameter "websocketHandler".(ã­ì„J$1d1a120a-859f-4085-a5ec-c29f5b0fbc69

@@ -2,7 +2,6 @@ package Websocket;
 
 import webSocketMessages.serverMessages.Notification;
 
-import javax.websocket.Session;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,9 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConnectionManager {
   public final ConcurrentHashMap<String, Connection> connections = new ConcurrentHashMap<>();
 
-  public void add(String authtoken, Session session) {
-    var connection = new Connection(authtoken, session);
-    connections.put(authtoken, connection);
+  public void add(String authtoken, Connection conn) {
+    connections.put(authtoken, conn);
   }
 
   public void remove(String authtoken) {

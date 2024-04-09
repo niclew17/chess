@@ -4,7 +4,11 @@ import com.google.gson.Gson;
 import model.Message;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.Session;
+import webSocketMessages.serverMessages.Notification;
+import webSocketMessages.serverMessages.ServerMessage;
 import webSocketMessages.userCommands.UserGameCommand;
+
+import java.io.IOException;
 
 
 public class WebsocketHandler {
@@ -28,8 +32,10 @@ public class WebsocketHandler {
     }
   }
 
-  private void join(Connection conn, String msg){
-
+  private void join(Connection conn, String msg) throws IOException {
+    connections.add(conn.authtoken, conn);
+    var notification = new Notification(ServerMessage.ServerMessageType.NOTIFICATION, msg);
+    connections.broadcast(conn.authtoken, notification);
   }
   private void observe(Connection conn, String msg){
 

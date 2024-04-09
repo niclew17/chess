@@ -1,4 +1,5 @@
 import Websocket.NotificationHandler;
+import Websocket.WebSocketFacade;
 import chess.ChessBoard;
 import chess.ChessGame;
 import chess.ChessMove;
@@ -24,6 +25,7 @@ public class ChessClient {
   private final String serverUrl;
   private final NotificationHandler notificationHandler;
   private State state = State.SIGNEDOUT;
+  private WebSocketFacade ws;
 
   private MakeBoard makeboard;
 
@@ -200,6 +202,8 @@ public class ChessClient {
       var gameID = Integer.parseInt(params[1]);
       joinGameColor = color;
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
+      ws = new WebSocketFacade(serverUrl, notificationHandler);
+      ws.joinPlayer(authtoken, gameID, color);
       makeboard.printBoard(newgame.getBoard(), color);
       inGame = true;
       return String.format("Joined game %d as: %s. ", gameID, color);
