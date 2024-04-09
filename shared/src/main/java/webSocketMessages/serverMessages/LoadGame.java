@@ -7,7 +7,7 @@ public class LoadGame extends ServerMessage{
     this.game = game;
   }
 
-  public boolean isGame() {
+  public boolean getGame() {
     return game;
   }
 }

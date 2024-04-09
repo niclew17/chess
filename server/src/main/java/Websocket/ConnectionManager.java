@@ -1,30 +1,30 @@
 package Websocket;
 
-import webSocketMessages.serverMessages.Notification;
+import webSocketMessages.serverMessages.ServerMessage;
 
+import javax.websocket.EncodeException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ConnectionManager {
-  public final ConcurrentHashMap<String, Connection> connections = new ConcurrentHashMap<>();
-
-  public void add(String authtoken, Connection conn) {
-    connections.put(authtoken, conn);
+  public final ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> connections = new ConcurrentHashMap<>();
+  public void add(int gameID, String authtoken, Connection conn) {
+    connections.get(gameID).put(authtoken, conn);
   }
 
-  public void remove(String authtoken) {
-    connections.remove(authtoken);
+  public void remove(int gameID, String authtoken) {
+    connections.get(gameID).remove(authtoken);
   }
-  public Connection getConnection(String auth){
-    return connections.get(auth);
+  public Connection getConnection(int gameID, String auth){
+    return connections.get(gameID).get(auth);
   }
-  public void broadcast(String excludeauthtoken, Notification notification) throws IOException {
+  public void broadcast(int gameID, String excludeauthtoken, ServerMessage serverMessage) throws IOException, EncodeException {
     var removeList = new ArrayList<Connection>();
-    for (var c : connections.values()) {
+    for (var c : connections.get(gameID).values()) {
       if (c.session.isOpen()) {
         if (!c.authtoken.equals(excludeauthtoken)) {
-          c.send(notification.getMessage());
+          c.send(serverMessage);
         }
       } else {
         removeList.add(c);

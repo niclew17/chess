@@ -1,5 +1,8 @@
 import Websocket.NotificationHandler;
+import webSocketMessages.serverMessages.ErrorMessage;
+import webSocketMessages.serverMessages.LoadGame;
 import webSocketMessages.serverMessages.Notification;
+import webSocketMessages.serverMessages.ServerMessage;
 
 import java.util.Scanner;
 
@@ -47,8 +50,26 @@ public class Repl implements NotificationHandler {
   }
 
   @Override
-  public void notify(Notification notification) {
-    System.out.println(SET_TEXT_COLOR_RED + notification.getMessage());
+  public void notify(ServerMessage message) {
+    switch (message.getServerMessageType()) {
+      case NOTIFICATION -> displayNotification(((Notification) message).getMessage());
+      case ERROR -> displayError(((ErrorMessage) message).getErrorMessage());
+      case LOAD_GAME -> loadGame(((LoadGame) message).getGame());
+    }
+  }
+
+  public void displayNotification(String message){
+    System.out.println(SET_BG_COLOR_DARK_GREEN + message);
     printPrompt();
   }
+  public void displayError(String message){
+    System.out.println(SET_BG_COLOR_RED + message);
+    printPrompt();
+  }
+  public void loadGame(boolean message){
+    System.out.println(SET_BG_COLOR_DARK_GREEN);
+    printPrompt();
+  }
+
+
 }

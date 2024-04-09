@@ -2,7 +2,7 @@ package Websocket;
 
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
-import webSocketMessages.serverMessages.Notification;
+import webSocketMessages.serverMessages.ServerMessage;
 import webSocketMessages.userCommands.JoinPlayer;
 import webSocketMessages.userCommands.UserGameCommand;
 
@@ -27,9 +27,14 @@ public class WebSocketFacade extends Endpoint {
       //set message handler
       this.session.addMessageHandler(new MessageHandler.Whole<String>() {
         @Override
-        public void onMessage(String message) {
-          Notification notification = new Gson().fromJson(message, Notification.class);
-          notificationHandler.notify(notification);
+        public void onMessage(String messages) {
+          try {
+            ServerMessage message = new Gson().fromJson(messages, ServerMessage.class);
+            notificationHandler.notify(message);
+          } catch(Exception ex) {
+            notificationHandler.notify(new ServerMessage(ServerMessage.ServerMessageType.ERROR));
+          }
+
         }
       });
     } catch (DeploymentException | IOException | URISyntaxException ex) {

@@ -1,6 +1,5 @@
 package dataAccess;
 
-import model.AuthData;
 import model.UserData;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import request.RegisterRequest;
@@ -8,9 +7,7 @@ import request.RegisterRequest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.UUID;
 
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import static java.sql.Types.NULL;
 
 public class MySQLUserDAO implements UserDAO {

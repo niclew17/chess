@@ -13,13 +13,9 @@ import request.CreateGameRequest;
 import request.JoinGameRequest;
 import request.RegisterRequest;
 import response.CreateGameResponse;
-import response.ListGamesResponse;
 import services.DB;
 import services.Game;
 import services.User;
-
-import java.util.Collection;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 

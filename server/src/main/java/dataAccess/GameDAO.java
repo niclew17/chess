@@ -6,8 +6,6 @@ import request.JoinGameRequest;
 import response.CreateGameResponse;
 import response.ListGamesResponse;
 
-import java.util.Collection;
-
 public interface GameDAO {
 
   CreateGameResponse createGame(CreateGameRequest game) throws DataAccessException;

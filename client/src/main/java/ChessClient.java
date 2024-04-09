@@ -204,7 +204,6 @@ public class ChessClient {
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
       ws = new WebSocketFacade(serverUrl, notificationHandler);
       ws.joinPlayer(authtoken, gameID, color);
-      makeboard.printBoard(newgame.getBoard(), color);
       inGame = true;
       return String.format("Joined game %d as: %s. ", gameID, color);
     }

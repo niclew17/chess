@@ -1,10 +1,7 @@
 package dataAccessTests;
 
 import dataAccess.DataAccessException;
-import dataAccess.MySQLAuthDAO;
 import dataAccess.MySQLUserDAO;
-import dataAccess.UserDAO;
-import model.AuthData;
 import model.UserData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

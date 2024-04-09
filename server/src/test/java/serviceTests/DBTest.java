@@ -5,19 +5,11 @@ import dataAccess.MemoryAuthDAO;
 import dataAccess.MemoryGameDAO;
 import dataAccess.MemoryUserDAO;
 import model.AuthData;
-import model.GameData;
 import org.junit.jupiter.api.Test;
-import request.CreateGameRequest;
-import request.LoginRequest;
 import request.RegisterRequest;
-import response.CreateGameResponse;
-import response.ListGamesResponse;
 import services.DB;
 import services.Game;
 import services.User;
-
-import java.util.Collection;
-import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 

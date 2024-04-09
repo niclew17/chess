@@ -3,7 +3,6 @@ package dataAccessTests;
 import dataAccess.DataAccessException;
 import dataAccess.MySQLAuthDAO;
 import dataAccess.MySQLGameDAO;
-import model.AuthData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import request.CreateGameRequest;

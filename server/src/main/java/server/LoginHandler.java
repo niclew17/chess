@@ -6,7 +6,6 @@ import dataAccess.AuthDAO;
 import dataAccess.UserDAO;
 import model.AuthData;
 import model.Message;
-import model.UserData;
 import request.LoginRequest;
 import services.User;
 import spark.Request;

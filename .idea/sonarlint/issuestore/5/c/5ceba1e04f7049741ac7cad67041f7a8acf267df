@@ -1,5 +1,4 @@
 
-¸
-java:S1319
-"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(×ãôJ$a0c83228-4b67-46c5-a55d-fdb7f8c5063f
-š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–ÇüÿÿÿÿJ$4e1dc747-4709-4279-9eaa-c6644bd14755
+Ä
+java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿ8¸Êñ¢ì1J$ac75bfc3-9199-4770-83ed-45a5262d4987
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8Šğ¢ì1J$4892248e-c815-4f92-be54-42d2d71f0c68

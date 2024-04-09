@@ -4,18 +4,11 @@ import com.google.gson.Gson;
 import dataAccess.DataAccessException;
 import dataAccess.AuthDAO;
 import dataAccess.GameDAO;
-import model.AuthData;
-import model.GameData;
 import model.Message;
-import model.UserData;
-import request.CreateGameRequest;
 import response.ListGamesResponse;
 import services.Game;
-import services.User;
 import spark.Request;
 import spark.Response;
-
-import java.util.Collection;
 
 public class ListGamesHandler {
   private final Game service;

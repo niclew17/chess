@@ -4,19 +4,12 @@ import com.google.gson.Gson;
 import dataAccess.DataAccessException;
 import dataAccess.AuthDAO;
 import dataAccess.GameDAO;
-import model.AuthData;
-import model.GameData;
 import model.Message;
 import request.CreateGameRequest;
-import request.LoginRequest;
-import request.RegisterRequest;
 import response.CreateGameResponse;
 import services.Game;
-import services.User;
 import spark.Request;
 import spark.Response;
-
-import java.util.Collection;
 
 public class CreateGameHandler {
   private final Game service;

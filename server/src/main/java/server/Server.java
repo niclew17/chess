@@ -5,16 +5,18 @@ import dataAccess.*;
 import spark.Spark;
 
 public class Server {
-    private final WebsocketHandler websocketHandler;
+    private WebsocketHandler webSocketHandler;
 
-    public Server(WebsocketHandler websocketHandler) {
-        websocketHandler= new websocketHandler();
+    public Server() {
     }
 
     public int run(int desiredPort) {
         Spark.port(desiredPort);
 
         Spark.staticFiles.location("web");
+
+        Spark.webSocket("/connect", webSocketHandler);
+
         UserDAO userDAO = null;
         GameDAO gameDAO = null;
         AuthDAO authDAO =null;
@@ -37,6 +39,7 @@ public class Server {
         UserDAO finalUserDAO = userDAO;
         GameDAO finalGameDAO = gameDAO;
         AuthDAO finalAuthDAO=authDAO;
+        webSocketHandler= new WebsocketHandler(finalGameDAO, finalAuthDAO);
         Spark.delete("/db", (req, res) -> new ClearAppHandler(finalUserDAO, finalAuthDAO, finalGameDAO).clear(req,res));
         Spark.post("/user", (req, res) -> new RegisterHandler(finalUserDAO, finalAuthDAO).register(req,res));
         Spark.post("/session", (req, res) -> new LoginHandler(finalUserDAO, finalAuthDAO).login(req,res));
