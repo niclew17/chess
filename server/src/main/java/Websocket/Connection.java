@@ -1,9 +1,10 @@
 package Websocket;
-
+import org.eclipse.jetty.websocket.api.Session;
+import com.google.gson.Gson;
 import webSocketMessages.serverMessages.ServerMessage;
 
 import javax.websocket.EncodeException;
-import javax.websocket.Session;
+
 import java.io.IOException;
 
 public class Connection {
@@ -16,7 +17,6 @@ public class Connection {
   }
 
   public void send(ServerMessage msg) throws IOException, EncodeException {
-
-    session.getBasicRemote().sendObject(msg);
+    session.getRemote().sendString(new Gson().toJson(msg));
   }
 }

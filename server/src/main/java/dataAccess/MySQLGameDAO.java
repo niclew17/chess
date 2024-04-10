@@ -98,6 +98,20 @@ public class MySQLGameDAO implements GameDAO {
     return null;
   }
 
+  public void updateGame(int gameID, ChessGame game) throws DataAccessException {
+    try (var conn=DatabaseManager.getConnection()) {
+      var statement="UPDATE games SET game=? WHERE gameID=?";
+      try (var ps=conn.prepareStatement(statement)) {
+        var json = new Gson().toJson(game);
+        ps.setString(1, json);
+        ps.setInt(2, gameID);
+        ps.executeUpdate();
+      }
+    } catch (Exception e) {
+      throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
+    }
+  }
+
   public void updateBlackGame(JoinGameRequest game, String username) throws DataAccessException {
     try (var conn=DatabaseManager.getConnection()) {
       var statement="UPDATE games SET blackUsername=? WHERE gameID=?";
@@ -105,7 +119,6 @@ public class MySQLGameDAO implements GameDAO {
         ps.setString(1, username);
         ps.setInt(2, game.gameID());
         ps.executeUpdate();
-
       }
     } catch (Exception e) {
       throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));

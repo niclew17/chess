@@ -187,7 +187,7 @@ public class WebSocketTests {
     @DisplayName("Join Observer Bad GameID")
     public void joinObserverBadGameID() {
         Map<String, List<TestModels.TestMessage>> messages =
-                joinObserver(observer.user, observer.authToken, gameID + 1, Set.of(), Set.of());
+                joinObserver(observer.user, observer.authToken, gameID+1, Set.of(), Set.of());
 
         assertErrorMessage(messages.get(observer.user));
     }

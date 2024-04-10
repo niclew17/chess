@@ -1,9 +1,11 @@
 
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$4633f48f-381f-4baa-87b7-91db351f08ea
-	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$f95ef185-fd9d-4f7c-9008-1ef01af67df2
-	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$cee85f16-3b10-48d5-a1e7-2e0dc8143191
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$f833e310-bc7e-4aae-b19f-f18a8b2b4504
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$20fc921c-701d-47f8-9b04-5918cd57bd2b
+	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8®ª£μ1J$7ecf7f48-22ff-4d3c-9997-6d8a7c6d1788
 ‰
-java:S1192/"FDefine a constant instead of duplicating this literal "/game" 3 times.(“†ΎÒ8―ª£μ1J$dc4afb3e-aa15-4747-a835-3acd7e3a82bd
+java:S11921"FDefine a constant instead of duplicating this literal "/game" 3 times.(“†ΎÒ8―ª£μ1J$ab8b01b7-9fa2-4eea-9be0-5de95f3ac4cf
 Ι
 java:S1186
-"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ΊΜϊÒÿÿÿÿÿ8•¬£μ1J$15ef27f5-2edb-4994-ac04-d3ccff8e42a8
+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ΊΜϊÒÿÿÿÿÿ8•¬£μ1J$b9f0cdf5-2977-44f0-b77a-e05f9042dda4
+Ά
+java:S1450"_Remove the "webSocketHandler" field and declare it as a local variable in the relevant methods.(Έ‰‚8²ªμ1J$9518597b-49cf-460e-b76f-f0d8262fb76d

@@ -1,4 +1,6 @@
 import Websocket.NotificationHandler;
+import chess.ChessBoard;
+import ui.MakeBoard;
 import webSocketMessages.serverMessages.ErrorMessage;
 import webSocketMessages.serverMessages.LoadGame;
 import webSocketMessages.serverMessages.Notification;
@@ -10,8 +12,11 @@ import static ui.EscapeSequences.*;
 public class Repl implements NotificationHandler {
   private final ChessClient client;
 
+  private MakeBoard makeboard;
+
   public Repl(String serverUrl) {
     client=new ChessClient(serverUrl, this);
+    makeboard = new MakeBoard();
   }
 
   public void run() {
@@ -54,7 +59,7 @@ public class Repl implements NotificationHandler {
     switch (message.getServerMessageType()) {
       case NOTIFICATION -> displayNotification(((Notification) message).getMessage());
       case ERROR -> displayError(((ErrorMessage) message).getErrorMessage());
-      case LOAD_GAME -> loadGame(((LoadGame) message).getGame());
+      case LOAD_GAME -> loadGame(((LoadGame) message).getGame(), ((LoadGame) message).getColor());
     }
   }
 
@@ -66,8 +71,8 @@ public class Repl implements NotificationHandler {
     System.out.println(SET_BG_COLOR_RED + message);
     printPrompt();
   }
-  public void loadGame(boolean message){
-    System.out.println(SET_BG_COLOR_DARK_GREEN);
+  public void loadGame(ChessBoard board, String color){
+    makeboard.printBoard(board, color);
     printPrompt();
   }
 

@@ -1,14 +1,21 @@
 
 ]
-java:S1220""Move this file to a named package.8έοξμ1J$1f003ba9-249a-41b3-8a2a-fb0a72de91c2
-m	java:S106"+Replace this use of System.out by a logger.(κϋΰ8ροξμ1J$6c962b59-5357-41f8-b56e-1529cd733e0b
-r	java:S106"+Replace this use of System.out by a logger.(ήρ•ÿÿÿÿÿ8ροξμ1J$82faddf2-7466-4bff-87dc-a02ec87387b6
-r	java:S106"+Replace this use of System.out by a logger.(ΘΆτούÿÿÿÿ8σοξμ1J$91c0d7ab-a2e8-400f-8b8d-b3cbc217bbbe
-m	java:S106 "+Replace this use of System.out by a logger.(¤«ΊΡ8τοξμ1J$478d50d0-a9b4-44ce-a58a-75f7d6d1e7d7
-r	java:S106&"+Replace this use of System.out by a logger.(ΘΆτούÿÿÿÿ8τοξμ1J$99bd1c06-436d-4b5b-a4a2-1a3c24706a8b
-m	java:S106)"+Replace this use of System.out by a logger.(¤«ΊΡ8τοξμ1J$3ab43169-ed40-458d-8001-b8df9d38c3a9
-r	java:S106."+Replace this use of System.out by a logger.(ªΣΌαώÿÿÿÿ8τοξμ1J$b1c30233-c788-4f7f-a50a-f82fb3a17d31
-m	java:S1061"+Replace this use of System.out by a logger.(Δ‚³8τοξμ1J$13e21d8a-52e8-4250-904a-ad999735d845
-r	java:S106>"+Replace this use of System.out by a logger.(“φχνύÿÿÿÿ8φοξμ1J$1108e885-4ed0-4336-b022-4861cfb1fb37
-r	java:S106B"+Replace this use of System.out by a logger.(ξ©Θΐϋÿÿÿÿ8φοξμ1J$d806ba53-b848-406f-a1d5-20bae5cf694c
-m	java:S106F"+Replace this use of System.out by a logger.(Ίµώύ8φοξμ1J$4d4c59de-5b60-414c-82d2-ae1d5fc667bb
+java:S1220""Move this file to a named package.8²²¤μ1J$61bd5260-5e82-4ed9-8456-1b3fcdcb287f
+l
+java:S2440")Remove this instantiation of "MakeBoard".(±½™8Α²¤μ1J$7ece0581-b05d-4ed0-9f48-970559654c3e
+m	java:S106"+Replace this use of System.out by a logger.(κϋΰ8Α²¤μ1J$ce46750d-0b6d-4f60-9247-a96e41d69373
+r	java:S106"+Replace this use of System.out by a logger.(ήρ•ÿÿÿÿÿ8Α²¤μ1J$ad601623-64d7-40ce-987e-b68cb32cbbbc
+m
+java:S1181#"%Catch Exception instead of Throwable.(‡ΪΪψÿÿÿÿ8Δ²¤μ1J$e02b3190-ebbb-49ac-9caf-04aa6abcb1e2
+r	java:S106""+Replace this use of System.out by a logger.(ΘΆτούÿÿÿÿ8Δ²¤μ1J$98cafde8-f368-4365-b98a-4612868bcf8c
+m	java:S106%"+Replace this use of System.out by a logger.(¤«ΊΡ8Δ²¤μ1J$659b28d0-a858-4397-a305-00a4bbabc55a
+m
+java:S1181,"%Catch Exception instead of Throwable.(‡ΪΪψÿÿÿÿ8Ε²¤μ1J$6b3f7b48-aadf-4954-b678-e143a2ea4b79
+r	java:S106+"+Replace this use of System.out by a logger.(ΘΆτούÿÿÿÿ8Ε²¤μ1J$531ec78c-d521-46f2-9697-939f5f8a4783
+m	java:S106."+Replace this use of System.out by a logger.(¤«ΊΡ8Ε²¤μ1J$602a7474-8cd4-4650-9610-d344ba074b99
+r	java:S1063"+Replace this use of System.out by a logger.(ªΣΌαώÿÿÿÿ8Ε²¤μ1J$9192c8d9-51ca-4f54-8ccc-706eab47b612
+m	java:S1066"+Replace this use of System.out by a logger.(Δ‚³8Ε²¤μ1J$c409c1b7-d96a-4976-a93c-7ffee9c5e1ce
+r	java:S106C"+Replace this use of System.out by a logger.(“φχνύÿÿÿÿ8Η²¤μ1J$8dceded3-4ea3-433a-9f41-26e24404654f
+r	java:S106G"+Replace this use of System.out by a logger.(ξ©Θΐϋÿÿÿÿ8Η²¤μ1J$ae52f8ef-1d86-4428-b39b-77fc8cb15ec9
+x
+java:S2209K"5Change this instance-reference to a static reference.(ΔΏΜΡ8ίΌ ¤μ1J$1e0434d6-fcaf-41c3-8df0-c28bf508370c

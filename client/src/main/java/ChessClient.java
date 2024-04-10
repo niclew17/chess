@@ -29,9 +29,11 @@ public class ChessClient {
 
   private MakeBoard makeboard;
 
-  private ChessGame newgame;
+
 
   private String joinGameColor;
+
+  private int inGameID;
   private boolean inGame;
   private String authtoken;
   public ChessClient(String serverUrl, NotificationHandler notificationHandler) {
@@ -39,7 +41,6 @@ public class ChessClient {
     this.serverUrl = serverUrl;
     this.notificationHandler = notificationHandler;
     inGame = false;
-    newgame = new ChessGame();
     makeboard = new MakeBoard();
   }
 
@@ -134,8 +135,7 @@ public class ChessClient {
       ChessPosition start = new ChessPosition(row1, column1);
       ChessPosition end = new ChessPosition(row2, column2);
       ChessMove move = new ChessMove(start, end, null);
-      newgame.makeMove(move);
-      makeboard.printBoard(newgame.getBoard(), joinGameColor);
+      ws.makeMove(authtoken, inGameID, move, joinGameColor);
       return String.format("You moved from %s%d to %s%d", columnname1, row1, columnname2, row2);
     }
     throw new DataAccessException("Expected: <username>");
@@ -201,6 +201,7 @@ public class ChessClient {
       var color= params[0].toUpperCase();
       var gameID = Integer.parseInt(params[1]);
       joinGameColor = color;
+      inGameID = gameID;
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
       ws = new WebSocketFacade(serverUrl, notificationHandler);
       ws.joinPlayer(authtoken, gameID, color);
@@ -213,9 +214,10 @@ public class ChessClient {
     assertSignedIn();
     if (params.length >= 1) {
       var gameID = Integer.parseInt(params[0]);
+      inGameID = gameID;
       server.joinGame(new JoinGameRequest(null, gameID), authtoken);
-      makeboard.printBoard(newgame.getBoard(), "WHITE");
-      makeboard.printBoard(newgame.getBoard(), "BLACK");
+      ws = new WebSocketFacade(serverUrl, notificationHandler);
+      ws.joinObserver(authtoken, gameID);
       return String.format("Joined game %d as an observer", gameID);
     }
     throw new DataAccessException("Expected: <game ID>");

@@ -87,3 +87,17 @@ U
 %src/main/java/dataAccess/GameDAO.java,6/1/617f044e157f142d8ccbfef4cc97aa186e3572c5
 ]
 -src/main/java/response/ListGamesResponse.java,2/8/28c7e6828b384bfbaaf88e2684f68390091436e7
+Q
+!src/main/java/model/GameData.java,6/7/67153312f42cfc25e918e7241d99ff3d32f0ce01
+O
+src/main/java/ui/MakeBoard.java,3/3/338cf36fcf9210b2bfd0fab575ff406ecc1f754d
+R
+"src/main/java/chess/ChessGame.java,7/3/73bf4fdc57c71c6f70f600b9fea515a646b27eef
+R
+"src/main/java/chess/ChessMove.java,4/2/429c55da8253d8ee02138d80d1951c5e7d4a468c
+[
++src/main/java/dataAccess/MemoryGameDAO.java,e/7/e78a5bea596e9796e20bbbdfdea723d23b928b39
+Z
+*src/main/java/dataAccess/MySQLAuthDAO.java,e/9/e972162e581971cee3c6368c8c37da9c10d46682
+l
+<src/test/java/passoffTests/serverTests/StandardAPITests.java,2/3/230d5c2bddf1c1b38de512b86822f5fc87a9330d

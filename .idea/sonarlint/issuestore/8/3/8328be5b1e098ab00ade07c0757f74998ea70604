@@ -1,34 +1,24 @@
 
-	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8® Ä‚ì1J$602ef9c6-c7da-40f9-8848-ae7666f3ba62
-	java:S112b"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8® Ä‚ì1J$054fb408-bb1a-4363-8241-18c4087f2206
-	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8® Ä‚ì1J$693a523d-dc02-4748-842e-fe42621f1f68
-ˆ	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8® Ä‚ì1J$7d9fb1af-6d48-408c-84d6-00941ee442ff
+	java:S112["FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8øÏë¥ì1J$44375b3e-26ad-4361-9ca5-b422dde5e188
+	java:S112c"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8øÏë¥ì1J$0ba8fbef-f1ca-4158-9b59-c41e2ad3ee46
+	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8øÏë¥ì1J$aa16bbea-000f-4150-8abc-db4a51db4222
+b	java:S112z"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8áÃã°ì1
 ˜
-java:S1192v"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8¯ Ä‚ì1J$8a05ddcd-9c67-44d4-b3c7-8f9d39766ec0
-
-java:S1192l"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(ºÇú¤şÿÿÿÿ8¯ Ä‚ì1J$363141d4-e20a-4bfe-875f-0a95d9f4dc84
+java:S1192w"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8ùÏë¥ì1J$e71a96e6-ff0b-47fd-966a-c7455042c73b
 ]
-java:S1220""Move this file to a named package.8± Ä‚ì1J$ec80a1d7-7384-48f5-a11b-b88420bb197f
-™
-java:S1450"QRemove the "ws" field and declare it as a local variable in the relevant methods.(™ËñÚüÿÿÿÿ8Î Ä‚ì1J$8ee0bd43-153a-4bdb-b4bd-8ba691e40451
+java:S1220""Move this file to a named package.8ûÏë¥ì1J$c916657e-d8f9-4dd2-8784-886b9791f9ae
 l
-java:S2440+")Remove this instantiation of "MakeBoard".(Œ±½™8Ğ Ä‚ì1J$c9713231-594a-4088-a26b-942233676783
+java:S2440,")Remove this instantiation of "MakeBoard".(Œ±½™8‹Ğë¥ì1J$2c794bf7-dc81-4d47-8d7a-4f552f811155
 x
-java:S2209^"5Change this instance-reference to a static reference.(’´íœ8Ó Ä‚ì1J$66511e41-06ff-4ba2-901f-6b2182416f5f
+java:S2209_"5Change this instance-reference to a static reference.(’´íœ8Ğë¥ì1J$6d0745be-f14c-4bf0-9c34-702a4c818548
 g
-java:S3457_"%String contains no format specifiers.(ÎâŒ 8Ó Ä‚ì1J$40bb594d-8942-474d-a96b-9bd45ed26aae
+java:S3457`"%String contains no format specifiers.(ÎâŒ 8Ğë¥ì1J$73064ee1-c200-4785-9b34-aae0b95235f3
 x
-java:S2209s"5Change this instance-reference to a static reference.(Ô‘º¿8Ô Ä‚ì1J$87432bb2-70dc-4210-a99f-55247bdc7536
+java:S2209t"5Change this instance-reference to a static reference.(Ô‘º¿8’Ğë¥ì1J$e864da9e-2974-4094-a868-24a7ad4ab62d
 h
-java:S3457t"%String contains no format specifiers.(ŸîØí8Õ Ä‚ì1J$134dc031-9d95-4050-8b1b-a0b9a09ad219
-~
-java:S2209Š"5Change this instance-reference to a static reference.( ³È®úÿÿÿÿ8Ö Ä‚ì1J$ec79c0c0-0b32-4430-bca0-0d55e5233e00
-n	java:S106½"+Replace this use of System.out by a logger.(©Ÿœ8Ù Ä‚ì1J$434a9f67-f920-4099-bf6f-6e48657817ba
-s	java:S106À"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8Ù Ä‚ì1J$2308441d-aeb2-4d1b-8583-0bd8c6e90278
-n	java:S106Á"+Replace this use of System.out by a logger.(÷¹§µ8Ù Ä‚ì1J$3be9586d-ee50-4507-b019-7b756474f929
+java:S3457u"%String contains no format specifiers.(ŸîØí8’Ğë¥ì1J$a6d36a77-7474-4432-ae5c-60742ef478b7
+n	java:S106½"+Replace this use of System.out by a logger.(©Ÿœ8—Ğë¥ì1J$16fd8be1-07e7-4d07-bf87-f2feffe3c224
+s	java:S106À"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8—Ğë¥ì1J$714e5dad-6d2f-4a9f-b7f5-0bab85d9c804
+n	java:S106Á"+Replace this use of System.out by a logger.(÷¹§µ8—Ğë¥ì1J$29c39e4e-41da-4339-9d7a-a0716d0a007f
 n
-java:S3457Ä"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8Ù Ä‚ì1J$46bb3052-1916-4f06-b82a-7429de5b52ce
-~
-java:S2209Ù"5Change this instance-reference to a static reference.(ë¥œûÿÿÿÿ8Û Ä‚ì1J$acc5018a-2c67-477f-95b4-42c51b61eacc
-y
-java:S2209Ú"5Change this instance-reference to a static reference.(œÓªÌ8Û Ä‚ì1J$1f1dca88-154b-4edb-8b57-7db3cdaff2f9
+java:S3457Ä"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8˜Ğë¥ì1J$e0ea335b-4533-4e12-a851-8ab81856e72d

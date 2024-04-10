@@ -9,15 +9,44 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ConnectionManager {
   public final ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> connections = new ConcurrentHashMap<>();
-  public void add(int gameID, String authtoken, Connection conn) {
+  public void addPlayer(int gameID, String authtoken, Connection conn){
     connections.get(gameID).put(authtoken, conn);
   }
 
-  public void remove(int gameID, String authtoken) {
+  public void cleanConnections(){
+    connections.clear();
+  }
+
+  public ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> getConnections() {
+    return connections;
+  }
+
+  public void addGame(int gameID) {
+    connections.put(gameID, new ConcurrentHashMap<>());
+  }
+
+  public void removePlayer(int gameID, String authtoken) {
     connections.get(gameID).remove(authtoken);
   }
+  public void removeGame(int gameID) {
+    connections.remove(gameID);
+  }
+  public ConcurrentHashMap<String, Connection> getGame(int gameID){
+    if(connections == null){
+      return null;
+    }
+    else {
+      return connections.get(gameID);
+    }
+  }
+
   public Connection getConnection(int gameID, String auth){
-    return connections.get(gameID).get(auth);
+    if(connections.get(gameID)== null){
+      return null;
+    }
+    else {
+      return connections.get(gameID).get(auth);
+    }
   }
   public void broadcast(int gameID, String excludeauthtoken, ServerMessage serverMessage) throws IOException, EncodeException {
     var removeList = new ArrayList<Connection>();
@@ -30,7 +59,6 @@ public class ConnectionManager {
         removeList.add(c);
       }
     }
-
     // Clean up any connections that were left open.
     for (var c : removeList) {
       connections.remove(c.authtoken);

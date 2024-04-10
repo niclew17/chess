@@ -36,6 +36,10 @@ public class MakeBoard {
     else if(color.equals("BLACK")){
       drawTicTacToeBoardBottom(out, myboard, null);
     }
+    else{
+      drawTicTacToeBoard(out, myboard, null);
+      drawTicTacToeBoardBottom(out, myboard, null);
+    }
     drawHeaders(out);
     out.println();
   }

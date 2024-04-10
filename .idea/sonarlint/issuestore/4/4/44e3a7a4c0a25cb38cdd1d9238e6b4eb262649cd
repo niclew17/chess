@@ -1,0 +1,25 @@
+
+ˆ	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8õ Ú°ì1J$0eb51f43-c0bd-4847-be7d-cd3e4bfe32f2
+œ
+java:S1192†"SDefine a constant instead of duplicating this literal "Game Doesn't Exist" 3 times.(ûàƒúÿÿÿÿ8ö Ú°ì1J$50a304e4-3e63-4fe3-9f92-3edf399a237d
+˜	java:S117}"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êö¶–ÿÿÿÿÿ8÷ Ú°ì1J$5c2bc7de-fa71-4704-a269-e26bd2ffe519
+“	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éŠË,8÷ Ú°ì1J$261839f4-e936-4be5-8ab8-ba1fb132199c
+™	java:S117¾"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ô’úÿÿÿÿ8÷ Ú°ì1J$57fd7ac3-de84-4af0-ad3f-611ea2a5b073
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8ø Ú°ì1J$6c60968d-a0b4-4c81-84ff-18135c882d46
+†
+java:S2583°"CChange this condition so that it does not always evaluate to "true"(Û‰ç)8Œ¡Ú°ì1J$2b5da8e4-d3b8-4a5a-8dec-6c762c43a10b
+Å
+java:S1186Ü"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÀëÊ€8Œ¡Ú°ì1J$e337b4f0-ac53-430a-965d-4f360069d1c9
+Ä
+java:S1186ß"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷¼,8Œ¡Ú°ì1J$ab24eb6d-c96c-4efe-ad1f-c83624b2920b
+•
+java:S3776;"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¥†¬è8¡Ú°ì1J$5ea3f531-f015-4ee6-877d-b7c68739765d
+ƒ	java:S125C"<This block of commented-out lines of code should be removed.(»ø„ëşÿÿÿÿ8’¡Ú°ì1J$e4597a45-3c06-41eb-a14f-daeeae185761
+›
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(éä‚úÿÿÿÿ8—¡Ú°ì1J$4464f18c-0ddd-4d01-a7fe-7bfa95e3aab5
+x
+java:S1172Ü"4Remove these unused method parameters "conn", "msg".(ÀëÊ€8œ¡Ú°ì1J$be818c5c-eb73-4a4e-9dc8-f830bafefeb8
+w
+java:S1172ß"4Remove these unused method parameters "conn", "msg".(÷¼,8œ¡Ú°ì1J$1942acd7-c68a-4be7-a6c0-61135a8017f5
+s
+java:S1068'"+Remove this unused "userDAO" private field.(Ó¢­éûÿÿÿÿ8œ¡Ú°ì1J$c946982b-5ed1-4d4e-9659-397bbbd2e804

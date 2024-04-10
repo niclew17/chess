@@ -1,4 +1,14 @@
 
 Ä
-java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿ8¸Êñ¢ì1J$ac75bfc3-9199-4770-83ed-45a5262d4987
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8Šğ¢ì1J$4892248e-c815-4f92-be54-42d2d71f0c68
+java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿ8€¾ü®ì1J$b3dd5e5a-4da4-4fa7-9be2-900d4c6ad4eb
+Ê
+java:S1319"The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Ïäšğÿÿÿÿÿ8¾ü®ì1J$e4576745-4302-4de6-80ba-cca12ee55fd2
+Ê
+java:S1319""The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Î®ıûÿÿÿÿ8¾ü®ì1J$7a477d8e-7c37-4d0b-80f4-c3fb419dff33
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8¾ü®ì1J$961744e6-35f8-4f4b-a62a-4cab52c54280
+‡
+java:S2583#"DChange this condition so that it does not always evaluate to "false"(¬âõ½8‡¾ü®ì1J$22bb45f5-5085-43fa-be5f-3f5bafdf6a73
+g
+java:S1168$"$Return an empty map instead of null.(¥¹ï8Œ¾ü®ì1J$273dfd95-8b50-4015-820e-34829a2e2efe
+¨
+java:S2175@"`A "ConcurrentHashMap<Integer, ConcurrentHashMap>" cannot contain a "String" in a "Integer" type.(¼Œœ¦øÿÿÿÿ8¾ü®ì1J$c2eefbe5-a918-498b-996f-7e7aaeb44c8d
