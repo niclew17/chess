@@ -44,7 +44,7 @@ public class MySQLGameDAO implements GameDAO {
         }
       }
     } catch (SQLException ex) {
-      throw new DataAccessException(String.format("Unable to configure database: %s", ex.getMessage()));
+      throw new DataAccessException(String.format("Unable to configure Game database: %s", ex.getMessage()));
     }
   }
 

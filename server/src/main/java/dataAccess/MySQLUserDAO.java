@@ -33,7 +33,7 @@ public class MySQLUserDAO implements UserDAO {
         }
       }
     } catch (SQLException ex) {
-      throw new DataAccessException(String.format("Unable to configure database: %s", ex.getMessage()));
+      throw new DataAccessException(String.format("Unable to configure User database: %s", ex.getMessage()));
     }
   }
   final private static HashMap<String, UserData> users =new HashMap<>();

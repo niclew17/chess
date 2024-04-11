@@ -21,3 +21,13 @@ M
 src/main/java/ClientMain.java,7/8/7838a6281ec1b99fa2c1155cc59b2353ab6052f7
 \
 ,src/main/java/Websocket/WebSocketFacade.java,1/1/11c71ef2d8048e0517166b9366ed49d4b676b57b
+G
+src/main/java/Main.java,e/4/e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+O
+src/main/java/ui/MakeBoard.java,3/3/338cf36fcf9210b2bfd0fab575ff406ecc1f754d
+Z
+*src/main/java/dataAccess/MySQLGameDAO.java,c/d/cdc924207f976b4235c76c22894a6a9918e041c0
+Z
+*src/main/java/dataAccess/MySQLUserDAO.java,6/a/6a296a5632e22c64d9f0ea8f71753c00c6644ccc
+Z
+*src/main/java/dataAccess/MySQLAuthDAO.java,e/9/e972162e581971cee3c6368c8c37da9c10d46682

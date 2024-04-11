@@ -1,13 +1,11 @@
 package dataAccess;
 
-import com.google.gson.Gson;
 import model.AuthData;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.UUID;
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 import static java.sql.Types.NULL;
 
 public class MySQLAuthDAO implements AuthDAO{
@@ -34,7 +32,7 @@ public class MySQLAuthDAO implements AuthDAO{
         }
       }
     } catch (SQLException ex) {
-      throw new DataAccessException(String.format("Unable to configure database: %s", ex.getMessage()));
+      throw new DataAccessException(String.format("Unable to configure Auth database: %s", ex.getMessage()));
     }
   }
 
