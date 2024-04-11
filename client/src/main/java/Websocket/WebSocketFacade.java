@@ -2,10 +2,8 @@ package Websocket;
 
 import chess.ChessMove;
 import com.google.gson.Gson;
-import dataAccess.DataAccessException;
 import webSocketMessages.serverMessages.ServerMessage;
 import webSocketMessages.userCommands.*;
-
 import javax.websocket.*;
 import java.io.IOException;
 import java.net.URI;
@@ -15,7 +13,7 @@ public class WebSocketFacade extends Endpoint {
   Session session;
   NotificationHandler notificationHandler;
 
-  public WebSocketFacade(String url, NotificationHandler notificationHandler) throws DataAccessException {
+  public WebSocketFacade(String url, NotificationHandler notificationHandler) throws Exception {
     try {
       url = url.replace("http", "ws");
       URI socketURI = new URI(url + "/connect");
@@ -38,7 +36,7 @@ public class WebSocketFacade extends Endpoint {
         }
       });
     } catch (DeploymentException | IOException | URISyntaxException ex) {
-      throw new DataAccessException(ex.getMessage());
+      throw new Exception(ex.getMessage());
     }
   }
 

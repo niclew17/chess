@@ -1,9 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(δεσ
-G
-java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§
-I
-java:S1128".Remove this unused import 'java.util.HashMap'.(™”€ωÿÿÿÿ
-`
-java:S1128
-"ERemove this unused import 'java.sql.Statement.RETURN_GENERATED_KEYS'.(ΌαΫϊÿÿÿÿ

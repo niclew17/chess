@@ -1,7 +1,0 @@
-
-
-java:S1104
-"UMake authtoken a static final constant or non-public and provide accessors if needed.(¶ıã¥ÿÿÿÿÿ8 Äß£ì1J$5a1c14bf-b9d6-46d9-b0f4-b814a6ee1e65
-›
-java:S1104"SMake session a static final constant or non-public and provide accessors if needed.(áÿ“ƒıÿÿÿÿ8 Äß£ì1J$6575328c-6d95-4999-b4b5-de04b6bfe609
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8 Äß£ì1J$74de948d-a827-4f40-b4e7-ac18cbc65064
