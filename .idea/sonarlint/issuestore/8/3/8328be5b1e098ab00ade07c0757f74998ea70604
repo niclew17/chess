@@ -1,29 +1,29 @@
 
-	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8¾÷Ìì1J$ace8d8ee-2e0d-442e-a37f-8f8aaede610c
-	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8¾÷Ìì1J$8820cfbd-f052-4b38-89a2-94ac8e149583
-	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(¤˜…úÿÿÿÿ8¾÷Ìì1J$a21a582d-8472-4545-88eb-e297ee96fb37
-	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8¾÷Ìì1J$f0432469-5ac2-469c-8e5d-1c88c5089d63
-‰	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8¾÷Ìì1J$d584b063-0e15-456f-9ba4-e405665942ca
+	java:S112n"FDefine and throw a dedicated exception instead of using a generic one.(ãûÌÌùÿÿÿÿ8¾÷Ìì1J$59e2be40-e3cd-4d10-98c0-33c99f3c14b2
+	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ8¾÷Ìì1J$4df99576-2f8e-497e-a459-69d430af40f9
+	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(¤˜…úÿÿÿÿ8¾÷Ìì1J$6337e9a0-473b-462d-966f-8abece7ebb6f
+	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ8¾÷Ìì1J$e4bee48c-9296-4a36-9afb-d391bc879456
+‰	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(êæ”8¾÷Ìì1J$90d7c42d-bc9e-4068-897e-4bd7b64de356
 ™
-java:S1192‘"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8Ÿ¾÷Ìì1J$a922de3d-ed1b-497a-b34c-c3858917b36d
+java:S1192‘"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(÷Øí8Ÿ¾÷Ìì1J$fe294848-e5c3-4278-962a-6322dd230d18
 ]
-java:S1220""Move this file to a named package.8 ¾÷Ìì1J$42da2301-2ec8-4203-8741-769ff16f6632
+java:S1220""Move this file to a named package.8 ¾÷Ìì1J$babe0b62-d643-4693-b04d-ebf1beca351d
 l
-java:S2440.")Remove this instantiation of "MakeBoard".(Œ±½™8´¾÷Ìì1J$eb37ed08-0f3a-4d3e-b65b-37b5ac1adf72
+java:S2440.")Remove this instantiation of "MakeBoard".(Œ±½™8´¾÷Ìì1J$af6bf145-5f5e-423f-9528-780b49f4f0fe
 x
-java:S2209p"5Change this instance-reference to a static reference.(àïÓå8·¾÷Ìì1J$ef5264ea-ba12-4ced-a133-f6e3f545ce2a
+java:S2209p"5Change this instance-reference to a static reference.(àïÓå8·¾÷Ìì1J$45447e28-885b-4deb-9bf3-f5294651b7d1
 g
-java:S3457q"%String contains no format specifiers.(ÎâŒ 8¸¾÷Ìì1J$f6a89e76-f2fd-45be-a2b8-cab6f2b88814
+java:S3457q"%String contains no format specifiers.(ÎâŒ 8¸¾÷Ìì1J$eb997575-7071-4820-9b4e-dd2d3e94aa99
 y
-java:S2209"5Change this instance-reference to a static reference.(ŠÉùÍ8¹¾÷Ìì1J$f8353ceb-ebbd-4a04-999b-21ca601aa15e
+java:S2209"5Change this instance-reference to a static reference.(ŠÉùÍ8¹¾÷Ìì1J$bf7f4a11-3890-4b09-8ebd-3755efbf43a1
 i
-java:S3457"%String contains no format specifiers.(ŸîØí8¹¾÷Ìì1J$f6232aee-f46d-42c7-a181-96c56f511cd0
-n	java:S106Ö"+Replace this use of System.out by a logger.(©Ÿœ8¼¾÷Ìì1J$e66da028-d5ea-4841-b37d-28068931c6a5
-s	java:S106Ù"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8¼¾÷Ìì1J$00319615-b32a-4cb5-b14f-057fde282b2a
-n	java:S106Ú"+Replace this use of System.out by a logger.(÷¹§µ8¼¾÷Ìì1J$66cc3cab-c3ad-4e3a-bacd-e70cf3db9fad
+java:S3457"%String contains no format specifiers.(ŸîØí8¹¾÷Ìì1J$b9f0f69b-1c82-4a57-9237-c977ccb29556
+n	java:S106Ö"+Replace this use of System.out by a logger.(©Ÿœ8¼¾÷Ìì1J$7ef50ac2-1870-4bdf-8ce3-ec0660858829
+s	java:S106Ù"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ8¼¾÷Ìì1J$bd255b42-ea70-4242-baa1-b84cf6c16687
+n	java:S106Ú"+Replace this use of System.out by a logger.(÷¹§µ8¼¾÷Ìì1J$b868db19-914d-4aa9-b77b-849706c62a1c
 n
-java:S3457İ"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8¼¾÷Ìì1J$e89d9513-e169-45d9-8998-a883fb4bb73d
+java:S3457İ"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ8¼¾÷Ìì1J$02d4700a-1430-4464-b94f-a3eaf4487746
 p
-java:S1068"-Remove this unused "serverUrl" private field.(ú¯³†8¾¾÷Ìì1J$3807229f-ce1f-4586-ae19-23fcb753448e
+java:S1068"-Remove this unused "serverUrl" private field.(ú¯³†8¾¾÷Ìì1J$bf2328d6-e031-4ae6-aabb-0bf15fcfb3b7
 y
-java:S1068"7Remove this unused "notificationHandler" private field.(Ö×¿=8¿¾÷Ìì1J$8dfd24e4-4044-4c18-9407-bddc017ef8df
+java:S1068"7Remove this unused "notificationHandler" private field.(Ö×¿=8¿¾÷Ìì1J$8dd6c671-72f4-40e7-8aeb-cf2beb14cc0c

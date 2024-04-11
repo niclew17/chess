@@ -43,7 +43,28 @@ public class ChessMove {
 
     @Override
     public String toString() {
-        return  startPosition + " to " + endPosition + "}\n";
+        return  getColumnLetter(startPosition.getColumn()) + startPosition.getRow() + " to " + getColumnLetter(endPosition.getColumn()) + endPosition.getRow()+ "}\n";
+    }
+    private static String getColumnLetter(int val){
+
+
+        if(val > 8){
+            return "Z";
+        }
+        else {
+            return switch (val) {
+                case 1 -> "A";
+                case 2 -> "B";
+                case 3 -> "C";
+                case 4 -> "D";
+                case 5 -> "E";
+                case 6 -> "F";
+                case 7 -> "G";
+                case 8 -> "H";
+                default -> "Z";
+
+            };
+        }
     }
 
     /**
