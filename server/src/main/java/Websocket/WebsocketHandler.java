@@ -22,7 +22,6 @@ import webSocketMessages.serverMessages.Notification;
 import webSocketMessages.serverMessages.ServerMessage;
 import webSocketMessages.userCommands.*;
 
-import javax.websocket.EncodeException;
 import java.io.IOException;
 
 import static chess.ChessGame.TeamColor.BLACK;
@@ -93,7 +92,7 @@ public class WebsocketHandler {
     }
   }
 
-  public boolean isAuthorized(Connection conn, String authtoken) throws DataAccessException, EncodeException, IOException {
+  public boolean isAuthorized(Connection conn, String authtoken) throws DataAccessException, IOException {
     String messages = "Not Authorized";
     ErrorMessage message = new ErrorMessage(ServerMessage.ServerMessageType.ERROR, messages);
     if(authDAO.getUser(authtoken) == null){
@@ -103,7 +102,7 @@ public class WebsocketHandler {
     return true;
   }
 
-  private void join(String msg) throws IOException, EncodeException, DataAccessException {
+  private void join(String msg) throws IOException, DataAccessException {
     JoinPlayer command = new Gson().fromJson(msg, JoinPlayer.class);
     var conn = connections.getConnection(command.getGameID(),command.getAuthString());
     if(isAuthorized(conn, command.getAuthString())){
@@ -133,7 +132,7 @@ public class WebsocketHandler {
       }
     }
   }
-  private void observe(String msg) throws EncodeException, IOException, DataAccessException {
+  private void observe(String msg) throws IOException, DataAccessException {
     JoinObserver command = new Gson().fromJson(msg, JoinObserver.class);
     var conn = connections.getConnection(command.getGameID(),command.getAuthString());
     if(isAuthorized(conn, command.getAuthString())){
@@ -153,7 +152,7 @@ public class WebsocketHandler {
     }
   }
 
-  private void move(Connection conn, String msg) throws EncodeException, IOException, DataAccessException, InvalidMoveException {
+  private void move(Connection conn, String msg) throws IOException, DataAccessException, InvalidMoveException {
     MakeMove command = new Gson().fromJson(msg, MakeMove.class);
     if(isAuthorized(conn, command.getAuthString())){
       ChessGame game=gameDAO.getGame(command.getGameID()).getGame();
@@ -217,11 +216,11 @@ public class WebsocketHandler {
       case BLACK -> WHITE;
     };
   }
-  private void sendErrorMsg(String msg, Connection conn) throws EncodeException, IOException {
+  private void sendErrorMsg(String msg, Connection conn) throws IOException {
     ErrorMessage mes = new ErrorMessage(ServerMessage.ServerMessageType.ERROR, msg);
     conn.send(mes);
   }
-  private void resign(Connection conn, String msg) throws DataAccessException, EncodeException, IOException {
+  private void resign(Connection conn, String msg) throws DataAccessException, IOException {
     Resign command = new Gson().fromJson(msg, Resign.class);
     String wuser = gameDAO.getGame(command.getGameID()).getWhiteUsername();
     String buser = gameDAO.getGame(command.getGameID()).getBlackUsername();
@@ -240,7 +239,7 @@ public class WebsocketHandler {
     }
   }
 
-  private void leave(Connection conn, String msg) throws DataAccessException, EncodeException, IOException {
+  private void leave(Connection conn, String msg) throws DataAccessException, IOException {
     Leave command = new Gson().fromJson(msg, Leave.class);
     String wuser = gameDAO.getGame(command.getGameID()).getWhiteUsername();
     String buser = gameDAO.getGame(command.getGameID()).getBlackUsername();

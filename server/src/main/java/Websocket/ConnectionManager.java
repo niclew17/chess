@@ -2,7 +2,7 @@ package Websocket;
 
 import webSocketMessages.serverMessages.ServerMessage;
 
-import javax.websocket.EncodeException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,7 +63,7 @@ public class ConnectionManager {
       return connections.get(gameID).get(auth);
     }
   }
-  public void broadcast(int gameID, String excludeauthtoken, ServerMessage serverMessage) throws IOException, EncodeException {
+  public void broadcast(int gameID, String excludeauthtoken, ServerMessage serverMessage) throws IOException {
     var removeList = new ArrayList<Connection>();
     for (var c : connections.get(gameID).values()) {
       if (c.session.isOpen()) {
