@@ -1,0 +1,17 @@
+
+œ
+java:S2293a"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜èïû8´è‚Úì1J$088d2ceb-5966-4d34-afe9-93893d2b8640
+w
+java:S1066J"/Merge this if statement with the enclosing one.(º—Àÿÿÿÿÿ8´è‚Úì1J$5f686344-146c-429d-a228-bb6c48166670
+Œ
+java:S2583b"DChange this condition so that it does not always evaluate to "false"(±ò›¯ÿÿÿÿÿ8Éè‚Úì1J$69476cb5-803d-4cb5-81aa-c2e6eae00d51
+Â
+java:S2159b"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(±ò›¯ÿÿÿÿÿ8Îè‚Úì1J$ebf9f3af-b56d-4adb-b635-e8c0f1f882ff
+n
+java:S1168c"+Return an empty collection instead of null.(¥¹ï8Îè‚Úì1J$80234ebc-4138-4f5f-bd8f-688936ca3ad3
+p
+java:S1125†"'Remove the unnecessary boolean literal.(¡–Éªúÿÿÿÿ8Ðè‚Úì1J$e871e777-81c2-42d4-a179-f9cb916d3901
+‡
+java:S1155½">Use isEmpty() to check whether the collection is empty or not.(ž¨î®ûÿÿÿÿ8Òè‚Úì1J$f56a9c4b-5e8d-42d3-88c6-3f33b744d551
+‡
+java:S1155Ð">Use isEmpty() to check whether the collection is empty or not.(ž¨î®ûÿÿÿÿ8Òè‚Úì1J$01248f53-4b21-47f5-ac72-265ad28b708f

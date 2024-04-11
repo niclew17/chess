@@ -1,0 +1,32 @@
+
+œ
+java:S22937"YReplace the type specification in this constructor call with the diamond operator ("<>").(­ïÒû8‡Á“Êì1J$085f291b-130f-49e9-a460-16a77602caee
+Ä
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡óÎÇ8¿Â“Êì1J$ef5a4f55-86c7-42d7-9bb3-c7385cd0bf2c
+`
+java:S1118"Hide this public constructor.(¡óÎÇ8ÀÂ“Êì1J$1c71e1d7-9d77-4149-8225-f1260f36aaf1
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(»•ûÿÿÿÿ8ÃÂ“Êì1J$6964f60d-ef45-42e6-b101-74427414167e
+r	java:S106"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8ÃÂ“Êì1J$a70d9579-c8b2-4bb8-8cf0-f5625b732889
+r	java:S106;"+Replace this use of System.out by a logger.(ÌñÒÜÿÿÿÿÿ8ÅÂ“Êì1J$63d7405e-7cba-41b5-878e-b0fc413effd2
+›
+java:S3776²"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(†¤îíûÿÿÿÿ8ÉÂ“Êì1J$033031af-f650-49c2-bb43-04aac9d83a93
+–
+java:S3776×"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(Ñã™İ8ÌÂ“Êì1J$a0c8edc0-33ed-478a-b2a5-8eefb2851ded
+l	java:S108”")Either remove or fill this block of code.(„Ê¶8ÏÂ“Êì1J$b5d883cb-eb30-4b03-ba70-906025333cc5
+l	java:S108›")Either remove or fill this block of code.(å¥‡8ÏÂ“Êì1J$302bea3d-8841-497f-bf2b-348391ce36b6
+l	java:S108¥")Either remove or fill this block of code.(„Ê¶8ÏÂ“Êì1J$7653afee-037a-4906-b3ba-b5c0f5e91055
+l	java:S108¬")Either remove or fill this block of code.(å¥‡8ĞÂ“Êì1J$7839cc12-9749-41c9-9bf6-bdb2036a60b8
+l	java:S108¸")Either remove or fill this block of code.(„Ê¶8ĞÂ“Êì1J$50ef9083-2886-4026-b68f-05e9ee8f6140
+l	java:S108¿")Either remove or fill this block of code.(å¥‡8ĞÂ“Êì1J$e39fc8e9-4483-4d94-84cf-f5e032bdefa0
+l	java:S108É")Either remove or fill this block of code.(„Ê¶8ĞÂ“Êì1J$64557098-a530-459b-bbb3-b2c394eed295
+l	java:S108Ğ")Either remove or fill this block of code.(å¥‡8ÑÂ“Êì1J$caa36152-efe9-44cb-be4a-065a1dd9a2a1
+€
+java:S1068"8Remove this unused "SQUARE_SIZE_IN_CHARS" private field.(¼„ù‘şÿÿÿÿ8ÑÂ“Êì1J$e8cc3817-419f-49df-87fb-34db4d96c609
+g
+java:S1068"%Remove this unused "X" private field.(Ø®‰h8ÑÂ“Êì1J$d4921e97-624b-4b9a-989f-e5ca405842c3
+m
+java:S1068"%Remove this unused "O" private field.(Öë‹»üÿÿÿÿ8ÑÂ“Êì1J$88366be0-0fec-45c5-a987-f201a44f24af
+k
+java:S1068"(Remove this unused "rand" private field.(šŸÀ¯8ÑÂ“Êì1J$7daa7d67-fb3b-491c-9e54-dae2a87a416c
+o
+java:S1144ƒ"+Remove this unused private "setRed" method.(Ç«“û8ÑÂ“Êì1J$3283a08b-dde9-42e3-8347-3ea78be6f246
