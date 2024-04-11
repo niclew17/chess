@@ -101,3 +101,7 @@ Z
 *src/main/java/dataAccess/MySQLAuthDAO.java,e/9/e972162e581971cee3c6368c8c37da9c10d46682
 l
 <src/test/java/passoffTests/serverTests/StandardAPITests.java,2/3/230d5c2bddf1c1b38de512b86822f5fc87a9330d
+[
++src/test/java/passoffTests/TestFactory.java,e/f/ef92c18298091d5f469cb3aa27c892701eb79258
+`
+0src/test/java/clientTests/ServerFacadeTests.java,c/f/cf4a6b87ba93a9e44d28b89d3437e0296868fa89

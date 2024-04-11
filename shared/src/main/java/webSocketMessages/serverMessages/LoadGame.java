@@ -1,18 +1,27 @@
 package webSocketMessages.serverMessages;
 
 import chess.ChessBoard;
+import chess.ChessGame;
 
 public class LoadGame extends ServerMessage{
-  private ChessBoard game;
+  private ChessBoard board;
   private String color;
-  public LoadGame(ServerMessageType type, ChessBoard game, String color) {
+  private ChessGame game;
+
+
+  public LoadGame(ServerMessageType type, ChessBoard board, String color, ChessGame game) {
     super(type);
-    this.game = game;
+    this.board = board;
     this.color =color;
+    this.game = game;
   }
 
-  public ChessBoard getGame() {
+  public ChessGame getGame() {
     return game;
+  }
+
+  public ChessBoard getBoard() {
+    return board;
   }
 
   public String getColor() {

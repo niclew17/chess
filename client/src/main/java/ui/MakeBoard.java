@@ -29,18 +29,25 @@ public class MakeBoard {
   public static void printBoard(ChessBoard myboard, String color) {
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     out.print(ERASE_SCREEN);
-    drawHeaders(out);
-    if(color.equals("WHITE")) {
+    if(color != null && color.equals("WHITE")) {
+      drawHeaders(out);
       drawTicTacToeBoard(out, myboard, null);
+      drawHeaders(out);
     }
-    else if(color.equals("BLACK")){
+    else if(color != null && color.equals("BLACK")){
+      drawHeadersBottom(out);
       drawTicTacToeBoardBottom(out, myboard, null);
+      drawHeadersBottom(out);
     }
     else{
+      drawHeaders(out);
       drawTicTacToeBoard(out, myboard, null);
+      drawHeaders(out);
+      drawHeadersBottom(out);
       drawTicTacToeBoardBottom(out, myboard, null);
+      drawHeadersBottom(out);
     }
-    drawHeaders(out);
+
     out.println();
   }
 

@@ -9,20 +9,35 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ConnectionManager {
   public final ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> connections = new ConcurrentHashMap<>();
+  public final ConcurrentHashMap<Integer, Boolean> resignedboards = new ConcurrentHashMap<>();
   public void addPlayer(int gameID, String authtoken, Connection conn){
     connections.get(gameID).put(authtoken, conn);
   }
 
   public void cleanConnections(){
     connections.clear();
+    resignedboards.clear();
   }
-
+  public void clearPlayers(int gameID){
+    connections.remove(gameID);
+    resignedboards.remove(gameID);
+  }
+  public void clearPlayer(int gameID, String authtoken){
+    connections.get(gameID).remove(authtoken);
+  }
+  public boolean getResignedBoard(int gameID){
+    return resignedboards.get(gameID);
+  }
+  public void setResigned(int gameID){
+    resignedboards.put(gameID, true);
+  }
   public ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> getConnections() {
     return connections;
   }
 
   public void addGame(int gameID) {
     connections.put(gameID, new ConcurrentHashMap<>());
+    resignedboards.put(gameID, false);
   }
 
   public void removePlayer(int gameID, String authtoken) {

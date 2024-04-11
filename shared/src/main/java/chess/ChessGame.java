@@ -18,10 +18,13 @@ public class ChessGame {
     private ChessBoard cboard;
     private ChessBoard lastBoard;
 
+    private boolean gameOver;
+
     public ChessGame() {
         this.teamturn = WHITE;
         cboard = new ChessBoard();
         cboard.resetBoard();
+        gameOver = false;
     }
     /**
      * @return Which team's turn it is
@@ -107,6 +110,15 @@ public class ChessGame {
         }
         return validMoves;
     }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver=gameOver;
+    }
+
     /**
      * Makes a move in a chess game
      *
@@ -119,15 +131,20 @@ public class ChessGame {
         ChessPiece movingPiece= cboard.getPiece(start);
         Collection<ChessMove> moves;
         moves= validMoves(start);
-        if (getTeamTurn() == movingPiece.getTeamColor() && moves.contains(move)) {
-            if (move.getPromotionPiece() != null) {
-                cboard.addPiece(end, new ChessPiece(movingPiece.getTeamColor(), move.getPromotionPiece()));
-                cboard.addPiece(start, null);
-                teamturn=switchColor(teamturn);
-            } else {
-                cboard.addPiece(end, movingPiece);
-                cboard.addPiece(start, null);
-                teamturn=switchColor(teamturn);
+        if (gameOver == false && getTeamTurn() == movingPiece.getTeamColor() && moves.contains(move)) {
+            if(isInStalemate(movingPiece.getTeamColor()) || isInCheckmate(movingPiece.getTeamColor())) {
+                if (move.getPromotionPiece() != null) {
+                    cboard.addPiece(end, new ChessPiece(movingPiece.getTeamColor(), move.getPromotionPiece()));
+                    cboard.addPiece(start, null);
+                    teamturn=switchColor(teamturn);
+                } else {
+                    cboard.addPiece(end, movingPiece);
+                    cboard.addPiece(start, null);
+                    teamturn=switchColor(teamturn);
+                }
+            }
+            else{
+                throw new InvalidMoveException("Game is now over");
             }
         }
         else {
@@ -170,6 +187,7 @@ public class ChessGame {
         if(isInCheck(teamColor)){
             Collection<ChessMove> moves = validMoves(kingPosition);
             if(moves.size() == 0){
+                setGameOver(true);
                 return true;
             }
         }
@@ -188,6 +206,7 @@ public class ChessGame {
         if(!isInCheck(teamColor)){
             Collection<ChessMove> moves = validMoves(kingPosition);
             if(moves.size() == 0){
+                setGameOver(true);
                 return true;
             }
         }

@@ -28,18 +28,20 @@ public class ChessClient {
   private WebSocketFacade ws;
 
   private MakeBoard makeboard;
+  private ChessBoard gameboard;
 
-
+  private ChessGame mygame;
 
   private String joinGameColor;
 
   private int inGameID;
   private boolean inGame;
   private String authtoken;
-  public ChessClient(String serverUrl, NotificationHandler notificationHandler) {
+  public ChessClient(String serverUrl, NotificationHandler notificationHandler) throws DataAccessException {
     server = new ServerFacade(serverUrl);
     this.serverUrl = serverUrl;
     this.notificationHandler = notificationHandler;
+    ws = new WebSocketFacade(serverUrl, notificationHandler);
     inGame = false;
     makeboard = new MakeBoard();
   }
@@ -77,7 +79,7 @@ public class ChessClient {
         case "redrawboard" -> redrawBoard();
         case "leave" -> leave();
         case "makemove" -> makeMove(params);
-        case "resign" -> listGames();
+        case "resign" -> resign(params);
         case "highlightlegalmoves" -> highlightMoves(params);
         case "help" -> helpgame();
         default -> helpgame();
@@ -88,32 +90,56 @@ public class ChessClient {
       return e.getMessage();
     }
   }
+
+  public ChessGame getMygame() {
+    return mygame;
+  }
+
+  public void setMygame(ChessGame mygame) {
+    this.mygame=mygame;
+  }
+
+  public ChessBoard getGameboard() {
+    return gameboard;
+  }
+
+  public void setGameboard(ChessBoard gameboard) {
+    this.gameboard=gameboard;
+  }
+
   public String redrawBoard() throws Exception {
     assertSignedIn();
-    ChessBoard myboard = new ChessBoard();
-    myboard.resetBoard();
-    makeboard.printBoard(myboard, joinGameColor);
+    makeboard.printBoard(gameboard, joinGameColor);
     return String.format("Redraw of Board");
   }
 
   public String leave() throws Exception {
-    assertSignedIn();
     inGame = false;
+    ws.leave(authtoken, inGameID);
     return String.format("%s left the chess game", visitorName);
+  }
+  public String resign(String... params) throws Exception {
+    if(params.length >= 1){
+      var answer = params[0].toUpperCase();
+      if(answer.equals("YES")){
+        ws.resign(authtoken, inGameID);
+      }
+      else{
+        return "You have decided not to resign";
+      }
+    inGame = false;
+    }
+    return "Please try again";
   }
   public String highlightMoves(String... params) throws Exception {
     if (params.length >= 2) {
-      assertSignedIn();
       var columnname= params[0].toUpperCase();
       var row = Integer.parseInt(params[1]);
       if(joinGameColor.equals("WHITE")){
         row = 9-row;
       }
       int column = getColumnNumber(columnname);
-      ChessBoard myboard = new ChessBoard();
-      myboard.resetBoard();
-      ChessGame game = new ChessGame();
-      makeboard.printMovesBoard(myboard, game.validMoves(new ChessPosition(row, column)), joinGameColor);
+      makeboard.printMovesBoard(gameboard, mygame.validMoves(new ChessPosition(row, column)), joinGameColor);
       return String.format("All Moves Highlighted in Green are available");
     }
     throw new DataAccessException("Expected: <username>");
@@ -121,7 +147,6 @@ public class ChessClient {
 
   public String makeMove(String... params) throws Exception {
     if (params.length >= 4) {
-      assertSignedIn();
       var columnname1= params[0].toUpperCase();
       var row1 = Integer.parseInt(params[1]);
       var columnname2= params[2].toUpperCase();
@@ -129,8 +154,8 @@ public class ChessClient {
       int column1=getColumnNumber(columnname1);
       int column2=getColumnNumber(columnname2);
       if(joinGameColor.equals("WHITE")) {
-        column1 -=9;
-        column2 -=9;
+        row1 -=9;
+        row2 -=9;
       }
       ChessPosition start = new ChessPosition(row1, column1);
       ChessPosition end = new ChessPosition(row2, column2);
@@ -203,7 +228,6 @@ public class ChessClient {
       joinGameColor = color;
       inGameID = gameID;
       server.joinGame(new JoinGameRequest(color, gameID), authtoken);
-      ws = new WebSocketFacade(serverUrl, notificationHandler);
       ws.joinPlayer(authtoken, gameID, color);
       inGame = true;
       return String.format("Joined game %d as: %s. ", gameID, color);
@@ -216,8 +240,8 @@ public class ChessClient {
       var gameID = Integer.parseInt(params[0]);
       inGameID = gameID;
       server.joinGame(new JoinGameRequest(null, gameID), authtoken);
-      ws = new WebSocketFacade(serverUrl, notificationHandler);
       ws.joinObserver(authtoken, gameID);
+      inGame = true;
       return String.format("Joined game %d as an observer", gameID);
     }
     throw new DataAccessException("Expected: <game ID>");

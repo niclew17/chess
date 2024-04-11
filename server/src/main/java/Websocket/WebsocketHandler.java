@@ -15,14 +15,12 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketError;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
+import request.JoinGameRequest;
 import webSocketMessages.serverMessages.ErrorMessage;
 import webSocketMessages.serverMessages.LoadGame;
 import webSocketMessages.serverMessages.Notification;
 import webSocketMessages.serverMessages.ServerMessage;
-import webSocketMessages.userCommands.JoinObserver;
-import webSocketMessages.userCommands.JoinPlayer;
-import webSocketMessages.userCommands.MakeMove;
-import webSocketMessages.userCommands.UserGameCommand;
+import webSocketMessages.userCommands.*;
 
 import javax.websocket.EncodeException;
 import java.io.IOException;
@@ -62,9 +60,9 @@ public class WebsocketHandler {
     var connPlayer = connections.getConnection(command.getGameID(), command.getAuthString());
     if (conn != null && connPlayer !=null) {
       switch (command.getCommandType()) {
-        case JOIN_PLAYER -> connPlayer.send(new ErrorMessage(ServerMessage.ServerMessageType.ERROR, "Already In a Game"));
+        case JOIN_PLAYER -> sendErrorMsg("Already In Game", connPlayer);
         case JOIN_OBSERVER -> sendErrorMsg("No", connPlayer);
-        case MAKE_MOVE -> move(connPlayer, msg); //move(conn, msg);
+        case MAKE_MOVE -> move(connPlayer, msg);
         case LEAVE -> leave(connPlayer, msg);
         case RESIGN -> resign(connPlayer, msg);
       }
@@ -109,7 +107,6 @@ public class WebsocketHandler {
     JoinPlayer command = new Gson().fromJson(msg, JoinPlayer.class);
     var conn = connections.getConnection(command.getGameID(),command.getAuthString());
     if(isAuthorized(conn, command.getAuthString())){
-      String message=String.format("%s Player Joined", command.getPlayerColor());
       GameData game=gameDAO.getGame(command.getGameID());
       AuthData auth = authDAO.getUser(command.getAuthString());
       if(game != null) {
@@ -121,8 +118,9 @@ public class WebsocketHandler {
         else if((command.getPlayerColor().equals("WHITE") && wuser.equals(auth.getUsername())) || (command.getPlayerColor().equals("BLACK") && buser.equals(auth.getUsername())))
         {
           ChessBoard board=game.getGame().getBoard();
+          String message=String.format("%s Player Joined as %s", auth.getUsername(), command.getPlayerColor());
           var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-          var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, command.getPlayerColor());
+          var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, command.getPlayerColor(), game.getGame());
           connections.broadcast(command.getGameID(), conn.authtoken, notification);
           conn.send(load_game);
         }
@@ -139,12 +137,13 @@ public class WebsocketHandler {
     JoinObserver command = new Gson().fromJson(msg, JoinObserver.class);
     var conn = connections.getConnection(command.getGameID(),command.getAuthString());
     if(isAuthorized(conn, command.getAuthString())){
-      String message= "Observer Joined";
       GameData game=gameDAO.getGame(command.getGameID());
+      AuthData auth = authDAO.getUser(command.getAuthString());
       if(game != null) {
         ChessBoard board = game.getGame().getBoard();
+        String message=String.format("%s joined as an Observer", auth.getUsername());
         var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-        var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, null);
+        var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, null, game.getGame());
         connections.broadcast(command.getGameID(), conn.authtoken, notification);
         conn.send(load_game);
       }
@@ -157,7 +156,6 @@ public class WebsocketHandler {
   private void move(Connection conn, String msg) throws EncodeException, IOException, DataAccessException, InvalidMoveException {
     MakeMove command = new Gson().fromJson(msg, MakeMove.class);
     if(isAuthorized(conn, command.getAuthString())){
-      String message= "Opponent Made Move: " + command.getMove().toString();
       ChessGame game=gameDAO.getGame(command.getGameID()).getGame();
       ChessGame.TeamColor teamturn = game.getTeamTurn();
       String wuser = gameDAO.getGame(command.getGameID()).getWhiteUsername();
@@ -173,21 +171,27 @@ public class WebsocketHandler {
       else{
         color = null;
       }
-      if(game != null) {
+      if(game != null && !game.isGameOver()) {
         AuthData auth = authDAO.getUser(command.getAuthString());
         try {
             if(username.equals(wuser) && teamturn.equals(ChessGame.TeamColor.WHITE) || username.equals(buser) && teamturn.equals(ChessGame.TeamColor.BLACK)) {
               if (game.isInCheck(color)) {
                 var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s is in Check", auth.getUsername()));
                 connections.broadcast(command.getGameID(), null, notification);
-              } else if (game.isInCheckmate(switchColor(color)) || game.isInCheckmate(color)){
-                var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s is in Checkmate, Game Over.", auth.getUsername()));
-                connections.broadcast(command.getGameID(), null, notification);
-              } else {
+              }
+//              else if (game.isInCheckmate(switchColor(color)) || game.isInCheckmate(color)){
+//                game.setGameOver(true);
+//                gameDAO.updateGame(command.getGameID(), game);
+//                var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s is in Checkmate, Game Over.", auth.getUsername()));
+//                connections.broadcast(command.getGameID(), conn.authtoken, notification);
+//                connections.clearPlayers(command.getGameID());
+//              }
+              else {
                 game.makeMove(command.getMove());
                 gameDAO.updateGame(command.getGameID(), game);
+                String message= "Opponent Made Move: " + command.getMove().toString();
                 var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-                var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, game.getBoard(), null);
+                var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, game.getBoard(), null, game);
                 connections.broadcast(command.getGameID(), conn.authtoken, load_game);
                 connections.broadcast(command.getGameID(), conn.authtoken, notification);
                 conn.send(load_game);
@@ -217,11 +221,50 @@ public class WebsocketHandler {
     ErrorMessage mes = new ErrorMessage(ServerMessage.ServerMessageType.ERROR, msg);
     conn.send(mes);
   }
-  private void leave(Connection conn, String msg){
-
+  private void resign(Connection conn, String msg) throws DataAccessException, EncodeException, IOException {
+    Resign command = new Gson().fromJson(msg, Resign.class);
+    String wuser = gameDAO.getGame(command.getGameID()).getWhiteUsername();
+    String buser = gameDAO.getGame(command.getGameID()).getBlackUsername();
+    String username = authDAO.getUser(command.getAuthString()).getUsername();
+    ChessGame game=gameDAO.getGame(command.getGameID()).getGame();
+    AuthData auth = authDAO.getUser(command.getAuthString());
+    if(!connections.getResignedBoard(command.getGameID()) && (username.equals(wuser) || username.equals(buser))){
+      game.setGameOver(true);
+      connections.setResigned(command.getGameID());
+      gameDAO.updateGame(command.getGameID(), game);
+      var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s has Resigner, Game Over.", auth.getUsername()));
+      connections.broadcast(command.getGameID(), null, notification);
+    }
+    else{
+      sendErrorMsg("Observer's Can't Resign", conn);
+    }
   }
-  private void resign(Connection conn, String msg){
 
+  private void leave(Connection conn, String msg) throws DataAccessException, EncodeException, IOException {
+    Leave command = new Gson().fromJson(msg, Leave.class);
+    String wuser = gameDAO.getGame(command.getGameID()).getWhiteUsername();
+    String buser = gameDAO.getGame(command.getGameID()).getBlackUsername();
+    String username = authDAO.getUser(command.getAuthString()).getUsername();
+    AuthData auth = authDAO.getUser(command.getAuthString());
+    int id = command.getGameID();
+    String authstring = conn.authtoken;
+    if(username.equals(wuser)){
+      var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s has left the game.", auth.getUsername()));
+      connections.broadcast(id, authstring, notification);
+      gameDAO.updateWhiteGame(new JoinGameRequest("WHITE", id), null);
+      connections.clearPlayer(id, authstring);
+    }
+    else if (username.equals(buser)){
+      gameDAO.updateWhiteGame(new JoinGameRequest("BLACK", command.getGameID()), null);
+      var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s has left the game..", auth.getUsername()));
+      connections.broadcast(id, command.getAuthString(), notification);
+      connections.clearPlayer(id, authstring);
+    }
+    else{
+      var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s has left the game..", auth.getUsername()));
+      connections.broadcast(id, authstring, notification);
+      connections.clearPlayer(id, authstring);
+    }
   }
 
 }

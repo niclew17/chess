@@ -1,14 +1,16 @@
 
 Ä
-java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿ8€¾ü®ì1J$b3dd5e5a-4da4-4fa7-9be2-900d4c6ad4eb
+java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿ8Ô×°Úì1J$8d33ecca-57dd-48b5-8b4f-c7c37f505e50
+Ç
+java:S1319"The type of "resignedboards" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(ìß—Áıÿÿÿÿ8Ô×°Úì1J$26a94be9-5360-45b0-bdfd-7d096f47f247
 Ê
-java:S1319"The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Ïäšğÿÿÿÿÿ8¾ü®ì1J$e4576745-4302-4de6-80ba-cca12ee55fd2
+java:S1319""The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Ïäšğÿÿÿÿÿ8Ô×°Úì1J$f6150b7a-a72b-472d-a74b-fa6ea0a10d1e
 Ê
-java:S1319""The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Î®ıûÿÿÿÿ8¾ü®ì1J$7a477d8e-7c37-4d0b-80f4-c3fb419dff33
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8¾ü®ì1J$961744e6-35f8-4f4b-a62a-4cab52c54280
+java:S13191"The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Î®ıûÿÿÿÿ8Ô×°Úì1J$3a0416bf-e1e0-4331-8904-dfcee799c2e4
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8Ô×°Úì1J$70906ffe-1a41-4bbd-92f5-bafda8027f30
 ‡
-java:S2583#"DChange this condition so that it does not always evaluate to "false"(¬âõ½8‡¾ü®ì1J$22bb45f5-5085-43fa-be5f-3f5bafdf6a73
+java:S25832"DChange this condition so that it does not always evaluate to "false"(¬âõ½8Ú×°Úì1J$786d0812-96a2-4d39-a553-f8efd5248f2c
 g
-java:S1168$"$Return an empty map instead of null.(¥¹ï8Œ¾ü®ì1J$273dfd95-8b50-4015-820e-34829a2e2efe
+java:S11683"$Return an empty map instead of null.(¥¹ï8à×°Úì1J$0682181f-68a7-4eda-9a38-edca906eb52f
 ¨
-java:S2175@"`A "ConcurrentHashMap<Integer, ConcurrentHashMap>" cannot contain a "String" in a "Integer" type.(¼Œœ¦øÿÿÿÿ8¾ü®ì1J$c2eefbe5-a918-498b-996f-7e7aaeb44c8d
+java:S2175O"`A "ConcurrentHashMap<Integer, ConcurrentHashMap>" cannot contain a "String" in a "Integer" type.(¼Œœ¦øÿÿÿÿ8â×°Úì1J$c77e49cc-2aea-4bfb-9277-44bf58493976

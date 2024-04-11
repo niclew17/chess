@@ -4,9 +4,7 @@ import chess.ChessMove;
 import com.google.gson.Gson;
 import dataAccess.DataAccessException;
 import webSocketMessages.serverMessages.ServerMessage;
-import webSocketMessages.userCommands.JoinObserver;
-import webSocketMessages.userCommands.JoinPlayer;
-import webSocketMessages.userCommands.MakeMove;
+import webSocketMessages.userCommands.*;
 
 import javax.websocket.*;
 import java.io.IOException;
@@ -32,9 +30,9 @@ public class WebSocketFacade extends Endpoint {
         public void onMessage(String messages) {
           try {
             ServerMessage message = new Gson().fromJson(messages, ServerMessage.class);
-            notificationHandler.notify(message);
+            notificationHandler.notify(message, messages);
           } catch(Exception ex) {
-            notificationHandler.notify(new ServerMessage(ServerMessage.ServerMessageType.ERROR));
+            notificationHandler.notify(new ServerMessage(ServerMessage.ServerMessageType.ERROR), messages);
           }
 
         }
@@ -66,17 +64,30 @@ public class WebSocketFacade extends Endpoint {
   }
   public void makeMove(String authToken, int gameID, ChessMove move, String color) throws IOException {
     try {
-      var makeMove = new MakeMove(authToken, gameID, move, color);
+      var makeMove=new MakeMove(authToken, gameID, move, color);
       this.session.getBasicRemote().sendText(new Gson().toJson(makeMove));
+    } catch (IOException ex) {
+      throw new IOException(ex.getMessage());
+    }
+  }
+    public void resign(String authToken, int gameID) throws IOException {
+      try {
+        var resign = new Resign(authToken, gameID);
+        this.session.getBasicRemote().sendText(new Gson().toJson(resign));
+      } catch (IOException ex) {
+        throw new IOException(ex.getMessage());
+      }
+    }
+
+  public void leave(String authToken, int gameID) throws IOException {
+    try {
+      var leave = new Leave(authToken, gameID);
+      this.session.getBasicRemote().sendText(new Gson().toJson(leave));
     } catch (IOException ex) {
       throw new IOException(ex.getMessage());
     }
   }
 
 
+  }
 
-
-
-
-
-}

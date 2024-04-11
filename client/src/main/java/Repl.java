@@ -1,7 +1,7 @@
 import Websocket.NotificationHandler;
-import chess.ChessBoard;
+import com.google.gson.Gson;
+import dataAccess.DataAccessException;
 import ui.MakeBoard;
-import webSocketMessages.serverMessages.ErrorMessage;
 import webSocketMessages.serverMessages.LoadGame;
 import webSocketMessages.serverMessages.Notification;
 import webSocketMessages.serverMessages.ServerMessage;
@@ -14,7 +14,7 @@ public class Repl implements NotificationHandler {
 
   private MakeBoard makeboard;
 
-  public Repl(String serverUrl) {
+  public Repl(String serverUrl) throws DataAccessException {
     client=new ChessClient(serverUrl, this);
     makeboard = new MakeBoard();
   }
@@ -55,24 +55,33 @@ public class Repl implements NotificationHandler {
   }
 
   @Override
-  public void notify(ServerMessage message) {
+  public void notify(ServerMessage message, String messages) {
     switch (message.getServerMessageType()) {
-      case NOTIFICATION -> displayNotification(((Notification) message).getMessage());
-      case ERROR -> displayError(((ErrorMessage) message).getErrorMessage());
-      case LOAD_GAME -> loadGame(((LoadGame) message).getGame(), ((LoadGame) message).getColor());
+      case NOTIFICATION -> displayNotification(messages);
+      case ERROR -> displayError(messages);
+      case LOAD_GAME -> loadGame(messages);
     }
   }
 
+
   public void displayNotification(String message){
-    System.out.println(SET_BG_COLOR_DARK_GREEN + message);
+    Notification command = new Gson().fromJson(message, Notification.class);
+    System.out.println("");
+    System.out.println(SET_BG_COLOR_DARK_GREEN + command.getMessage());
     printPrompt();
   }
   public void displayError(String message){
-    System.out.println(SET_BG_COLOR_RED + message);
+    Error command = new Gson().fromJson(message, Error.class);
+    System.out.println("");
+    System.out.println(SET_BG_COLOR_RED + command.getMessage());
     printPrompt();
   }
-  public void loadGame(ChessBoard board, String color){
-    makeboard.printBoard(board, color);
+  public void loadGame(String message){
+    LoadGame command = new Gson().fromJson(message, LoadGame.class);
+    client.setGameboard(command.getBoard());
+    client.setMygame(command.getGame());
+    System.out.println("");
+    makeboard.printBoard(command.getBoard(), command.getColor());
     printPrompt();
   }
 
