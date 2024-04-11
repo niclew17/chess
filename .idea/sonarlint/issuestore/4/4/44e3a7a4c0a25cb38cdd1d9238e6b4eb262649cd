@@ -1,21 +1,21 @@
 
-ˆ	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8’¨–Ûì1J$f2f4074d-cece-4510-b9c0-214085778ac3
+ˆ	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8º˜ÙÛì1J$0c0744e2-8252-41d1-9a3c-29c0f0c3dbfe
 ‰
-java:S1192s"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(æ£ŠÉ8“¨–Ûì1J$915010b2-ee8a-4639-900a-abcb5560f4b6
+java:S1192r"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(æ£ŠÉ8»˜ÙÛì1J$e149d7c9-0fb6-4dc6-89de-707b607d6cb1
 œ
-java:S1192„"SDefine a constant instead of duplicating this literal "Game Doesn't Exist" 3 times.(ûàƒúÿÿÿÿ8“¨–Ûì1J$5da0d13d-bf37-4450-95f6-f918df29b887
+java:S1192ƒ"SDefine a constant instead of duplicating this literal "Game Doesn't Exist" 3 times.(ûàƒúÿÿÿÿ8»˜ÙÛì1J$1c45b26c-acf8-48eb-9710-21dad4ddac97
 ‰
-java:S1192s"FDefine a constant instead of duplicating this literal "BLACK" 3 times.(æ£ŠÉ8“¨–Ûì1J$3e6e1061-66da-466f-a196-84b79be7095d
-˜	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î·­÷ûÿÿÿÿ8“¨–Ûì1J$1621d6f8-92d0-424c-9063-180fe2e3093f
-™	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•×Ùûÿÿÿÿ8“¨–Ûì1J$5669aa49-f16e-4859-a4d1-6c902e9dfc32
-™	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…¬ˆ¡øÿÿÿÿ8“¨–Ûì1J$a4155cb6-4bb6-4e49-a042-072e731bf928
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8•¨–Ûì1J$6d83ea0a-25f1-471b-98af-6ea4acef9e56
+java:S1192r"FDefine a constant instead of duplicating this literal "BLACK" 3 times.(æ£ŠÉ8»˜ÙÛì1J$ba8ecaf3-0576-480c-be8a-236f701b7cb7
+˜	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î·­÷ûÿÿÿÿ8¼˜ÙÛì1J$fa3325fc-2897-4462-8da7-697c8e61441d
+™	java:S117‘"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•×Ùûÿÿÿÿ8¼˜ÙÛì1J$13937d4d-f1f9-4a45-b81c-7e827572c4a5
+™	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…¬ˆ¡øÿÿÿÿ8¼˜ÙÛì1J$b557f922-5b8e-4c05-81d3-19dd6f44164d
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8¾˜ÙÛì1J$575cc1b9-5be5-4164-ac50-d91a2803dcea
 {
-java:S2589®"7Remove this expression which always evaluates to "true"(×ò–Õ8«¨–Ûì1J$3ffe7bcc-b231-440d-8cfb-6d2f839878f4
+java:S2589­"7Remove this expression which always evaluates to "true"(×ò–Õ8ê‰åÛì1J$61bf2929-50bf-4095-955e-be49c71ca627
 •
-java:S37769"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¥†¬è8®¨–Ûì1J$dd51c6d1-a34d-4fa2-90b4-b9e780b4901b
-›
-java:S3776œ"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(éä‚úÿÿÿÿ8¶¨–Ûì1J$ef57aede-7e90-473b-9421-beff4a73297e
-„	java:S125¶"<This block of commented-out lines of code should be removed.(ŸÑĞ¾şÿÿÿÿ8¹¨–Ûì1J$132bba86-96b0-4b29-831f-0d3c564743e9
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¥†¬è8Û˜ÙÛì1J$108a0fb1-fd28-4cb5-9d83-c7729fcdad99
+–
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(øşøÈ8ä˜ÙÛì1J$e559c869-c51d-45a1-ad7a-0e94d3ca2f1d
+„	java:S125µ"<This block of commented-out lines of code should be removed.(ŸÑĞ¾şÿÿÿÿ8æ˜ÙÛì1J$6d6351a8-f053-4705-9209-8de261d2b50b
 s
-java:S1068%"+Remove this unused "userDAO" private field.(Ó¢­éûÿÿÿÿ8¿¨–Ûì1J$1fc462dc-fe6a-4fbd-ae10-e68b4f0d6200
+java:S1068$"+Remove this unused "userDAO" private field.(Ó¢­éûÿÿÿÿ8í˜ÙÛì1J$bbfb4829-31a5-4138-8743-f5b6fb91f6f6

@@ -1,6 +1,5 @@
 import Websocket.NotificationHandler;
 import com.google.gson.Gson;
-import dataAccess.DataAccessException;
 import ui.MakeBoard;
 import webSocketMessages.serverMessages.LoadGame;
 import webSocketMessages.serverMessages.Notification;
@@ -14,7 +13,7 @@ public class Repl implements NotificationHandler {
 
   private MakeBoard makeboard;
 
-  public Repl(String serverUrl) throws DataAccessException {
+  public Repl(String serverUrl) throws Exception {
     client=new ChessClient(serverUrl, this);
     makeboard = new MakeBoard();
   }

@@ -4,7 +4,6 @@ import chess.ChessBoard;
 import chess.ChessGame;
 import chess.ChessMove;
 import chess.ChessPosition;
-import dataAccess.DataAccessException;
 import model.AuthData;
 import model.GameData;
 import request.CreateGameRequest;
@@ -37,7 +36,7 @@ public class ChessClient {
   private int inGameID;
   private boolean inGame;
   private String authtoken;
-  public ChessClient(String serverUrl, NotificationHandler notificationHandler) throws DataAccessException {
+  public ChessClient(String serverUrl, NotificationHandler notificationHandler) throws Exception {
     server = new ServerFacade(serverUrl);
     this.serverUrl = serverUrl;
     this.notificationHandler = notificationHandler;
@@ -63,8 +62,6 @@ public class ChessClient {
         case "quit" -> "quit";
         default -> help();
       };
-    } catch (DataAccessException ex) {
-      return ex.getMessage();
     } catch (Exception e) {
       return e.getMessage();
     }
@@ -84,8 +81,6 @@ public class ChessClient {
         case "help" -> helpgame();
         default -> helpgame();
       };
-    } catch (DataAccessException ex) {
-      return ex.getMessage();
     } catch (Exception e) {
       return e.getMessage();
     }
@@ -142,7 +137,7 @@ public class ChessClient {
       makeboard.printMovesBoard(gameboard, mygame.validMoves(new ChessPosition(row, column)), joinGameColor);
       return String.format("All Moves Highlighted in Green are available");
     }
-    throw new DataAccessException("Expected: <username>");
+    throw new Exception("Expected: <username>");
   }
 
   public String makeMove(String... params) throws Exception {
@@ -163,7 +158,7 @@ public class ChessClient {
       ws.makeMove(authtoken, inGameID, move, joinGameColor);
       return String.format("You moved from %s%d to %s%d", columnname1, row1, columnname2, row2);
     }
-    throw new DataAccessException("Expected: <username>");
+    throw new Exception("Expected: <username>");
   }
 
   public String signIn(String... params) throws Exception {
@@ -176,7 +171,7 @@ public class ChessClient {
       authtoken = value.getAuthToken();
       return String.format("You signed in as %s.", visitorName);
     }
-    throw new DataAccessException("Expected: <username>");
+    throw new Exception("Expected: <username>");
   }
   public String register(String... params) throws Exception {
     if (params.length >= 3) {
@@ -189,7 +184,7 @@ public class ChessClient {
       authtoken = value.getAuthToken();
       return String.format("You registered in as %s.", visitorName);
     }
-    throw new DataAccessException("Expected: <username> <password> <email>");
+    throw new Exception("Expected: <username> <password> <email>");
   }
   public String signOut() throws Exception {
     assertSignedIn();
@@ -205,7 +200,7 @@ public class ChessClient {
       server.createGame(new CreateGameRequest(name), authtoken);
       return String.format("New game: %s. Created", name);
     }
-    throw new DataAccessException("Expected: <gamename>");
+    throw new Exception("Expected: <gamename>");
   }
   public String listGames() throws Exception {
       assertSignedIn();
@@ -232,7 +227,7 @@ public class ChessClient {
       inGame = true;
       return String.format("Joined game %d as: %s. ", gameID, color);
     }
-    throw new DataAccessException("Expected: <player color WHITE|BLACK> <game ID>");
+    throw new Exception("Expected: <player color WHITE|BLACK> <game ID>");
   }
   public String joinGameObserver(String... params) throws Exception {
     assertSignedIn();
@@ -244,7 +239,7 @@ public class ChessClient {
       inGame = true;
       return String.format("Joined game %d as an observer", gameID);
     }
-    throw new DataAccessException("Expected: <game ID>");
+    throw new Exception("Expected: <game ID>");
   }
 
   public String help() {
@@ -276,9 +271,9 @@ public class ChessClient {
                 - help
                 """;
   }
-  private void assertSignedIn() throws DataAccessException {
+  private void assertSignedIn() throws Exception {
     if (state == State.SIGNEDOUT) {
-      throw new DataAccessException("You must sign in");
+      throw new Exception("You must sign in");
     }
   }
 
