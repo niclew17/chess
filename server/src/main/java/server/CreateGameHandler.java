@@ -11,7 +11,7 @@ import services.Game;
 import spark.Request;
 import spark.Response;
 
-public class CreateGameHandler {
+public class CreateGameHandler extends HandlerErrorMethods{
   private final Game service;
 
   public CreateGameHandler(GameDAO gameDAO, AuthDAO authDAO) {
@@ -39,14 +39,4 @@ public class CreateGameHandler {
     }
   }
 
-  private static void sendError(Response res, DataAccessException e) {
-    if (e.getMessage().equals("Error: unauthorized")) {
-       res.status(401);
-     }
-    else {
-       res.status(500);
-     }
-    Message message=new Message(e.getMessage());
-    res.body(new Gson().toJson(message));
-  }
 }
