@@ -1,0 +1,38 @@
+
+`	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(¦ìûÿÿÿÿ
+`	java:S112o"FDefine and throw a dedicated exception instead of using a generic one.(Ğò¢¤şÿÿÿÿ
+`	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(¤˜…úÿÿÿÿ
+\	java:S112Œ"FDefine and throw a dedicated exception instead of using a generic one.(êàİÿ
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(“”ëæüÿÿÿÿ
+\	java:S112¡"FDefine and throw a dedicated exception instead of using a generic one.(êàİÿ
+\	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(êæ”
+\	java:S112®"FDefine and throw a dedicated exception instead of using a generic one.(êàİÿ
+a	java:S112»"FDefine and throw a dedicated exception instead of using a generic one.(ì“—šıÿÿÿÿ
+a	java:S112Ë"FDefine and throw a dedicated exception instead of using a generic one.(Í¿Ãëúÿÿÿÿ
+a	java:S112æ"FDefine and throw a dedicated exception instead of using a generic one.(ì¼›Õÿÿÿÿÿ
+\	java:S112ò"FDefine and throw a dedicated exception instead of using a generic one.(©´¥
+a	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(Ş·›íşÿÿÿÿ
+\	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(Íçæİ
+l
+java:S1192Œ"UDefine a constant instead of duplicating this literal "Expected: <username>" 3 times.(êàİÿ
+0
+java:S1220""Move this file to a named package.
+?
+java:S2440-")Remove this instantiation of "MakeBoard".(Œ±½™
+K
+java:S2209k"5Change this instance-reference to a static reference.(àïÓå
+:
+java:S3457l"%String contains no format specifiers.(ÎâŒ 
+L
+java:S2209‰"5Change this instance-reference to a static reference.(ŠÉùÍ
+<
+java:S3457Š"%String contains no format specifiers.(ŸîØí
+A	java:S106Ñ"+Replace this use of System.out by a logger.(©Ÿœ
+F	java:S106Ô"+Replace this use of System.out by a logger.(°¯ÿÁüÿÿÿÿ
+A	java:S106Õ"+Replace this use of System.out by a logger.(÷¹§µ
+A
+java:S3457Ø"%String contains no format specifiers.(Ş†¤øıÿÿÿÿ
+C
+java:S1068"-Remove this unused "serverUrl" private field.(ú¯³†
+L
+java:S1068"7Remove this unused "notificationHandler" private field.(Ö×¿=

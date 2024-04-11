@@ -119,9 +119,9 @@ public class WebsocketHandler {
           ChessBoard board=game.getGame().getBoard();
           String message=String.format("%s Player Joined as %s", auth.getUsername(), command.getPlayerColor());
           var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-          var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, command.getPlayerColor(), game.getGame());
+          var loadgame=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, command.getPlayerColor(), game.getGame());
           connections.broadcast(command.getGameID(), conn.authtoken, notification);
-          conn.send(load_game);
+          conn.send(loadgame);
         }
         else{
           sendErrorMsg("Wrong Team", conn);
@@ -142,9 +142,9 @@ public class WebsocketHandler {
         ChessBoard board = game.getGame().getBoard();
         String message=String.format("%s joined as an Observer", auth.getUsername());
         var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-        var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, null, game.getGame());
+        var loadgame=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, board, null, game.getGame());
         connections.broadcast(command.getGameID(), conn.authtoken, notification);
-        conn.send(load_game);
+        conn.send(loadgame);
       }
       else{
         sendErrorMsg("Game Doesn't Exist", conn);
@@ -178,22 +178,15 @@ public class WebsocketHandler {
                 var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s is in Check", auth.getUsername()));
                 connections.broadcast(command.getGameID(), null, notification);
               }
-//              else if (game.isInCheckmate(switchColor(color)) || game.isInCheckmate(color)){
-//                game.setGameOver(true);
-//                gameDAO.updateGame(command.getGameID(), game);
-//                var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, String.format("%s is in Checkmate, Game Over.", auth.getUsername()));
-//                connections.broadcast(command.getGameID(), conn.authtoken, notification);
-//                connections.clearPlayers(command.getGameID());
-//              }
               else {
                 game.makeMove(command.getMove());
                 gameDAO.updateGame(command.getGameID(), game);
                 String message= "Opponent Made Move: " + command.getMove().toString();
                 var notification=new Notification(ServerMessage.ServerMessageType.NOTIFICATION, message);
-                var load_game=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, game.getBoard(), null, game);
-                connections.broadcast(command.getGameID(), conn.authtoken, load_game);
+                var loadgame=new LoadGame(ServerMessage.ServerMessageType.LOAD_GAME, game.getBoard(), null, game);
+                connections.broadcast(command.getGameID(), conn.authtoken, loadgame);
                 connections.broadcast(command.getGameID(), conn.authtoken, notification);
-                conn.send(load_game);
+                conn.send(loadgame);
               }
             }
             else{

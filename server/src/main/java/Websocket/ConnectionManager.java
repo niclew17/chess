@@ -18,10 +18,6 @@ public class ConnectionManager {
     connections.clear();
     resignedboards.clear();
   }
-  public void clearPlayers(int gameID){
-    connections.remove(gameID);
-    resignedboards.remove(gameID);
-  }
   public void clearPlayer(int gameID, String authtoken){
     connections.get(gameID).remove(authtoken);
   }
@@ -31,21 +27,12 @@ public class ConnectionManager {
   public void setResigned(int gameID){
     resignedboards.put(gameID, true);
   }
-  public ConcurrentHashMap<Integer, ConcurrentHashMap<String, Connection>> getConnections() {
-    return connections;
-  }
 
   public void addGame(int gameID) {
     connections.put(gameID, new ConcurrentHashMap<>());
     resignedboards.put(gameID, false);
   }
 
-  public void removePlayer(int gameID, String authtoken) {
-    connections.get(gameID).remove(authtoken);
-  }
-  public void removeGame(int gameID) {
-    connections.remove(gameID);
-  }
   public ConcurrentHashMap<String, Connection> getGame(int gameID){
     if(connections == null){
       return null;

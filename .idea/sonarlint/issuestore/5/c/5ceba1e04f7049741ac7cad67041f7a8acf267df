@@ -1,0 +1,14 @@
+
+½
+java:S1319"|The type of "connections" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(®û¥÷ûÿÿÿÿJ$52376b70-c577-48c4-a55f-911094ac86cd
+À
+java:S1319"The type of "resignedboards" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(ìß—ÁıÿÿÿÿJ$b71b0441-fd2b-4926-bf47-30f9a9bf5ae8
+Ã
+java:S1319$"The return type of this method should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentHashMap".(Î®ıûÿÿÿÿJ$434b60dd-4bbd-4219-8438-17c88e97af83
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–ÇüÿÿÿÿJ$998dac63-82f3-4e19-bc76-7d032617d3b8
+€
+java:S2583%"DChange this condition so that it does not always evaluate to "false"(¬âõ½J$2237f16a-c90a-4ca6-8d50-a3eee1d1ba46
+`
+java:S1168&"$Return an empty map instead of null.(¥¹ïJ$b42d6736-f8f6-40c7-9541-723d7b67c89d
+¡
+java:S2175B"`A "ConcurrentHashMap<Integer, ConcurrentHashMap>" cannot contain a "String" in a "Integer" type.(¼Œœ¦øÿÿÿÿJ$59dc5fd9-7981-4337-a3a5-38a6c17ac42d

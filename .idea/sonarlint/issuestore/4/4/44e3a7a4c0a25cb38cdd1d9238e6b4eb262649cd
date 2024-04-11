@@ -1,0 +1,17 @@
+
+ˆ	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(¥†¬è8¡“ƒëì1J$c1f2b021-1de5-426c-bd1c-6a0abbaca426
+‰
+java:S1192r"FDefine a constant instead of duplicating this literal "WHITE" 3 times.(æ£ŠÉ8§“ƒëì1J$ddfe7b32-5eb3-4343-befb-6701868d5dcc
+œ
+java:S1192ƒ"SDefine a constant instead of duplicating this literal "Game Doesn't Exist" 3 times.(ûàƒúÿÿÿÿ8¬“ƒëì1J$417f5a36-9ea0-493f-bf2a-9acfc01c53cf
+‰
+java:S1192r"FDefine a constant instead of duplicating this literal "BLACK" 3 times.(æ£ŠÉ8­“ƒëì1J$49ae876a-4a36-444e-8801-7278c856f43a
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ô¡–Çüÿÿÿÿ8°“ƒëì1J$0696532f-6bd1-4342-916c-3437bf21200b
+{
+java:S2589­"7Remove this expression which always evaluates to "true"(×ò–Õ8à“ƒëì1J$d92048af-1faa-498a-99b9-e894eda6cc68
+•
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¥†¬è8å“ƒëì1J$00f88bd8-9c9f-4f6c-92a7-32d0320fb538
+–
+java:S3776›"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(øşøÈ8ó“ƒëì1J$57a33ea4-5353-4210-93b1-856fccf31ab3
+s
+java:S1068$"+Remove this unused "userDAO" private field.(Ó¢­éûÿÿÿÿ8‚”ƒëì1J$2d5cb966-bfbf-4dc3-a6ae-54338c86619c

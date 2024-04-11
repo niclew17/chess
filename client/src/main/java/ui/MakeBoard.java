@@ -23,9 +23,6 @@ public class MakeBoard {
   public MakeBoard(){
   }
 
-//  public static void main(String[] args){
-//    printBoard();
-//  }
   public static void printBoard(ChessBoard myboard, String color) {
     var out = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     out.print(ERASE_SCREEN);
@@ -254,11 +251,6 @@ public class MakeBoard {
   private static void setWhite(PrintStream out) {
     out.print(SET_BG_COLOR_WHITE);
     out.print(SET_TEXT_COLOR_WHITE);
-  }
-
-  private static void setRed(PrintStream out) {
-    out.print(SET_BG_COLOR_RED);
-    out.print(SET_TEXT_COLOR_RED);
   }
 
   private static void setGrey(PrintStream out) {
