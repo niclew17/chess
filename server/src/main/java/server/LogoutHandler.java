@@ -1,18 +1,15 @@
 package server;
 
 import com.google.gson.Gson;
-import dataAccess.DataAccessException;
 import dataAccess.AuthDAO;
+import dataAccess.DataAccessException;
 import dataAccess.UserDAO;
-import model.AuthData;
 import model.Message;
-import model.UserData;
-import services.Game;
 import services.User;
 import spark.Request;
 import spark.Response;
 
-public class LogoutHandler {
+public class LogoutHandler extends HandlerErrorMethods{
   private final User service;
 
   public LogoutHandler(UserDAO userDAO, AuthDAO authDAO) {
@@ -27,12 +24,7 @@ public class LogoutHandler {
       return "{}";
     }
     catch (DataAccessException e) {
-      if (e.getMessage().equals("Error: unauthorized")) {
-        res.status(401);
-      }
-      else {
-        res.status(500);
-      }
+      sendError(res, e);
       Message message = new Message(e.getMessage());
       res.body(new Gson().toJson(message));
       return res.body();
