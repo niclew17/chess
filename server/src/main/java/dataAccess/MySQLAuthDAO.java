@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import static java.sql.Types.NULL;
-
-public class MySQLAuthDAO implements AuthDAO{
+public class MySQLAuthDAO extends SQLDAO implements AuthDAO{
   public MySQLAuthDAO() throws DataAccessException {
     configureDatabase();
   }
@@ -83,21 +81,7 @@ public class MySQLAuthDAO implements AuthDAO{
 
   }
 
-  private void executeUpdate(String statement, Object... params) throws DataAccessException {
-    try (var conn = DatabaseManager.getConnection()) {
-      try (var ps = conn.prepareStatement(statement)) {
-        for (var i = 0; i < params.length; i++) {
-          var param = params[i];
-          if (param instanceof String p) ps.setString(i + 1, p);
-          else if (param == null) ps.setNull(i + 1, NULL);
-        }
-        ps.executeUpdate();
 
-      }
-    } catch (SQLException e) {
-      throw new DataAccessException(String.format("unable to update database: %s, %s", statement, e.getMessage()));
-    }
-  }
 
 }
 

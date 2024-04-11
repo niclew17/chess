@@ -82,54 +82,11 @@ public abstract class ChessMovement {
           moveslist.add(new ChessMove(myposition, newposition, null));
         }
       }
-      if(!outOfBounds(attackleft)) {
-        if (board.getPiece(attackleft) != null && !board.getPiece(attackleft).getTeamColor().equals(color)) {
-          if (notPromotingPiece(myposition, attackleft, color, moveslist)) {
-            moveslist.add(new ChessMove(myposition, attackleft, null));
-          }
-        }
-      }
-      if(!outOfBounds(attackright)) {
-        if (board.getPiece(attackright) != null && !board.getPiece(attackright).getTeamColor().equals(color)) {
-          if (notPromotingPiece(myposition, attackright, color, moveslist)) {
-            moveslist.add(new ChessMove(myposition, attackright, null));
-          }
-        }
-      }
+      checkSides(myposition, moveslist, board, color, attackleft, attackright);
     }
   }
 
-  public static boolean notPromotingPiece(ChessPosition myposition, ChessPosition endposition, ChessGame.TeamColor color, ArrayList<ChessMove> alist){
-    if(endposition.getRow() == 8 && color.equals(ChessGame.TeamColor.WHITE)){
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.KNIGHT));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.QUEEN));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.BISHOP));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.ROOK));
-      return false;
-      }
-    else if(endposition.getRow() == 1 && color.equals(ChessGame.TeamColor.BLACK)){
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.KNIGHT));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.QUEEN));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.BISHOP));
-      alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.ROOK));
-      return false;
-    }
-    else{
-      return true;
-    }
-  }
-
-  public static void goOneMovePawn(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, int z){
-    ChessPosition newposition = new ChessPosition(myposition.getRow() + z, myposition.getColumn());
-    ChessPosition attackleft = new ChessPosition(myposition.getRow() + z, myposition.getColumn() + z );
-    ChessPosition attackright = new ChessPosition(myposition.getRow() + z, myposition.getColumn() - z );
-    if(!outOfBounds(newposition)) {
-      if (board.getPiece(newposition) == null) {
-        if (notPromotingPiece(myposition, newposition, color, moveslist)) {
-          moveslist.add(new ChessMove(myposition, newposition, null));
-        }
-      }
-    }
+  private static void checkSides(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, ChessPosition attackleft, ChessPosition attackright) {
     if(!outOfBounds(attackleft)) {
       if (board.getPiece(attackleft) != null && !board.getPiece(attackleft).getTeamColor().equals(color)) {
         if (notPromotingPiece(myposition, attackleft, color, moveslist)) {
@@ -144,6 +101,41 @@ public abstract class ChessMovement {
         }
       }
     }
+  }
+
+  public static boolean notPromotingPiece(ChessPosition myposition, ChessPosition endposition, ChessGame.TeamColor color, ArrayList<ChessMove> alist){
+    if(endposition.getRow() == 8 && color.equals(ChessGame.TeamColor.WHITE)){
+      addValues(myposition, endposition, alist);
+      return false;
+      }
+    else if(endposition.getRow() == 1 && color.equals(ChessGame.TeamColor.BLACK)){
+      addValues(myposition, endposition, alist);
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  private static void addValues(ChessPosition myposition, ChessPosition endposition, ArrayList<ChessMove> alist) {
+    alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.KNIGHT));
+    alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.QUEEN));
+    alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.BISHOP));
+    alist.add(new ChessMove(myposition, endposition, ChessPiece.PieceType.ROOK));
+  }
+
+  public static void goOneMovePawn(ChessPosition myposition, ArrayList<ChessMove> moveslist, ChessBoard board, ChessGame.TeamColor color, int z){
+    ChessPosition newposition = new ChessPosition(myposition.getRow() + z, myposition.getColumn());
+    ChessPosition attackleft = new ChessPosition(myposition.getRow() + z, myposition.getColumn() + z );
+    ChessPosition attackright = new ChessPosition(myposition.getRow() + z, myposition.getColumn() - z );
+    if(!outOfBounds(newposition)) {
+      if (board.getPiece(newposition) == null) {
+        if (notPromotingPiece(myposition, newposition, color, moveslist)) {
+          moveslist.add(new ChessMove(myposition, newposition, null));
+        }
+      }
+    }
+    checkSides(myposition, moveslist, board, color, attackleft, attackright);
   }
 }
 

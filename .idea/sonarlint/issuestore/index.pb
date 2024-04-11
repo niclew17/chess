@@ -31,3 +31,7 @@ Z
 *src/main/java/dataAccess/MySQLUserDAO.java,6/a/6a296a5632e22c64d9f0ea8f71753c00c6644ccc
 Z
 *src/main/java/dataAccess/MySQLAuthDAO.java,e/9/e972162e581971cee3c6368c8c37da9c10d46682
+T
+$src/main/java/dataAccess/SQLDAO.java,b/6/b62146456cdc3faba5d80b2ce76c9ec57c875d3c
+V
+&src/main/java/chess/ChessMovement.java,a/d/ad7fb6d698338c78aae834a3e87201710b10406a
