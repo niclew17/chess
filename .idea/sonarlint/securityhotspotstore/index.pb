@@ -35,3 +35,15 @@ T
 $src/main/java/dataAccess/SQLDAO.java,b/6/b62146456cdc3faba5d80b2ce76c9ec57c875d3c
 V
 &src/main/java/chess/ChessMovement.java,a/d/ad7fb6d698338c78aae834a3e87201710b10406a
+[
++src/main/java/server/CreateGameHandler.java,3/d/3dd534f216621c1b06b1533edc5d264a47a4f2eb
+W
+'src/main/java/server/LogoutHandler.java,2/3/23a5e167c07450fa012924c6ed9622d02af72d93
+Z
+*src/main/java/server/ListGamesHandler.java,e/8/e82f6eef6bc7cdb452638642ab2d18387776046b
+]
+-src/main/java/server/HandlerErrorMethods.java,4/5/453217113e64867890b77bc46a76adeb8fe5c450
+Y
+)src/main/java/server/JoinGameHandler.java,4/e/4e899ad55b79d08112ae25de306243f3bc8a925d
+V
+&src/main/java/server/LoginHandler.java,9/5/957c4b55566a46e13a54a160925bc15af181461d

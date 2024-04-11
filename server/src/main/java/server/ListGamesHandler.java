@@ -1,10 +1,9 @@
 package server;
 
 import com.google.gson.Gson;
-import dataAccess.DataAccessException;
 import dataAccess.AuthDAO;
+import dataAccess.DataAccessException;
 import dataAccess.GameDAO;
-import model.Message;
 import response.ListGamesResponse;
 import services.Game;
 import spark.Request;
@@ -25,8 +24,6 @@ public class ListGamesHandler extends HandlerErrorMethods{
     }
     catch (DataAccessException e) {
       sendError(res, e);
-      Message message=new Message(e.getMessage());
-      res.body(new Gson().toJson(message));
       return res.body();
     }
   }

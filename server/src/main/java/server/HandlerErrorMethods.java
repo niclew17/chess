@@ -1,6 +1,8 @@
 package server;
 
+import com.google.gson.Gson;
 import dataAccess.DataAccessException;
+import model.Message;
 import spark.Response;
 
 public class HandlerErrorMethods {
@@ -11,5 +13,7 @@ public class HandlerErrorMethods {
     else {
       res.status(500);
     }
+    Message message=new Message(e.getMessage());
+    res.body(new Gson().toJson(message));
   }
 }

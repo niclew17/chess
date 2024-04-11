@@ -25,8 +25,6 @@ public class LogoutHandler extends HandlerErrorMethods{
     }
     catch (DataAccessException e) {
       sendError(res, e);
-      Message message = new Message(e.getMessage());
-      res.body(new Gson().toJson(message));
       return res.body();
     }
   }
